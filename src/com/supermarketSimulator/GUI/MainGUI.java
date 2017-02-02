@@ -1,9 +1,9 @@
-package com.supermarketSimulator;
+package com.supermarketSimulator.GUI;
 
 import javax.swing.*;
 
 public class MainGUI {
-	JPanel mainPanel;
+	public JPanel mainPanel;
 	private JPanel rightPanel;
 	private JPanel leftPanel;
 	

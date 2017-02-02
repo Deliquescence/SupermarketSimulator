@@ -1,5 +1,7 @@
 package com.supermarketSimulator;
 
+import com.supermarketSimulator.GUI.MainGUI;
+
 import javax.swing.*;
 import java.awt.*;
 
