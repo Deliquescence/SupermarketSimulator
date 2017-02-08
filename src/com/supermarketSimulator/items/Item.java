@@ -13,6 +13,7 @@ public class Item {
     private int baseHealth;
     private int baseHappiness;
     private Category category;
+    private double baseCost;
 
     public Item(String name, int health, int happiness, Category category) {
         lastId++;
