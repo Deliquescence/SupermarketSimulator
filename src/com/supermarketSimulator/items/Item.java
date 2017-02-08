@@ -24,6 +24,10 @@ public class Item {
         id = lastId;
     }
 
+    /**
+     * Creates a new item from a string and adds it to the HashMap of all existing items
+     * @param itemString A comma-separated list of name, baseHealth, baseHappiness, and category
+     */
     public static void itemFromString(String itemString) {
         String[] array = itemString.split(",");
         Category category;

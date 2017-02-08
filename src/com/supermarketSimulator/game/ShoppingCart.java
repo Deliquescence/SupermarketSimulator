@@ -4,11 +4,10 @@ import com.supermarketSimulator.items.ItemStack;
 import com.supermarketSimulator.items.Item;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 
 public class ShoppingCart {
 	
-	private HashSet<ItemStack> itemStacks = new HashSet<>();
+	private ArrayList<ItemStack> itemStacks = new ArrayList<>();
 	
 	/**
 	 * Add an ItemStack to the cart.
@@ -27,6 +26,11 @@ public class ShoppingCart {
 		itemStacks.add(itemStack);
 	}
 
+	/**
+	 * Add some quantity of an item to the cart
+	 * @param item Item to be added
+	 * @param quantity Quantity of that item to be added
+	 */
 	public void add(Item item, int quantity) {
 		for(ItemStack is : this.itemStacks) {
 			if(is.getItem().equals(item)) {
@@ -42,7 +46,7 @@ public class ShoppingCart {
 	 *
 	 * @return A list of all the ItemStacks in this cart.
 	 */
-	public List<ItemStack> getItemStacks() {
+	public ArrayList<ItemStack> getItemStacks() {
 		return this.itemStacks;
 	}
 }

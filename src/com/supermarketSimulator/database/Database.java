@@ -12,13 +12,21 @@ import com.supermarketSimulator.items.Item;
 public class Database {
 
     private final String fileString;
+
+    /**
+     * Creates a database from a csv
+     * @param fileString The name of the csv file as a String
+     */
     public Database(String fileString) {
         this.fileString = fileString;
     }
 
+    /**
+     * Reads in lines from a csv to populate the items in the game
+     */
     public void ReadItems() {
         try {
-            String line
+            String line;
             FileInputStream file = new FileInputStream(fileString);
             InputStreamReader reader = new InputStreamReader(file, Charset.forName("UTF-8"));
             BufferedReader br = new BufferedReader(reader);
