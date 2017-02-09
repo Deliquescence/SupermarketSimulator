@@ -1,7 +1,7 @@
 package com.supermarketSimulator.game;
 
-import com.supermarketSimulator.items.ItemStack;
 import com.supermarketSimulator.items.Item;
+import com.supermarketSimulator.items.ItemStack;
 
 import java.util.ArrayList;
 
@@ -16,7 +16,6 @@ public class ShoppingCart {
 	 * @param itemStack The ItemStack to add.
 	 */
 	public void add(ItemStack itemStack) {
-
 		for (ItemStack is : this.itemStacks) {
 			if (is.getItem().equals(itemStack.getItem())) {
 				is.setQuantity(is.getQuantity() + itemStack.getQuantity());
@@ -25,15 +24,16 @@ public class ShoppingCart {
 		}
 		itemStacks.add(itemStack);
 	}
-
+	
 	/**
 	 * Add some quantity of an item to the cart
-	 * @param item Item to be added
+	 *
+	 * @param item     Item to be added
 	 * @param quantity Quantity of that item to be added
 	 */
 	public void add(Item item, int quantity) {
-		for(ItemStack is : this.itemStacks) {
-			if(is.getItem().equals(item)) {
+		for (ItemStack is : this.itemStacks) {
+			if (is.getItem().equals(item)) {
 				is.setQuantity(is.getQuantity() + quantity);
 				return;
 			}
