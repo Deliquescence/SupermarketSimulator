@@ -6,6 +6,7 @@ public class MainGUI {
 	public JPanel mainPanel;
 	private JPanel rightPanel;
 	private JPanel leftPanel;
+	private JPanel topPanel;
 	
 	private void populateItemList() {
 		//TODO populate the list of items
