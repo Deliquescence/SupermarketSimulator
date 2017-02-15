@@ -2,6 +2,8 @@ package com.supermarketSimulator.GUI;
 
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class ItemDisplay {
 	public JPanel panel;
@@ -21,5 +23,11 @@ public class ItemDisplay {
 		this.labelCost.setText("$" + String.format("%.2f", cost));
 		this.labelHealth.setText("♥" + health);
 		this.labelHappiness.setText("☺" + happiness);
+		buttonAdd.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+			}
+		});
 	}
 }
