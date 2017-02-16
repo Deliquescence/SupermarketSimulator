@@ -21,7 +21,6 @@ public class GUILauncher {
 		int height = screenSize.height;
 		frame.setLocation(width / 4, height / 4);
 		
-		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setTitle(FRAME_TITLE);
 		frame.setSize(FRAME_WIDTH, FRAME_HEIGHT);

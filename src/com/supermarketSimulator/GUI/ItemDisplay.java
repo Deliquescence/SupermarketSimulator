@@ -4,6 +4,8 @@ package com.supermarketSimulator.GUI;
 import com.supermarketSimulator.items.Item;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class ItemDisplay {
 	public JPanel panel;
