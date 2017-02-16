@@ -13,25 +13,38 @@ import java.util.Random;
 public class Store {
 	
 	public ArrayList<StoreItem> storeItems = new ArrayList<>();
-	private final int ITEM_COUNT = 10;
+	private final int ITEM_COUNT = 10; //How many items each store will have. We will tweak this later
 	
-	
+	/**
+	 * Creates a store with a random seed
+	 */
 	public Store() {
 		generateItems(-1L);
 	}
 	
+	/**
+	 * Creates a store with a given seed
+	 * @param seed The Long seed for the random number generator
+	 */
+	public Store(Long seed) {
+		generateItems(seed);
+	}
+	
 	private void generateItems(Long seed) {
 		Random rand;
-		if(seed == -1L) {
+		if(seed == -1L) { //Because Java has no default parameters
 			rand = new Random();
 		}
 		else {
 			rand = new Random(seed);
 		}
+		/*
+		A set of integers is created and these integers are used as indices of the items array.
+		 */
 		HashSet<Integer> itemsToGrab = new HashSet<>();
 		int counter = 0;
 		while(counter < ITEM_COUNT) {
-			int randomInt = rand.nextInt(50);
+			int randomInt = rand.nextInt(Database.items.length);
 			if(!itemsToGrab.contains(randomInt)) {
 				counter++;
 				itemsToGrab.add(randomInt);
@@ -40,6 +53,10 @@ public class Store {
 		for(int number : itemsToGrab) {
 			double gaussRandom = rand.nextGaussian();
 			double multiplier;
+			/*
+			This is a function to make interesting pseudorandom prices based off of a given item's base price. It will
+			need be reviewed later after testing.
+			 */
 			if(gaussRandom > 3) {
 				multiplier = 2;
 			}

@@ -7,11 +7,19 @@ import com.supermarketSimulator.items.Item;
  */
 
 public class StoreItem {
-	Item item;
-	double unitCost;
+	private final Item item;
+	private final double unitCost;
 	
-	StoreItem(Item i, double cost) {
+	StoreItem(Item i, double cost) { //Package private to enforce that only Store should call the constructor
 		item = i;
 		unitCost = cost;
+	}
+	
+	public Item getItem() {
+		return item;
+	}
+	
+	public double getUnitCost() {
+		return unitCost;
 	}
 }
