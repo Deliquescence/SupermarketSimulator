@@ -9,6 +9,8 @@ import java.nio.charset.Charset;
 
 
 public class Database {
+    
+    public static Item[] items;
 	
 	private final String fileString;
 	
@@ -30,9 +32,12 @@ public class Database {
 			FileInputStream file = new FileInputStream(fileString);
 			InputStreamReader reader = new InputStreamReader(file, Charset.forName("UTF-8"));
 			BufferedReader br = new BufferedReader(reader);
-			
+			items = new Item[Integer.parseInt(br.readLine())];
+			int counter = 0;
 			while ((line = br.readLine()) != null) {
-				Item.itemFromString(line);
+				Item i = Item.itemFromString(line);
+				items[counter] = i;
+				counter++;
 			}
 		} catch (Exception e) {
 			//TODO log this.
