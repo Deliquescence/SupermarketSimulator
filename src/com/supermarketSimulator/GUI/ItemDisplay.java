@@ -1,6 +1,7 @@
 package com.supermarketSimulator.GUI;
 
 
+import com.supermarketSimulator.game.GameContext;
 import com.supermarketSimulator.items.Item;
 
 import javax.swing.*;
@@ -8,6 +9,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ItemDisplay {
+	
+	private final Item item;
+	private final GameContext gameContext;
+	
+	//GUI components
 	public JPanel panel;
 	private JLabel labelItemName;
 	private JButton buttonAdd;
@@ -19,16 +25,29 @@ public class ItemDisplay {
 	 * Create a new ItemDisplay for an Item.
 	 * Use the given ActionListener for the add button.
 	 *
-	 * @param item              the Item to display.
-	 * @param addButtonListener Action listener for the add button.
+	 * @param item        the Item to display.
+	 * @param gameContext the GameContext this is in.
 	 */
-	public ItemDisplay(Item item, ActionListener addButtonListener) {
+	public ItemDisplay(Item item, GameContext gameContext) {
+		this.item = item;
+		this.gameContext = gameContext;
+		
 		this.labelItemName.setText(item.getName());
 		this.labelCost.setText("$" + String.format("%.2f", item.getBaseCost()));
 		this.labelHealth.setText("♥" + item.getBaseHealth());
 		this.labelHappiness.setText("☺" + item.getBaseHappiness());
 		this.labelItemName.setIcon(item.getIcon());
 		
-		buttonAdd.addActionListener(addButtonListener);
+		buttonAdd.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ItemDisplay.this.gameContext.shoppingCart.add(ItemDisplay.this.getItem());
+				ItemDisplay.this.gameContext.mainGUI.refreshCart();
+			}
+		});
+	}
+	
+	public Item getItem() {
+		return this.item;
 	}
 }
