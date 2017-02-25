@@ -25,6 +25,7 @@ public class MainGUI {
 	private JTabbedPane tabbedPane2;
 	private JButton objectivesButton;
 	private JButton button1;
+	private JPanel shoppingCartPanel;
 	
 	/**
 	 * Each "asile" tab has a JPanel in it
@@ -37,6 +38,8 @@ public class MainGUI {
 	private void createUIComponents() {
 		leftPanel = new JPanel();
 		leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.PAGE_AXIS));
+		shoppingCartPanel = new JPanel();
+		shoppingCartPanel.setLayout(new BoxLayout(shoppingCartPanel, BoxLayout.PAGE_AXIS));
 		tabbedPane2 = new JTabbedPane();
 		panelsInTabs = new ArrayList<>();
 		
@@ -99,11 +102,12 @@ public class MainGUI {
 	public void refreshCart() {
 		//TODO maybe could look into some event driven updating
 		
-		this.rightPanel.removeAll(); //TODO this is obviously super inefficient
-		this.rightPanel.add(new JLabel("Shopping Cart"));
+		this.shoppingCartPanel.removeAll(); //TODO this is obviously super inefficient
 		
 		for (ItemStack is : this.gameContext.shoppingCart.getItemStacks()) {
-			this.rightPanel.add(new ItemStackDisplay(is).panel);
+			this.shoppingCartPanel.add(new ItemStackDisplay(is).panel);
 		}
+		this.shoppingCartPanel.repaint();
+		this.shoppingCartPanel.revalidate();
 	}
 }
