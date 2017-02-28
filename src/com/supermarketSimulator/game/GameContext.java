@@ -18,4 +18,8 @@ public class GameContext {
 	public ShoppingCart shoppingCart;
 	public Store store;
 	
+	public GameContext() {
+		store = new Store();
+	}
+	
 }

@@ -30,13 +30,15 @@ public class Item {
 	public static Item itemFromString(String itemString) {
 		String[] array = itemString.split(",");
 		Category category;
-		if (Category.categories.containsKey(array[3])) {
-			category = new Category(array[3]);
+		if (Category.categories.containsKey(array[4])) {
+			category = Category.categories.get(array[4]);
 		} else {
-			category = Category.addCategory(array[3]);
+			category = Category.addCategory(array[4]);
 		}
-		return new Item(Integer.parseInt(array[0]), array[1], Integer.parseInt(array[2]), Integer.parseInt(array[3]), category, Double.parseDouble(array[4]), null); //TODO set icon
+		return new Item(Integer.parseInt(array[0]), array[1], Integer.parseInt(array[2]), Integer.parseInt(array[3]), category, Double.parseDouble(array[5]), null); //TODO set icon
 	}
+	
+	public int getID() { return ID; }
 	
 	public ImageIcon getIcon() {
 		return icon;
