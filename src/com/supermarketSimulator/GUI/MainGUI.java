@@ -69,7 +69,7 @@ public class MainGUI {
 			toAdd.setLayout(new BoxLayout(toAdd, BoxLayout.PAGE_AXIS));
 			tabbedPane2.addTab(c.getName(), toAdd);
 			
-			panelsInCategoryTabs.put( c, toAdd);
+			panelsInCategoryTabs.put(c, toAdd);
 		}
 		
 		//Add every item in the database to the tabs
@@ -78,11 +78,14 @@ public class MainGUI {
 		}
 	}
 	
+	/**
+	 * Update the shopping cart display in the GUI with the Items in the current {@Link ShoppingCart}.
+	 * The current shopping cart is found in {@Link GameContext}.
+	 */
 	public void refreshCart() {
-		//TODO maybe could look into some event driven updating
-		
-		this.shoppingCartPanel.removeAll(); //TODO this is obviously super inefficient
-		
+		//Remove every ItemStackDisplay and make new ones.
+		//Might be inefficient, but not on a large enough scale to warrant concern.
+		this.shoppingCartPanel.removeAll();
 		for (ItemStack is : this.gameContext.shoppingCart.getItemStacks()) {
 			this.shoppingCartPanel.add(new ItemStackDisplay(is).panel);
 		}
