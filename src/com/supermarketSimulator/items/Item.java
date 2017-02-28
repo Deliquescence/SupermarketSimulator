@@ -6,13 +6,13 @@ public class Item {
 	
 	private final int ID;
 	private final String name;
-	private final int baseHealth;
-	private final int baseHappiness;
+	private final double baseHealth;
+	private final double baseHappiness;
 	private final Category category;
 	private final double baseCost;
 	private final ImageIcon icon;
 	
-	public Item(int id, String name, int health, int happiness, Category category, double cost, ImageIcon icon) {
+	public Item(int id, String name, double health, double happiness, Category category, double cost, ImageIcon icon) {
 		this.ID = id;
 		this.name = name;
 		this.baseHealth = health;
@@ -35,7 +35,7 @@ public class Item {
 		} else {
 			category = Category.addCategory(array[0]);
 		}
-		return new Item(Integer.parseInt(array[1]), array[2], Integer.parseInt(array[4]), Integer.parseInt(array[5]), category, Double.parseDouble(array[3]), null); //TODO set icon
+		return new Item(Integer.parseInt(array[1]), array[2], Double.parseDouble(array[4]), Double.parseDouble(array[5]), category, Double.parseDouble(array[3]), null); //TODO set icon
 	}
 	
 	public int getID() {
@@ -54,11 +54,11 @@ public class Item {
 		return name;
 	}
 	
-	public int getBaseHealth() {
+	public double getBaseHealth() {
 		return baseHealth;
 	}
 	
-	public int getBaseHappiness() {
+	public double getBaseHappiness() {
 		return baseHappiness;
 	}
 	
