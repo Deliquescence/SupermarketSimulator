@@ -23,22 +23,24 @@ public class Item {
 	}
 	
 	/**
-	 * Creates a new item from a string and adds it to the HashMap of all existing items
+	 * Creates a new item from a string.
 	 *
-	 * @param itemString A comma-separated list of id, name, baseHealth, baseHappiness, category, cost
+	 * @param itemString A comma-separated list of Category, id, Name, Cost, Health, Happiness
 	 */
 	public static Item itemFromString(String itemString) {
 		String[] array = itemString.split(",");
 		Category category;
-		if (Category.categories.containsKey(array[4])) {
-			category = Category.categories.get(array[4]);
+		if (Category.categories.containsKey(array[0])) {
+			category = Category.categories.get(array[0]);
 		} else {
-			category = Category.addCategory(array[4]);
+			category = Category.addCategory(array[0]);
 		}
-		return new Item(Integer.parseInt(array[0]), array[1], Integer.parseInt(array[2]), Integer.parseInt(array[3]), category, Double.parseDouble(array[5]), null); //TODO set icon
+		return new Item(Integer.parseInt(array[1]), array[2], Integer.parseInt(array[4]), Integer.parseInt(array[5]), category, Double.parseDouble(array[3]), null); //TODO set icon
 	}
 	
-	public int getID() { return ID; }
+	public int getID() {
+		return ID;
+	}
 	
 	public ImageIcon getIcon() {
 		return icon;

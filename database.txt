@@ -1,4 +1,0 @@
-3
-0,Bread,10,50,Grain,16
-1,Grapes,30,30,Fruit,12
-2,Rice ball,15,30,Grain,6

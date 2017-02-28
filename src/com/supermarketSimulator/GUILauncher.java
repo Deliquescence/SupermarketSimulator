@@ -13,7 +13,7 @@ public class GUILauncher {
 	private static final int FRAME_HEIGHT = 500;
 	
 	public static void main(String[] args) {
-		Database testDb = new Database("database.txt");
+		Database testDb = new Database("database.csv");
 		testDb.ReadItems();
 		JFrame frame = new JFrame();
 		frame.add(new MainGUI().mainPanel);
