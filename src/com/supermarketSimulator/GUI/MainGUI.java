@@ -87,7 +87,7 @@ public class MainGUI {
 		//Might be inefficient, but not on a large enough scale to warrant concern.
 		this.shoppingCartPanel.removeAll();
 		for (ItemStack is : this.gameContext.shoppingCart.getItemStacks()) {
-			this.shoppingCartPanel.add(new ItemStackDisplay(is).panel);
+			this.shoppingCartPanel.add(new ItemStackDisplay(is, gameContext).panel);
 		}
 		this.shoppingCartPanel.repaint();
 		this.shoppingCartPanel.revalidate();

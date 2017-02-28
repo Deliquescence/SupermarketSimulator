@@ -48,6 +48,54 @@ public class ShoppingCart {
 	}
 	
 	/**
+	 * Remove an ItemStack from this cart.
+	 * The existing ItemStack quantity will be subtracted by the given ItemStack's amount,
+	 * unless this would result in a nonpositive quantity. In this case remove the entire ItemStack.
+	 *
+	 * @param itemStack The ItemStack to remove
+	 * @return true if the cart changed as a result of the call
+	 */
+	public boolean remove(ItemStack itemStack) {
+		return remove(itemStack.getItem(), itemStack.getQuantity());
+	}
+	
+	/**
+	 * Remove some quantity of an item from this cart.
+	 * The existing ItemStack's quantity will be subtracted by the given amount,
+	 * unless this would result in a nonpositive quantity. In this case remove the entire ItemStack.
+	 *
+	 * @param item     the Item to be removed
+	 * @param quantity quantity of that item to be removed
+	 * @return true if the cart changed as a result of the call
+	 */
+	public boolean remove(Item item, int quantity) {
+		for (ItemStack is : this.itemStacks) {
+			if (is.getItem().equals(item)) {
+				if (is.getQuantity() - quantity > 0) {
+					is.setQuantity(is.getQuantity() - quantity);
+					return true;
+				} else {
+					this.itemStacks.remove(is);
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	
+	/**
+	 * Remove a single Item from this cart.
+	 * The existing ItemStack's quantity will be subtracted by one,
+	 * unless this would result in a nonpositive quantity. In this case remove the entire ItemStack.
+	 *
+	 * @param item the Item to be removed
+	 * @return true if the cart changed as a result of the call
+	 */
+	public boolean remove(Item item) {
+		return remove(item, 1);
+	}
+	
+	/**
 	 * Get a list of all the ItemStacks in this cart.
 	 *
 	 * @return A list of all the ItemStacks in this cart.
