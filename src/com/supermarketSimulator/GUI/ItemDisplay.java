@@ -23,7 +23,7 @@ public class ItemDisplay {
 	
 	/**
 	 * Create a new ItemDisplay for an Item.
-	 * Use the given ActionListener for the add button.
+	 * Use the given GameContext.
 	 *
 	 * @param item        the Item to display.
 	 * @param gameContext the GameContext this is in.
