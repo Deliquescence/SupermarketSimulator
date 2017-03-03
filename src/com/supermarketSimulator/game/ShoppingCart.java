@@ -8,6 +8,8 @@ import java.util.List;
 
 public class ShoppingCart {
 	
+	private double happinessTotal = 0;
+	private double healthTotal = 0;
 	private ArrayList<ItemStack> itemStacks = new ArrayList<>();
 	
 	/**
@@ -31,10 +33,14 @@ public class ShoppingCart {
 		for (ItemStack is : this.itemStacks) {
 			if (is.getItem().equals(item)) {
 				is.setQuantity(is.getQuantity() + quantity);
+				happinessTotal += (quantity * item.getBaseHappiness());
+				healthTotal += (quantity * item.getBaseHealth());
 				return;
 			}
 		}
 		itemStacks.add(new ItemStack(item, quantity));
+		happinessTotal += (quantity * item.getBaseHappiness());
+		healthTotal += (quantity * item.getBaseHealth());
 	}
 	
 	/**
@@ -73,9 +79,13 @@ public class ShoppingCart {
 			if (is.getItem().equals(item)) {
 				if (is.getQuantity() - quantity > 0) {
 					is.setQuantity(is.getQuantity() - quantity);
+					happinessTotal -= (quantity * item.getBaseHappiness());
+					healthTotal -= (quantity * item.getBaseHealth());
 					return true;
 				} else {
 					this.itemStacks.remove(is);
+					happinessTotal -= (is.getQuantity() * item.getBaseHappiness());
+					healthTotal -= (is.getQuantity() * item.getBaseHealth());
 					return true;
 				}
 			}
@@ -102,5 +112,14 @@ public class ShoppingCart {
 	 */
 	public List<ItemStack> getItemStacks() {
 		return this.itemStacks;
+	}
+	
+	
+	public double getHappinessTotal() {
+		return happinessTotal;
+	}
+	
+	public double getHealthTotal() {
+		return healthTotal;
 	}
 }

@@ -6,12 +6,12 @@ import com.supermarketSimulator.game.ShoppingCart;
 import com.supermarketSimulator.items.Category;
 import com.supermarketSimulator.items.Item;
 import com.supermarketSimulator.items.ItemStack;
+import com.supermarketSimulator.game.Score;
 
-import javax.imageio.plugins.jpeg.JPEGHuffmanTable;
 import javax.swing.*;
-import java.util.ArrayList;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class MainGUI {
@@ -25,13 +25,25 @@ public class MainGUI {
 	private JPanel topPanel;
 	private JTabbedPane tabbedPane2;
 	private JButton objectivesButton;
-	private JButton button1;
+	private JButton printScoreButton;
 	private JPanel shoppingCartPanel;
 	
 	/**
 	 * Each category tab has a JPanel in it
 	 */
 	private Map<Category, JPanel> panelsInCategoryTabs;
+	
+	public MainGUI() {
+		printScoreButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.format("Total health: " + ("%.3f%n") + "Total happiness: " +
+						("%.3f%n"), gameContext.shoppingCart.getHealthTotal(),
+						gameContext.shoppingCart.getHappinessTotal());
+				System.out.format("Your total score is: " + ("%.3f%n%n"), Score.scoreCart(gameContext.shoppingCart));
+			}
+		});
+	}
 	
 	/**
 	 * Startup method.
