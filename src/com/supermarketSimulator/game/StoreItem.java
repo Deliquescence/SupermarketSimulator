@@ -10,7 +10,7 @@ public class StoreItem {
 	private final Item item;
 	private final double unitCost;
 	
-	StoreItem(Item i, double cost) { //Package private to enforce that only Store should call the constructor
+	public StoreItem(Item i, double cost) {
 		item = i;
 		unitCost = cost;
 	}

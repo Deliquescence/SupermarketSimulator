@@ -19,18 +19,19 @@ public class ShoppingCart {
 	 * @param itemStack The ItemStack to add.
 	 */
 	public void add(ItemStack itemStack) {
-		add(itemStack.getItem(), itemStack.getQuantity());
+		add(itemStack.getStoreItem(), itemStack.getQuantity());
 	}
 	
 	/**
 	 * Add some quantity of an item to this cart
 	 * If there already exists an ItemStack in this cart of the same item, add to its quantity.
 	 *
-	 * @param item     The Item to be added.
+	 * @param storeItem     The StoreItem to be added
 	 * @param quantity Quantity of that item to be added.
 	 */
-	public void add(Item item, int quantity) {
+	public void add(StoreItem storeItem, int quantity) {
 		for (ItemStack is : this.itemStacks) {
+			Item item = storeItem.getItem();
 			if (is.getItem().equals(item)) {
 				is.setQuantity(is.getQuantity() + quantity);
 				happinessTotal += (quantity * item.getBaseHappiness());
@@ -38,19 +39,19 @@ public class ShoppingCart {
 				return;
 			}
 		}
-		itemStacks.add(new ItemStack(item, quantity));
-		happinessTotal += (quantity * item.getBaseHappiness());
-		healthTotal += (quantity * item.getBaseHealth());
+		itemStacks.add(new ItemStack(storeItem, quantity));
+		happinessTotal += (quantity * storeItem.getItem().getBaseHappiness());
+		healthTotal += (quantity * storeItem.getItem().getBaseHealth());
 	}
 	
 	/**
 	 * Add a single Item to this cart.
 	 * If there already exists an ItemStack in this cart of the same item, add to its quantity.
 	 *
-	 * @param item The Item to be added.
+	 * @param storeItem The Item to be added.
 	 */
-	public void add(Item item) {
-		add(item, 1);
+	public void add(StoreItem storeItem) {
+		add(storeItem, 1);
 	}
 	
 	/**

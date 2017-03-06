@@ -3,6 +3,7 @@ package com.supermarketSimulator.GUI;
 import com.supermarketSimulator.database.Database;
 import com.supermarketSimulator.game.GameContext;
 import com.supermarketSimulator.game.ShoppingCart;
+import com.supermarketSimulator.game.StoreItem;
 import com.supermarketSimulator.items.Category;
 import com.supermarketSimulator.items.Item;
 import com.supermarketSimulator.items.ItemStack;
@@ -86,7 +87,8 @@ public class MainGUI {
 		
 		//Add every item in the database to the tabs
 		for (Item item : Database.items) {
-			panelsInCategoryTabs.get(item.getCategory()).add(new ItemDisplay(item, this.gameContext).panel);
+			panelsInCategoryTabs.get(item.getCategory()).add(new ItemDisplay(new StoreItem(item, item.getBaseCost()),
+					this.gameContext).panel);
 		}
 	}
 	

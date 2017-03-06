@@ -2,6 +2,7 @@ package com.supermarketSimulator.GUI;
 
 
 import com.supermarketSimulator.game.GameContext;
+import com.supermarketSimulator.game.StoreItem;
 import com.supermarketSimulator.items.Item;
 
 import javax.swing.*;
@@ -10,7 +11,7 @@ import java.awt.event.ActionListener;
 
 public class ItemDisplay {
 	
-	private final Item item;
+	private final StoreItem storeItem;
 	private final GameContext gameContext;
 	
 	//GUI components
@@ -25,11 +26,12 @@ public class ItemDisplay {
 	 * Create a new ItemDisplay for an Item.
 	 * Use the given GameContext.
 	 *
-	 * @param item        the Item to display.
+	 * @param storeItem The storeItem to display
 	 * @param gameContext the GameContext this is in.
 	 */
-	public ItemDisplay(Item item, GameContext gameContext) {
-		this.item = item;
+	public ItemDisplay(StoreItem storeItem, GameContext gameContext) {
+		this.storeItem = storeItem;
+		Item item = storeItem.getItem();
 		this.gameContext = gameContext;
 		
 		this.labelItemName.setText(item.getName());
@@ -41,13 +43,17 @@ public class ItemDisplay {
 		buttonAdd.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				ItemDisplay.this.gameContext.shoppingCart.add(ItemDisplay.this.getItem());
+				ItemDisplay.this.gameContext.shoppingCart.add(ItemDisplay.this.getStoreItem());
 				ItemDisplay.this.gameContext.mainGUI.refreshCart();
 			}
 		});
 	}
 	
+	public StoreItem getStoreItem() {
+		return this.storeItem;
+	}
+	
 	public Item getItem() {
-		return this.item;
+		return this.storeItem.getItem();
 	}
 }

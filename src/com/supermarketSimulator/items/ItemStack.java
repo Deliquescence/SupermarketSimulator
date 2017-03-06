@@ -1,24 +1,30 @@
 package com.supermarketSimulator.items;
 
 
+import com.supermarketSimulator.game.StoreItem;
+
 public class ItemStack {
 	
-	private final Item item;
+	private final StoreItem item;
 	private int quantity;
 	
 	/**
 	 * Create a new ItemStack, which allows an Item to have quantity stored alongside it.
 	 *
-	 * @param item     The Item in this ItemStack
-	 * @param quantity The quantity of items in the ItemStack
+	 * @param item     The StoreItem in this ItemStack
+	 * @param quantity The quantity of the item in the ItemStack
 	 */
-	public ItemStack(Item item, int quantity) {
+	public ItemStack(StoreItem item, int quantity) {
 		this.item = item;
 		this.quantity = quantity;
 	}
 	
-	public Item getItem() {
+	public StoreItem getStoreItem() {
 		return item;
+	}
+	
+	public Item getItem() {
+		return item.getItem();
 	}
 	
 	public int getQuantity() {
@@ -27,5 +33,9 @@ public class ItemStack {
 	
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
+	}
+	
+	public double getCost() {
+		return item.getUnitCost();
 	}
 }
