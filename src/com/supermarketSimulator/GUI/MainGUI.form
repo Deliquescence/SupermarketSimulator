@@ -71,7 +71,7 @@
         <properties/>
         <border type="none"/>
         <children>
-          <component id="dc685" class="javax.swing.JLabel">
+          <component id="dc685" class="javax.swing.JLabel" binding="labelFunds">
             <constraints>
               <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="6" fill="0" indent="0" use-parent-layout="false">
                 <preferred-size width="130" height="-1"/>

@@ -1,13 +1,11 @@
 package com.supermarketSimulator.GUI;
 
-import com.supermarketSimulator.database.Database;
 import com.supermarketSimulator.game.GameContext;
+import com.supermarketSimulator.game.Score;
 import com.supermarketSimulator.game.ShoppingCart;
 import com.supermarketSimulator.game.StoreItem;
 import com.supermarketSimulator.items.Category;
-import com.supermarketSimulator.items.Item;
 import com.supermarketSimulator.items.ItemStack;
-import com.supermarketSimulator.game.Score;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -21,6 +19,7 @@ public class MainGUI {
 	
 	//GUI components
 	public JPanel mainPanel;
+	public JLabel labelFunds;
 	private JPanel rightPanel;
 	private JPanel leftPanel;
 	private JPanel topPanel;
@@ -38,9 +37,7 @@ public class MainGUI {
 		printScoreButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.format("Total health: " + ("%.3f%n") + "Total happiness: " +
-						("%.3f%n"), gameContext.shoppingCart.getHealthTotal(),
-						gameContext.shoppingCart.getHappinessTotal());
+				System.out.format("Total health: " + ("%.3f%n") + "Total happiness: " + ("%.3f%n"), gameContext.shoppingCart.getHealthTotal(), gameContext.shoppingCart.getHappinessTotal());
 				System.out.format("Your total score is: " + ("%.3f%n%n"), Score.scoreCart(gameContext.shoppingCart));
 			}
 		});
@@ -85,19 +82,15 @@ public class MainGUI {
 			panelsInCategoryTabs.put(c, toAdd);
 		}
 		
-		//Add every item in the database to the tabs
-//		for (Item item : Database.items) {
-//			panelsInCategoryTabs.get(item.getCategory()).add(new ItemDisplay(new StoreItem(item, item.getBaseCost()),
-//					this.gameContext).panel);
-//		}
-		for(StoreItem item : gameContext.store.storeItems) {
+		//Add every item in the store to the tabs
+		for (StoreItem item : gameContext.store.storeItems) {
 			panelsInCategoryTabs.get(item.getCategory()).add(new ItemDisplay(item, gameContext).panel);
 		}
 	}
 	
 	/**
-	 * Update the shopping cart display in the GUI with the Items in the current {@Link ShoppingCart}.
-	 * The current shopping cart is found in {@Link GameContext}.
+	 * Update the shopping cart display in the GUI with the Items in the current {@link ShoppingCart}.
+	 * The current shopping cart is found in {@link GameContext}.
 	 */
 	public void refreshCart() {
 		//Remove every ItemStackDisplay and make new ones.
