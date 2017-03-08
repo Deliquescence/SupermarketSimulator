@@ -4,7 +4,6 @@ import com.supermarketSimulator.database.Database;
 import com.supermarketSimulator.items.Item;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Random;
 
 /**
@@ -41,15 +40,7 @@ public class Store {
 		/*
 		A set of integers is created and these integers are used as indices of the items array.
 		 */
-		HashSet<Integer> itemsToGrab = new HashSet<>();
-		int counter = 0;
-		while(counter < ITEM_COUNT) {
-			int randomInt = rand.nextInt(Database.items.length);
-			if(!itemsToGrab.contains(randomInt)) {
-				counter++;
-				itemsToGrab.add(randomInt);
-			}
-		}
+		int[] itemsToGrab = rand.ints(0, Database.items.length).distinct().limit(ITEM_COUNT).toArray();
 		for(int number : itemsToGrab) {
 			double gaussRandom = rand.nextGaussian();
 			double multiplier;
