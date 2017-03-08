@@ -13,7 +13,7 @@ import java.util.Random;
 public class Store {
 	
 	public ArrayList<StoreItem> storeItems = new ArrayList<>();
-	private final int ITEM_COUNT = 2; //How many items each store will have. We will tweak this later
+	private final int ITEM_COUNT = 30; //How many items each store will have. We will tweak this later
 	
 	/**
 	 * Creates a store with a random seed

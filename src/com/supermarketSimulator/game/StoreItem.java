@@ -1,5 +1,6 @@
 package com.supermarketSimulator.game;
 
+import com.supermarketSimulator.items.Category;
 import com.supermarketSimulator.items.Item;
 
 /**
@@ -21,5 +22,9 @@ public class StoreItem {
 	
 	public double getUnitCost() {
 		return unitCost;
+	}
+	
+	public Category getCategory() {
+		return item.getCategory();
 	}
 }

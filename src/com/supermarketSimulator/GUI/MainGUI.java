@@ -86,9 +86,12 @@ public class MainGUI {
 		}
 		
 		//Add every item in the database to the tabs
-		for (Item item : Database.items) {
-			panelsInCategoryTabs.get(item.getCategory()).add(new ItemDisplay(new StoreItem(item, item.getBaseCost()),
-					this.gameContext).panel);
+//		for (Item item : Database.items) {
+//			panelsInCategoryTabs.get(item.getCategory()).add(new ItemDisplay(new StoreItem(item, item.getBaseCost()),
+//					this.gameContext).panel);
+//		}
+		for(StoreItem item : gameContext.store.storeItems) {
+			panelsInCategoryTabs.get(item.getCategory()).add(new ItemDisplay(item, gameContext).panel);
 		}
 	}
 	

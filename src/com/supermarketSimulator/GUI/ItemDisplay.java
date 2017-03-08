@@ -35,7 +35,7 @@ public class ItemDisplay {
 		this.gameContext = gameContext;
 		
 		this.labelItemName.setText(item.getName());
-		this.labelCost.setText("$" + String.format("%.2f", item.getBaseCost()));
+		this.labelCost.setText("$" + String.format("%.2f", storeItem.getUnitCost()));
 		this.labelHealth.setText("♥" + item.getBaseHealth());
 		this.labelHappiness.setText("☺" + item.getBaseHappiness());
 		this.labelItemName.setIcon(item.getIcon());
