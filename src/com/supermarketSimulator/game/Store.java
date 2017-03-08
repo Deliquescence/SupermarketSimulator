@@ -40,7 +40,8 @@ public class Store {
 		/*
 		A set of integers is created and these integers are used as indices of the items array.
 		 */
-		int[] itemsToGrab = rand.ints(0, Database.items.length).distinct().limit(ITEM_COUNT).toArray();
+		int[] itemsToGrab = rand.ints(0,
+				Database.items.length - 1).distinct().limit(ITEM_COUNT).toArray();
 		for(int number : itemsToGrab) {
 			double gaussRandom = rand.nextGaussian();
 			double multiplier;
