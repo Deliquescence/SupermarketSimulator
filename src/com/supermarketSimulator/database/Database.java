@@ -1,5 +1,6 @@
 package com.supermarketSimulator.database;
 
+import com.supermarketSimulator.items.Category;
 import com.supermarketSimulator.items.Item;
 
 import java.io.BufferedReader;
@@ -38,6 +39,7 @@ public class Database {
 				Item i = Item.itemFromString(line);
 				items[i.getID()] = i;
 			}
+			Category.determineHealthiness();
 		} catch (Exception e) {
 			System.out.println(e.toString());
 		}

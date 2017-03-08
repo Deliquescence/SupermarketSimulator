@@ -14,17 +14,17 @@ Fruits,11,Watermelon - seedless,4.99,5.1,1.8
 Fruits,12,Grapes - red seedless -1.5 lb bag,4.50,5.3,1.6
 Fruits,13,Blueberries -  6 oz container,3.99,5.4,1.7
 Fruits,14,Pineapple - chunks - 1 lb,3.88,5.4,1.6
-Vegeatables,15,Potatoes - Russet - 5 lb,2.47,2.7,3.5
-Vegeatables,16,Celery - sticks - 1 lb,2.20,5.7,0.7
-Vegeatables,17,Lettuce - Iceberg - head,1.99,5.4,1.3
-Vegeatables,18,Spinach - baby - 6 oz bag,2.58,5.8,0.5
-Vegeatables,19,Carrots - baby cut - 16 oz,1.34,5.8,0.8
-Vegeatables,20,Cucumber - single,1.19,5.4,0.8
-Vegeatables,21,Onions - red - 2 lb,1.94,5.4,0.6
-Vegeatables,22,Green Peppers - 1 lb,1.41,5.4,1.1
+Vegetables,15,Potatoes - Russet - 5 lb,2.47,2.7,3.5
+Vegetables,16,Celery - sticks - 1 lb,2.20,5.7,0.7
+Vegetables,17,Lettuce - Iceberg - head,1.99,5.4,1.3
+Vegetables,18,Spinach - baby - 6 oz bag,2.58,5.8,0.5
+Vegetables,19,Carrots - baby cut - 16 oz,1.34,5.8,0.8
+Vegetables,20,Cucumber - single,1.19,5.4,0.8
+Vegetables,21,Onions - red - 2 lb,1.94,5.4,0.6
+Vegetables,22,Green Peppers - 1 lb,1.41,5.4,1.1
 Dairy,23,Milk - 2% - 1 gal,1.15,2.7,3.5
 Dairy,24,Cheese - shredded cheddar - 16 oz,3.12,2.2,4
-Dairy,25,Yogurt - 6 oz cup,0.52,4.3,2.5
+Dairy,25,Yogurt - 6 oz cup,0.62,1.8,1.3
 Dairy,26,Sour Cream - 8 oz tub,1.34,2.5,3.3
 Protein,27,Beef - ground -1 lb,2.99,2.4,4.1
 Protein,28,Chicken - breast - 1 lb,2.75,4.4,3.5
