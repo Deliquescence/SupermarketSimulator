@@ -1,7 +1,6 @@
 package com.supermarketSimulator.GUI;
 
 import com.supermarketSimulator.game.GameContext;
-import com.supermarketSimulator.items.Item;
 import com.supermarketSimulator.items.ItemStack;
 
 import javax.swing.*;
@@ -31,6 +30,7 @@ public class ItemStackDisplay {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				ItemStackDisplay.this.gameContext.shoppingCart.remove(ItemStackDisplay.this.getItemStack());
+				ItemStackDisplay.this.gameContext.adjustFunds(ItemStackDisplay.this.getItemStack().getQuantity() * ItemStackDisplay.this.getItemStack().getItem().getBaseCost());
 				ItemStackDisplay.this.gameContext.mainGUI.refreshCart();
 			}
 		});
