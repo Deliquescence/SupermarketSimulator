@@ -16,7 +16,7 @@ public class Objective {
 	private Category category;
 	
 	private static final int MAX_OBJECTIVE_QUANTITY = 4;
-	private static final int MAX_NUM_OBJECTIVES = 3;
+	private static final int MAX_NUM_OBJECTIVES = 4;
 	
 	public static ArrayList<Objective> objectivesList;
 	
@@ -30,14 +30,13 @@ public class Objective {
 	 *
 	 * If the ArrayList is null, create a new Array. Otherwise,
 	 * clear any remaining elements left in the ArrayList.
-	 * Generate random quantities and categories, and add
-	 * the corresponding objectives to the list.
+	 * 
 	 *
 	 */
 	public static void generate() {
 		
 		if(objectivesList == null) {
-			objectivesList = new ArrayList();
+			objectivesList = new ArrayList<Objective>();
 		}
 		else {
 			objectivesList.clear(); // remove any objectives saved in the list
@@ -45,25 +44,17 @@ public class Objective {
 		
 		//
 		
-		int numObjectives = new Random(System.currentTimeMillis()).nextInt(MAX_OBJECTIVE_QUANTITY);
 		
 		Random rand = new Random(System.currentTimeMillis());
-		while (numObjectives != 0) {
+		int numObjectives = 1+ rand.nextInt(MAX_OBJECTIVE_QUANTITY-1);
+		
+		int[] randQuantity =rand.ints(1, MAX_OBJECTIVE_QUANTITY).limit(MAX_NUM_OBJECTIVES).toArray();
+		int[] randIndexes = rand.ints(0, Category.categories.size()).distinct()
+				.limit(Category.categories.size()).toArray();
+		Category[] categories = Category.categories.values().toArray(new Category[0]);
 			
-			int randQuantity = rand.nextInt(MAX_OBJECTIVE_QUANTITY);
-			
-			int counter = 0;
-			int randCat = rand.nextInt(Category.categories.size());
-			for(Category randCategory : Category.categories.values()) {
-				if(counter == randCat) {
-					objectivesList.add(new Objective(randQuantity, randCategory));
-					break;
-				}
-				counter++;
-				
-			}
-			
-			numObjectives--;
+		for(int i = 0; i < numObjectives; i++) {
+			objectivesList.add(new Objective(randQuantity[i], categories[randIndexes[i]]));
 		}
 	}
 	
@@ -71,8 +62,10 @@ public class Objective {
 	 * Print the contents of the ObjectiveList to the console window.
 	 */
 	public static void printObjectives() {
-		for(Objective obj : objectivesList){
-			System.out.print(obj.toString() +"\n");
+		System.out.println("\nObjective List");
+		System.out.println("----------------");
+		for(Objective obj : objectivesList) {
+			System.out.print(obj.toString() + "\n");
 		}
 	}
 	
@@ -84,6 +77,10 @@ public class Objective {
 	public String toString() {
 		return this.quantity + " " + this.category.getName();
 	}
+	
+	public int getQuantity() { return this.quantity; }
+	
+	public Category getCategory() { return this.category; }
 
 }
 
