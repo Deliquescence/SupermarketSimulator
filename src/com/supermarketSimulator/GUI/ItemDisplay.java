@@ -44,6 +44,7 @@ public class ItemDisplay {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				ItemDisplay.this.gameContext.shoppingCart.add(ItemDisplay.this.getStoreItem());
+				ItemDisplay.this.gameContext.adjustFunds(-1 * ItemDisplay.this.getItem().getBaseCost());
 				ItemDisplay.this.gameContext.mainGUI.refreshCart();
 			}
 		});

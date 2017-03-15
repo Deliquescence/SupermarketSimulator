@@ -65,6 +65,7 @@ public class MainGUI {
 		this.gameContext = new GameContext();
 		this.gameContext.mainGUI = this;
 		this.gameContext.shoppingCart = new ShoppingCart();
+		this.gameContext.setFunds(1000); //TODO more reasonable starting funds
 		
 		displayGUIItems();
 	}
@@ -101,5 +102,7 @@ public class MainGUI {
 		}
 		this.shoppingCartPanel.repaint();
 		this.shoppingCartPanel.revalidate();
+		
+		labelFunds.setText("Remaining Funds: " + String.format("%.2f", gameContext.getFunds()));
 	}
 }

@@ -18,8 +18,27 @@ public class GameContext {
 	public ShoppingCart shoppingCart;
 	public Store store;
 	
+	private double funds;
+	
 	public GameContext() {
 		store = new Store();
+	}
+	
+	public double getFunds() {
+		return funds;
+	}
+	
+	public void setFunds(double funds) {
+		this.funds = funds;
+	}
+	
+	/**
+	 * Increment or decrement the current funds
+	 *
+	 * @param amount the amount to adjust by
+	 */
+	public void adjustFunds(double amount) {
+		this.funds = funds + amount;
 	}
 	
 }
