@@ -26,7 +26,7 @@ public class ItemDisplay {
 	 * Create a new ItemDisplay for an Item.
 	 * Use the given GameContext.
 	 *
-	 * @param storeItem The storeItem to display
+	 * @param storeItem   The storeItem to display
 	 * @param gameContext the GameContext this is in.
 	 */
 	public ItemDisplay(StoreItem storeItem, GameContext gameContext) {
@@ -43,9 +43,13 @@ public class ItemDisplay {
 		buttonAdd.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				ItemDisplay.this.gameContext.shoppingCart.add(ItemDisplay.this.getStoreItem());
-				ItemDisplay.this.gameContext.adjustFunds(-1 * ItemDisplay.this.getItem().getBaseCost());
-				ItemDisplay.this.gameContext.mainGUI.refreshCart();
+				if (ItemDisplay.this.gameContext.getFunds() - ItemDisplay.this.getItem().getBaseCost() > 0) { //Funds are available
+					ItemDisplay.this.gameContext.shoppingCart.add(ItemDisplay.this.getStoreItem());
+					ItemDisplay.this.gameContext.adjustFunds(-1 * ItemDisplay.this.getItem().getBaseCost());
+					ItemDisplay.this.gameContext.mainGUI.refreshCart();
+				} else {
+					JOptionPane.showMessageDialog(null, "Out of funds!", "Insufficient funds", JOptionPane.ERROR_MESSAGE);
+				}
 			}
 		});
 	}
