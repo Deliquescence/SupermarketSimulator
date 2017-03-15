@@ -12,7 +12,7 @@ public class GUILauncher {
 	
 	public static void main(String[] args) {
 		//Database
-		Database testDb = new Database("database.csv");
+		Database testDb = new Database("database.csv", "recipes.csv");
 		testDb.ReadItems();
 		
 		//GUI
