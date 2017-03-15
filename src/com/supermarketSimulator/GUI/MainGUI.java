@@ -1,9 +1,6 @@
 package com.supermarketSimulator.GUI;
 
-import com.supermarketSimulator.game.GameContext;
-import com.supermarketSimulator.game.Score;
-import com.supermarketSimulator.game.ShoppingCart;
-import com.supermarketSimulator.game.StoreItem;
+import com.supermarketSimulator.game.*;
 import com.supermarketSimulator.items.Category;
 import com.supermarketSimulator.items.ItemStack;
 
@@ -34,6 +31,15 @@ public class MainGUI {
 	private Map<Category, JPanel> panelsInCategoryTabs;
 	
 	public MainGUI() {
+		objectivesButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Objective.generate();
+				Objective.printObjectives();
+				
+			}
+		});
+		
 		printScoreButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {

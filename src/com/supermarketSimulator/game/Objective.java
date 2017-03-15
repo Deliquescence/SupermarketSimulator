@@ -4,7 +4,6 @@ package com.supermarketSimulator.game;
 import com.supermarketSimulator.items.Category;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Random;
 
 /**
@@ -16,8 +15,8 @@ public class Objective {
 	private int quantity;
 	private Category category;
 	
-	private static final int OBJECTIVE_LIMIT = 4;
-	
+	private static final int MAX_OBJECTIVE_QUANTITY = 4;
+	private static final int MAX_NUM_OBJECTIVES = 3;
 	
 	public static ArrayList<Objective> objectivesList;
 	
@@ -29,36 +28,61 @@ public class Objective {
 	/**
 	 * Generate a new random list of Objectives.
 	 *
+	 * If the ArrayList is null, create a new Array. Otherwise,
+	 * clear any remaining elements left in the ArrayList.
+	 * Generate random quantities and categories, and add
+	 * the corresponding objectives to the list.
+	 *
 	 */
 	public static void generate() {
 		
-		objectivesList.clear(); // remove any objectives saved in the list
+		if(objectivesList == null) {
+			objectivesList = new ArrayList();
+		}
+		else {
+			objectivesList.clear(); // remove any objectives saved in the list
+		}
 		
 		//
-		int[] catValues = new Random().ints(0, OBJECTIVE_LIMIT).distinct()
-				.limit(Category.categories.size()).toArray();
 		
-		for (int i = 0; i < catValues.length; i++) {
+		int numObjectives = new Random(System.currentTimeMillis()).nextInt(MAX_OBJECTIVE_QUANTITY);
+		
+		Random rand = new Random(System.currentTimeMillis());
+		while (numObjectives != 0) {
+			
+			int randQuantity = rand.nextInt(MAX_OBJECTIVE_QUANTITY);
+			
 			int counter = 0;
-			int quan = new Random(System.currentTimeMillis()).nextInt(OBJECTIVE_LIMIT);
-			for(Category cat: Category.categories.values()) {
-				counter++;
-				if (counter == catValues[i]) {
-					objectivesList.add(new Objective(quan, cat));
+			int randCat = rand.nextInt(Category.categories.size());
+			for(Category randCategory : Category.categories.values()) {
+				if(counter == randCat) {
+					objectivesList.add(new Objective(randQuantity, randCategory));
+					break;
 				}
+				counter++;
+				
 			}
+			
+			numObjectives--;
 		}
-			
-			
 	}
 	
 	/**
 	 * Print the contents of the ObjectiveList to the console window.
 	 */
 	public static void printObjectives() {
-		for(Objective obj : objectivesList) {
-			System.out.println("You must purchase " + obj.quantity + " " + obj.category.getName());
+		for(Objective obj : objectivesList){
+			System.out.print(obj.toString() +"\n");
 		}
+	}
+	
+	/**
+	 * toString() representation of an Objective
+	 *
+	 * @return A String with an Objective's quantity and category.
+	 */
+	public String toString() {
+		return this.quantity + " " + this.category.getName();
 	}
 
 }
