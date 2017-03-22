@@ -1,7 +1,7 @@
 # Supermarket Simulator
 CIT 280 Project 2017
 
-##Project Goal: 
+## Project Goal: 
 
 The user will learn important fundamental concepts relating to money management and making quality, healthy food choices. The user must manage difficult decisions in order to achieve a balanced, effective shopping trip. 
 
