@@ -19,15 +19,23 @@ public class GUILauncher {
 		JFrame frame = new JFrame();
 		frame.add(new MenuGUI().mainPanel);
 		
-		//Centering on screen
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		int width = screenSize.width;
-		int height = screenSize.height;
-		frame.setLocation(width / 4, height / 4);
+		GUILauncher.centerFrameOnScreen(frame);
 		
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		frame.setTitle(FRAME_TITLE);
 		frame.pack();
 		frame.setVisible(true);
+	}
+	
+	/**
+	 * Utility method to set the location of a frame to the center of the screen.
+	 *
+	 * @param frame the JFrame to move to the center
+	 */
+	public static void centerFrameOnScreen(JFrame frame) {
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		int width = screenSize.width;
+		int height = screenSize.height;
+		frame.setLocation(width / 4, height / 4);
 	}
 }

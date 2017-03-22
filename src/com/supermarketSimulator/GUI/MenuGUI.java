@@ -7,8 +7,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class MenuGUI {
-	private JButton buttonStart;
 	public JPanel mainPanel;
+	private JButton buttonStart;
 	
 	public MenuGUI() {
 		
@@ -17,6 +17,8 @@ public class MenuGUI {
 			public void actionPerformed(ActionEvent e) {
 				JFrame gameFrame = new JFrame(GUILauncher.FRAME_TITLE);
 				gameFrame.add(new MainGUI().mainPanel);
+				
+				GUILauncher.centerFrameOnScreen(gameFrame);
 				
 				gameFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 				gameFrame.pack();
