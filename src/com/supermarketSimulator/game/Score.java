@@ -8,8 +8,8 @@ public class Score {
 	/*
 	 * Group of static functions for scoring shopping carts.
 	 */
-	private static final double HEALTH_CONSTANT = 0.1;
-	private static final double HAPPINESS_CONSTANT = 0.1;
+	private static final double HEALTH_CONSTANT = 0.075;
+	private static final double HAPPINESS_CONSTANT = 0.075;
 	
 	/**
 	 * Scores a cart

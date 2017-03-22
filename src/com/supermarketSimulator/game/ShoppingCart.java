@@ -1,15 +1,19 @@
 package com.supermarketSimulator.game;
 
+import com.supermarketSimulator.items.IngredientStack;
 import com.supermarketSimulator.items.Item;
 import com.supermarketSimulator.items.ItemStack;
+import com.supermarketSimulator.items.Recipe;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class ShoppingCart {
 	
 	private double happinessTotal = 0;
 	private double healthTotal = 0;
+	private double recipeBonusScore = 0;
 	private ArrayList<ItemStack> itemStacks = new ArrayList<>();
 	
 	/**
@@ -122,5 +126,18 @@ public class ShoppingCart {
 	
 	public double getHealthTotal() {
 		return healthTotal;
+	}
+	
+	public double getRecipeBonusScore() {
+		return recipeBonusScore;
+	}
+	
+	public boolean containsItem(Item item) {
+		for(ItemStack is : itemStacks) {
+			if(is.getItem().equals(item)) {
+				return true;
+			}
+		}
+		return false;
 	}
 }

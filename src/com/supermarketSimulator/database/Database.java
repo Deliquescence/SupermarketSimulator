@@ -55,7 +55,7 @@ public class Database {
 			BufferedReader br = new BufferedReader(reader);
 			
 			while ((line = br.readLine()) != null) {
-				Recipe.recipes.add(new Recipe(line));
+				Recipe.recipeFromString(line);
 			}
 			
 		} catch (Exception e) {
