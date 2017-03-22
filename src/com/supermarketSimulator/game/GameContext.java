@@ -10,6 +10,8 @@ import com.supermarketSimulator.GUI.MainGUI;
  */
 public class GameContext {
 	
+	public static final double STARTING_FUNDS = 100;
+	
 	/**
 	 * Keep a reference to the main GUI because that might be useful
 	 */

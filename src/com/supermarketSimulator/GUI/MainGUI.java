@@ -71,7 +71,7 @@ public class MainGUI {
 		this.gameContext = new GameContext();
 		this.gameContext.mainGUI = this;
 		this.gameContext.shoppingCart = new ShoppingCart();
-		this.gameContext.setFunds(100); //TODO determine what we want for starting funds
+		this.gameContext.setFunds(GameContext.STARTING_FUNDS);
 		
 		displayGUIItems();
 	}
