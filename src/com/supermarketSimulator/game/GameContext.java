@@ -2,6 +2,8 @@ package com.supermarketSimulator.game;
 
 import com.supermarketSimulator.GUI.MainGUI;
 
+import java.util.ArrayList;
+
 /**
  * An instance of a game.
  * Contains variables and such things that each game has.
@@ -24,6 +26,7 @@ public class GameContext {
 	
 	public GameContext() {
 		store = new Store();
+		Objective.generate();
 	}
 	
 	public double getFunds() {

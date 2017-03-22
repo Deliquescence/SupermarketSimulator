@@ -36,7 +36,7 @@ public class MainGUI {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				ImageIcon ic = new ImageIcon (this.getClass().getResource("..\\..\\..\\images\\list.png"));
+				ImageIcon ic = new ImageIcon (this.getClass().getResource("..\\images\\list.png"));
 				String list = Objective.objectivesList.toString();
 				JOptionPane.showMessageDialog(null,
 						list.substring(1, list.length()-1), "Objective List",
