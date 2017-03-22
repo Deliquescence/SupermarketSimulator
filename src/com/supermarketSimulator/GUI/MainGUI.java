@@ -24,6 +24,7 @@ public class MainGUI {
 	private JButton objectivesButton;
 	private JButton printScoreButton;
 	private JPanel shoppingCartPanel;
+	private JLabel labelScore;
 	
 	/**
 	 * Each category tab has a JPanel in it
@@ -34,8 +35,13 @@ public class MainGUI {
 		objectivesButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Objective.generate();
-				Objective.printObjectives();
+				
+				ImageIcon ic = new ImageIcon (this.getClass().getResource("..\\images\\list.png"));
+				String list = Objective.objectivesList.toString();
+				JOptionPane.showMessageDialog(null,
+						list.substring(1, list.length()-1), "Objective List",
+						JOptionPane.INFORMATION_MESSAGE,
+						ic);
 				
 			}
 		});
@@ -110,5 +116,7 @@ public class MainGUI {
 		this.shoppingCartPanel.revalidate();
 		
 		labelFunds.setText("Remaining Funds: " + String.format("%.2f", gameContext.getFunds()));
+		
+		labelScore.setText("Score: " + String.format("%.0f", Score.scoreCart(gameContext.shoppingCart)));
 	}
 }
