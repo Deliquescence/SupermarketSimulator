@@ -1,6 +1,6 @@
 package com.supermarketSimulator;
 
-import com.supermarketSimulator.GUI.MainGUI;
+import com.supermarketSimulator.GUI.MenuGUI;
 import com.supermarketSimulator.database.Database;
 
 import javax.swing.*;
@@ -8,7 +8,7 @@ import java.awt.*;
 
 public class GUILauncher {
 	
-	private static final String FRAME_TITLE = "Supermarket Simulator";
+	public static final String FRAME_TITLE = "Supermarket Simulator";
 	
 	public static void main(String[] args) {
 		//Database
@@ -17,7 +17,7 @@ public class GUILauncher {
 		
 		//GUI
 		JFrame frame = new JFrame();
-		frame.add(new MainGUI().mainPanel);
+		frame.add(new MenuGUI().mainPanel);
 		
 		//Centering on screen
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -25,7 +25,7 @@ public class GUILauncher {
 		int height = screenSize.height;
 		frame.setLocation(width / 4, height / 4);
 		
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		frame.setTitle(FRAME_TITLE);
 		frame.pack();
 		frame.setVisible(true);
