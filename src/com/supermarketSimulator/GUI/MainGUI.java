@@ -24,6 +24,7 @@ public class MainGUI {
 	private JButton objectivesButton;
 	private JButton printScoreButton;
 	private JPanel shoppingCartPanel;
+	private JLabel labelScore;
 	
 	/**
 	 * Each category tab has a JPanel in it
@@ -110,5 +111,7 @@ public class MainGUI {
 		this.shoppingCartPanel.revalidate();
 		
 		labelFunds.setText("Remaining Funds: " + String.format("%.2f", gameContext.getFunds()));
+		
+		labelScore.setText("Score: " + String.format("%.0f", Score.scoreCart(gameContext.shoppingCart)));
 	}
 }
