@@ -9,7 +9,7 @@ public class Recipe {
 	
 	public static HashSet<Recipe> recipes = new HashSet<>();
 	
-	public RecipeStack[] ingredients;
+	public IngredientStack[] ingredients;
 	
 	/**
 	 * Using a string with the format "Item#,Quantity,Item#,Quantity..." create a new Recipe.
@@ -19,9 +19,9 @@ public class Recipe {
 	 */
 	public Recipe(String recipeString) {
 		String[] split = recipeString.split(",");
-		this.ingredients = new RecipeStack[split.length / 2];
+		this.ingredients = new IngredientStack[split.length / 2];
 		for (int x = 0; x < split.length; x += 2) {
-			this.ingredients[x / 2] = new RecipeStack(Database.items[Integer.parseInt(split[x])], Integer.parseInt(split[x + 1]));
+			this.ingredients[x / 2] = new IngredientStack(Database.items[Integer.parseInt(split[x])], Integer.parseInt(split[x + 1]));
 		}
 	}
 	

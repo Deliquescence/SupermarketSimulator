@@ -9,7 +9,7 @@ public class ItemStack {
 	private int quantity;
 	
 	/**
-	 * Create a new ItemStack, which allows an Item to have quantity stored alongside it.
+	 * Create a new ItemStack, which allows an StoreItem to have quantity stored alongside it.
 	 *
 	 * @param item     The StoreItem in this ItemStack
 	 * @param quantity The quantity of the item in the ItemStack
