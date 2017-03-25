@@ -15,8 +15,10 @@ public class MenuGUI {
 		buttonStart.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				MainGUI mainGUI = new MainGUI();
+				
 				JFrame gameFrame = new JFrame(GUILauncher.FRAME_TITLE);
-				gameFrame.add(new MainGUI().mainPanel);
+				gameFrame.add(mainGUI.mainPanel);
 				
 				GUILauncher.centerFrameOnScreen(gameFrame);
 				
@@ -25,6 +27,7 @@ public class MenuGUI {
 				gameFrame.setVisible(true);
 				
 				SwingUtilities.windowForComponent(mainPanel).setVisible(false);
+				mainGUI.refreshCart(); //Fixes score and remaining funds labels
 			}
 		});
 	}

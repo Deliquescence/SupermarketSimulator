@@ -32,17 +32,19 @@ public class MainGUI {
 	private Map<Category, JPanel> panelsInCategoryTabs;
 	
 	public MainGUI() {
+		this.gameContext = new GameContext();
+		this.gameContext.shoppingCart = new ShoppingCart();
+		this.gameContext.setFunds(GameContext.STARTING_FUNDS);
+		this.panelsInCategoryTabs = new HashMap<>();
+		
+		displayGUIItems();
+		
 		objectivesButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
-				ImageIcon ic = new ImageIcon (this.getClass().getResource("/images/list.png"));
+				ImageIcon ic = new ImageIcon(this.getClass().getResource("/images/list.png"));
 				String list = Objective.objectivesList.toString();
-				JOptionPane.showMessageDialog(null,
-						list.substring(1, list.length()-1), "Objective List",
-						JOptionPane.INFORMATION_MESSAGE,
-						ic);
-				
+				JOptionPane.showMessageDialog(null, list.substring(1, list.length() - 1), "Objective List", JOptionPane.INFORMATION_MESSAGE, ic);
 			}
 		});
 		
@@ -53,10 +55,15 @@ public class MainGUI {
 				System.out.format("Your total score is: " + ("%.3f%n%n"), Score.scoreCart(gameContext.shoppingCart));
 			}
 		});
+		
+		//Do last to prevent leaking this before completely constructed
+		this.gameContext.mainGUI = this;
 	}
 	
 	/**
-	 * Startup method.
+	 * Runs by magic when the GUI frame is rendered.
+	 *
+	 * ONLY GUI related things; put other init tasks in constructor.
 	 */
 	private void createUIComponents() {
 		leftPanel = new JPanel();
@@ -64,22 +71,6 @@ public class MainGUI {
 		shoppingCartPanel = new JPanel();
 		shoppingCartPanel.setLayout(new BoxLayout(shoppingCartPanel, BoxLayout.PAGE_AXIS));
 		tabbedPane2 = new JTabbedPane();
-		panelsInCategoryTabs = new HashMap<>();
-		
-		gameInit();
-	}
-	
-	/**
-	 * Tasks to setup the game.
-	 * Separated from createUIComponents() for clarity.
-	 */
-	private void gameInit() {
-		this.gameContext = new GameContext();
-		this.gameContext.mainGUI = this;
-		this.gameContext.shoppingCart = new ShoppingCart();
-		this.gameContext.setFunds(GameContext.STARTING_FUNDS);
-		
-		displayGUIItems();
 	}
 	
 	/**
