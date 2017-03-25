@@ -30,8 +30,6 @@ public class Objective {
 	 *
 	 * If the ArrayList is null, create a new Array. Otherwise,
 	 * clear any remaining elements left in the ArrayList.
-	 *
-	 *
 	 */
 	public static void generate() {
 		
@@ -85,7 +83,7 @@ public class Objective {
 	public static void printObjectives() {
 		System.out.println("\nObjective List");
 		System.out.println("----------------");
-		for(Objective obj : objectivesList) {
+		for (Objective obj : objectivesList) {
 			System.out.print(obj.toString() + "\n");
 		}
 	}
@@ -102,12 +100,14 @@ public class Objective {
 		}
 		return sb.toString();
 	}
-		
 	
-	public int getQuantity() { return this.quantity; }
+	public int getQuantity() {
+		return this.quantity;
+	}
 	
-	public Category getCategory() { return this.category; }
-
+	public Category getCategory() {
+		return this.category;
+	}
 }
 
 
