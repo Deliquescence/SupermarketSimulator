@@ -62,4 +62,9 @@ public class Category {
 	public boolean isHealthy() {
 		return healthy;
 	}
+	
+	@Override
+	public String toString() {
+		return name;
+	}
 }

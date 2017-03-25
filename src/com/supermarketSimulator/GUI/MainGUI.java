@@ -44,7 +44,7 @@ public class MainGUI {
 			public void actionPerformed(ActionEvent e) {
 				ImageIcon ic = new ImageIcon(this.getClass().getResource("/images/list.png"));
 				String list = Objective.objectivesList.toString();
-				JOptionPane.showMessageDialog(null, list.substring(1, list.length() - 1), "Objective List", JOptionPane.INFORMATION_MESSAGE, ic);
+				JOptionPane.showMessageDialog(null, list.substring(1, list.length() - 1).replaceAll(", ", ",\n"), "Objective List", JOptionPane.INFORMATION_MESSAGE, ic);
 			}
 		});
 		

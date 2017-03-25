@@ -94,11 +94,7 @@ public class Objective {
 	 * @return A String with an Objective's quantity and category.
 	 */
 	public String toString() {
-		StringBuilder sb = new StringBuilder();
-		for (Objective obj : objectivesList) {
-			sb.append("Quantity: " + obj.getQuantity() + " " + obj.getCategory().getName() + "\n");
-		}
-		return sb.toString();
+		return this.getQuantity() + " from " + this.getCategory();
 	}
 	
 	public int getQuantity() {
