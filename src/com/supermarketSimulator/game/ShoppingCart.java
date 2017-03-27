@@ -6,6 +6,7 @@ import com.supermarketSimulator.items.ItemStack;
 import com.supermarketSimulator.items.Recipe;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 
@@ -14,7 +15,9 @@ public class ShoppingCart {
 	private double happinessTotal = 0;
 	private double healthTotal = 0;
 	private double recipeBonusScore = 0;
+	public HashSet<Recipe> potentialRecipes = new HashSet<>();
 	private ArrayList<ItemStack> itemStacks = new ArrayList<>();
+	private HashMap<Item, Integer> unpairedItems = new HashMap<>();
 	
 	/**
 	 * Add an ItemStack to the cart.
@@ -34,18 +37,21 @@ public class ShoppingCart {
 	 * @param quantity Quantity of that item to be added.
 	 */
 	public void add(StoreItem storeItem, int quantity) {
+		//TODO add recipe logic in
 		for (ItemStack is : this.itemStacks) {
 			Item item = storeItem.getItem();
 			if (is.getItem().equals(item)) {
 				is.setQuantity(is.getQuantity() + quantity);
 				happinessTotal += (quantity * item.getBaseHappiness());
 				healthTotal += (quantity * item.getBaseHealth());
+				updateUnpaired(is.getItem(), true, quantity);
 				return;
 			}
 		}
 		itemStacks.add(new ItemStack(storeItem, quantity));
 		happinessTotal += (quantity * storeItem.getItem().getBaseHappiness());
 		healthTotal += (quantity * storeItem.getItem().getBaseHealth());
+		updateUnpaired(storeItem.getItem(), true, quantity);
 	}
 	
 	/**
@@ -96,6 +102,43 @@ public class ShoppingCart {
 			}
 		}
 		return false;
+	}
+	
+	private void checkRecipes(Item item) {
+		//Surrender now or prepare to fight!
+		HashSet<Recipe> eligibleRecipes = new HashSet<>();
+		if(Recipe.recipes.containsKey(item.getName())) {
+			RecipeLoop:
+			for(Recipe r : Recipe.recipes.get(item.getName())) { //All recipes that can be made with this item
+				for(IngredientStack stack : r.ingredients) {
+					if(unpairedItems.containsKey(stack.item)) {
+						if(unpairedItems.get(stack.item) < stack.quantity) { //Insufficient quantity
+							break RecipeLoop;
+						}
+					} else { //Wrong item types
+						break RecipeLoop;
+					}
+				}
+				eligibleRecipes.add(r);
+			}
+			
+		}
+		potentialRecipes.addAll(eligibleRecipes); //Adding everything from this local HashSet to the global one.
+	}
+	
+	private void updateUnpaired(Item i, boolean adding, int quantity) {
+		if(adding) {
+			if(!unpairedItems.containsKey(i)){
+				unpairedItems.put(i, quantity);
+			}
+			else {
+				int x = unpairedItems.get(i);
+				unpairedItems.put(i, x + quantity);
+			}
+		}
+		else { //By deduction, removing
+			//TODO Logic for undoing recipes when removing items from the cart.
+		}
 	}
 	
 	/**
