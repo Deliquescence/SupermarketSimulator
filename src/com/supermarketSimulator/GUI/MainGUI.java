@@ -42,7 +42,7 @@ public class MainGUI {
 		objectivesButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				ImageIcon ic = new ImageIcon(this.getClass().getResource("/images/list.png"));
+				ImageIcon ic = new ImageIcon(this.getClass().getResource("/resources/images/list.png"));
 				String list = Objective.objectivesList.toString();
 				JOptionPane.showMessageDialog(null, list.substring(1, list.length() - 1).replaceAll(", ", ",\n"), "Objective List", JOptionPane.INFORMATION_MESSAGE, ic);
 			}
