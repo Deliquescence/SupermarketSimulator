@@ -3,14 +3,20 @@ package com.supermarketSimulator.GUI;
 import com.supermarketSimulator.game.GameContext;
 import com.supermarketSimulator.items.ItemStack;
 
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URL;
 
 public class ItemStackDisplay {
 	
 	private final ItemStack itemStack;
 	private final GameContext gameContext;
+	
+	private Clip soundClip;
+	private static final URL SOUND_RESOURCE = ItemStackDisplay.class.getResource("/resources/sounds/Money,Coins,Handle.wav");
 	
 	//GUI components
 	public JPanel panel;
@@ -26,12 +32,23 @@ public class ItemStackDisplay {
 		this.labelItemName.setIcon(itemStack.getItem().getIcon());
 		this.labelItemQuantity.setText("x" + itemStack.getQuantity());
 		
+		try {
+			soundClip = AudioSystem.getClip();
+			soundClip.open(AudioSystem.getAudioInputStream(SOUND_RESOURCE));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		buttonRemove.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				ItemStackDisplay.this.gameContext.shoppingCart.remove(ItemStackDisplay.this.getItemStack());
 				ItemStackDisplay.this.gameContext.adjustFunds(ItemStackDisplay.this.getItemStack().getQuantity() * ItemStackDisplay.this.getItemStack().getItem().getBaseCost());
 				ItemStackDisplay.this.gameContext.mainGUI.refreshCart();
+				if (soundClip != null && !soundClip.isActive()) {
+					soundClip.start();
+					soundClip.setFramePosition(0);
+				}
 			}
 		});
 	}
