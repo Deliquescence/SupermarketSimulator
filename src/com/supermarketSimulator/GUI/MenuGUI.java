@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 public class MenuGUI {
 	public JPanel mainPanel;
 	private JButton buttonStart;
+	private JLabel logo;
 	
 	public MenuGUI() {
 		
