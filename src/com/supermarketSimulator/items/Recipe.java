@@ -3,12 +3,12 @@ package com.supermarketSimulator.items;
 
 import com.supermarketSimulator.database.Database;
 
+import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Set;
 
 public class Recipe {
 	
-	public static Set<Recipe> recipes;
+	public static HashMap<String, HashSet<Recipe>> recipes = new HashMap<>();
 	
 	public IngredientStack[] ingredients;
 	private double scoreValue = 0;
@@ -28,7 +28,7 @@ public class Recipe {
 		}
 		//Let's try this for now...
 		double score = 0;
-		for (IngredientStack stack : ingredients) {
+		for(IngredientStack stack : ingredients) {
 			Item i = stack.item;
 			score += 2 * (i.getBaseHappiness() + i.getBaseHealth());
 		}
@@ -45,26 +45,16 @@ public class Recipe {
 	 */
 	public static Recipe recipeFromString(String recipeString) {
 		Recipe r = new Recipe(recipeString);
-		recipes.add(r);
-		return r;
-	}
-	
-	/**
-	 * Given an Item, find all the Recipes with that Item.
-	 *
-	 * @param item the Item
-	 * @return Set of all Recipes that use that item
-	 */
-	public static Set<Recipe> getRecipesWithItem(Item item) {
-		HashSet<Recipe> recipesWithItem = new HashSet<>();
-		for (Recipe r : recipes) {
-			for (IngredientStack is : r.ingredients) {
-				if (is.item == item) {
-					recipesWithItem.add(r);
-					break;
-				}
+		for(IngredientStack stack : r.ingredients) {
+			Item i = stack.item;
+			if(recipes.containsKey(i.getName())) {
+				recipes.get(i.getName()).add(r);
+			}
+			else {
+				recipes.put(i.getName(), new HashSet<>());
+				recipes.get(i.getName()).add(r);
 			}
 		}
-		return recipesWithItem;
+		return r;
 	}
 }

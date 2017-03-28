@@ -107,9 +107,9 @@ public class ShoppingCart {
 	private void checkRecipes(Item item) {
 		//Surrender now or prepare to fight!
 		HashSet<Recipe> eligibleRecipes = new HashSet<>();
-		if(Recipe.getRecipesWithItem(item).size() > 0) {
+		if(Recipe.recipes.containsKey(item.getName())) {
 			RecipeLoop:
-			for(Recipe r : Recipe.getRecipesWithItem(item)) { //All recipes that can be made with this item
+			for(Recipe r : Recipe.recipes.get(item.getName())) { //All recipes that can be made with this item
 				for(IngredientStack stack : r.ingredients) {
 					if(unpairedItems.containsKey(stack.item)) {
 						if(unpairedItems.get(stack.item) < stack.quantity) { //Insufficient quantity
