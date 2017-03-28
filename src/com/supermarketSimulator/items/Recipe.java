@@ -8,7 +8,10 @@ import java.util.HashSet;
 
 public class Recipe {
 	
-	public static HashMap<String, HashSet<Recipe>> recipes = new HashMap<>();
+	/**
+	 * Using an Item as key, store the set of all Recipes that use that Item
+	 */
+	public static HashMap<Item, HashSet<Recipe>> recipesByItem = new HashMap<>();
 	
 	public IngredientStack[] ingredients;
 	private double scoreValue = 0;
@@ -28,7 +31,7 @@ public class Recipe {
 		}
 		//Let's try this for now...
 		double score = 0;
-		for(IngredientStack stack : ingredients) {
+		for (IngredientStack stack : ingredients) {
 			Item i = stack.item;
 			score += 2 * (i.getBaseHappiness() + i.getBaseHealth());
 		}
@@ -45,14 +48,13 @@ public class Recipe {
 	 */
 	public static Recipe recipeFromString(String recipeString) {
 		Recipe r = new Recipe(recipeString);
-		for(IngredientStack stack : r.ingredients) {
+		for (IngredientStack stack : r.ingredients) {
 			Item i = stack.item;
-			if(recipes.containsKey(i.getName())) {
-				recipes.get(i.getName()).add(r);
-			}
-			else {
-				recipes.put(i.getName(), new HashSet<>());
-				recipes.get(i.getName()).add(r);
+			if (recipesByItem.containsKey(i)) {
+				recipesByItem.get(i).add(r);
+			} else {
+				recipesByItem.put(i, new HashSet<>());
+				recipesByItem.get(i).add(r);
 			}
 		}
 		return r;
