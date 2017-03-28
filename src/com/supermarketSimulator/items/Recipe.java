@@ -14,6 +14,8 @@ public class Recipe {
 	public static HashMap<Item, HashSet<Recipe>> recipesByItem = new HashMap<>();
 	
 	public IngredientStack[] ingredients;
+	
+	private final String recipeName;
 	private double scoreValue = 0;
 	
 	
@@ -26,7 +28,8 @@ public class Recipe {
 	public Recipe(String recipeString) {
 		String[] split = recipeString.split(",");
 		this.ingredients = new IngredientStack[split.length / 2];
-		for (int x = 0; x < split.length; x += 2) {
+		recipeName = split[0];
+		for (int x = 1; x < split.length; x += 2) {
 			this.ingredients[x / 2] = new IngredientStack(Database.items[Integer.parseInt(split[x])], Integer.parseInt(split[x + 1]));
 		}
 		//Let's try this for now...
@@ -65,11 +68,17 @@ public class Recipe {
 		recipesByItem.forEach((item, hashSet) -> {
 			System.out.println("Recipes containing " + item.getName());
 			for(Recipe r: hashSet) {
+				System.out.println("Recipe: " + r.getName());
 				for(IngredientStack stack : r.ingredients ) {
 					System.out.println("Item " + stack.item.getName() + " quantity " + stack.quantity);
 				}
 				System.out.println("---------");
 			}
 		});
+	}
+	
+	
+	public String getName() {
+		return recipeName;
 	}
 }
