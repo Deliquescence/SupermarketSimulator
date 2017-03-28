@@ -104,6 +104,11 @@ public class ShoppingCart {
 		return false;
 	}
 	
+	/**
+	 * Called when items are added to cart. Updates eligible recipes, which are recipes the player has the ingredients
+	 * to make.
+	 * @param item Item to be checked
+	 */
 	private void checkRecipes(Item item) {
 		//Surrender now or prepare to fight!
 		HashSet<Recipe> eligibleRecipes = new HashSet<>();
@@ -126,6 +131,12 @@ public class ShoppingCart {
 		potentialRecipes.addAll(eligibleRecipes); //Adding everything from this local HashSet to the global one.
 	}
 	
+	/**
+	 * Updates the list of unpaired items, i.e. items which aren't being used in any recipe.
+	 * @param i Item
+	 * @param adding True if adding, false if subtracting the given quantity
+	 * @param quantity The quantity of that item
+	 */
 	private void updateUnpaired(Item i, boolean adding, int quantity) {
 		if(adding) {
 			if(!unpairedItems.containsKey(i)){

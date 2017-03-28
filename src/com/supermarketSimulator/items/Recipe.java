@@ -59,4 +59,17 @@ public class Recipe {
 		}
 		return r;
 	}
+	
+	public static void debugPrintRecipes() {
+		//Warning, very verbose
+		recipesByItem.forEach((item, hashSet) -> {
+			System.out.println("Recipes containing " + item.getName());
+			for(Recipe r: hashSet) {
+				for(IngredientStack stack : r.ingredients ) {
+					System.out.println("Item " + stack.item.getName() + " quantity " + stack.quantity);
+				}
+				System.out.println("---------");
+			}
+		});
+	}
 }

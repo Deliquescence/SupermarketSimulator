@@ -14,6 +14,7 @@ public class GUILauncher {
 		//Database
 		Database testDb = new Database("database.csv", "recipes.csv");
 		testDb.ReadItems();
+		testDb.ReadRecipes();
 		
 		//GUI
 		JFrame frame = new JFrame();
