@@ -16,7 +16,7 @@ public class Objective {
 	private Category category;
 	
 	private static final int MAX_OBJECTIVE_QUANTITY = 4;
-	private static final int MAX_NUM_OBJECTIVES = 4;
+	private static final int MAX_OBJECTIVE_LIST_LENGTH = 4;
 	
 	public static ArrayList<Objective> objectivesList;
 	
@@ -31,6 +31,7 @@ public class Objective {
 	 * If the ArrayList is null, create a new Array. Otherwise,
 	 * clear any remaining elements left in the ArrayList.
 	 */
+	
 	public static void generate() {
 		
 		if (objectivesList == null) {
@@ -42,10 +43,8 @@ public class Objective {
 		Random rand = new Random(System.currentTimeMillis()); // rand seeding
 		
 		//generate random number of objectives
-		int numObjectives = 1 + rand.nextInt(MAX_OBJECTIVE_QUANTITY - 1);
+		int numObjectives = 1 + rand.nextInt(MAX_OBJECTIVE_LIST_LENGTH - 1);
 		
-		//generate array of random quantities for each objective
-		//int[] randQuantity =rand.ints(1, MAX_OBJECTIVE_QUANTITY).limit(numObjectives).toArray();
 		
 		// Generate an array of distinct integers to act as array indexes for category selection pairing
 		int[] randIndexes = rand.ints(0, Category.categories.size()).distinct().limit(Category.categories.size()).toArray();
@@ -54,28 +53,16 @@ public class Objective {
 		Category[] categories = Category.categories.values().toArray(new Category[0]);
 		
 		for (int i = 0; i < numObjectives; i++) {
-			int quantity = 1 + rand.nextInt(3);
+			int quantity = 1 + rand.nextInt(MAX_OBJECTIVE_QUANTITY);
 			
-			if (!categories[i].isHealthy()) {
-				i--;
+			if (!categories[randIndexes[i]].isHealthy()) {
+				numObjectives++;
 				continue;
 			}
 			objectivesList.add(new Objective(quantity, categories[randIndexes[i]]));
 		}
 	}
-		
-//
-//		Random rand = new Random(System.currentTimeMillis());
-//		int numObjectives = 1+ rand.nextInt(MAX_OBJECTIVE_QUANTITY-1);
-//
-//		int[] randQuantity =rand.ints(1, MAX_OBJECTIVE_QUANTITY).limit(MAX_NUM_OBJECTIVES).toArray();
-//		int[] randIndexes = rand.ints(0, Category.categories.size()).distinct()
-//				.limit(Category.categories.size()).toArray();
-//		Category[] categories = Category.categories.values().toArray(new Category[0]);
-//
-//		for(int i = 0; i < numObjectives; i++) {
-//			objectivesList.add(new Objective(randQuantity[i], categories[randIndexes[i]]));
-//		}
+
 	
 	/**
 	 * Print the contents of the ObjectiveList to the console window.
