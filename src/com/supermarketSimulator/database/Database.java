@@ -8,11 +8,16 @@ import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.Charset;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 
 public class Database {
     
     public static Item[] items;
+    public static Map<Category, Set<Item>> itemsByCategory = new HashMap<>();
 	
 	private final String itemFileString;
 	private final String recipeFileString;
@@ -40,6 +45,8 @@ public class Database {
 			while ((line = br.readLine()) != null) {
 				Item i = Item.itemFromString(line);
 				items[i.getID()] = i;
+				itemsByCategory.computeIfAbsent(i.getCategory(), k -> new HashSet<>()); //Init the HashSet for the category if null
+				itemsByCategory.get(i.getCategory()).add(i);
 			}
 			Category.determineHealthiness();
 		} catch (Exception e) {
