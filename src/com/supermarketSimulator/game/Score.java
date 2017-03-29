@@ -53,4 +53,15 @@ public class Score {
 		}
 		return 0;
 	}
+	
+	/**
+	 * Determine if a given objective is met by the given cart.
+	 *
+	 * @param objective the Objective
+	 * @param cart the ShoppingCart
+	 * @return true if this contents of the cart fulfil the objective
+	 */
+	public static boolean objectiveIsMet(Objective objective, ShoppingCart cart) {
+		return cart.numberOfItemsInCategory(objective.getCategory()) >= objective.getQuantity();
+	}
 }

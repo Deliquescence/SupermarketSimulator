@@ -1,9 +1,6 @@
 package com.supermarketSimulator.game;
 
-import com.supermarketSimulator.items.IngredientStack;
-import com.supermarketSimulator.items.Item;
-import com.supermarketSimulator.items.ItemStack;
-import com.supermarketSimulator.items.Recipe;
+import com.supermarketSimulator.items.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -193,5 +190,21 @@ public class ShoppingCart {
 			}
 		}
 		return false;
+	}
+	
+	/**
+	 * Given a Category, count how many total items in this cart are in that category.
+	 *
+	 * @param category the Category
+	 * @return the number of items
+	 */
+	public int numberOfItemsInCategory(Category category){
+		int count = 0;
+		for (ItemStack is : this.itemStacks){
+			if (is.getItem().getCategory() == category) {
+				count += is.getQuantity();
+			}
+		}
+		return count;
 	}
 }
