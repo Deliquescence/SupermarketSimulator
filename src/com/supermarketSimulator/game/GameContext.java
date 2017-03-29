@@ -3,6 +3,7 @@ package com.supermarketSimulator.game;
 import com.supermarketSimulator.GUI.MainGUI;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 
@@ -31,9 +32,15 @@ public class GameContext {
 		
 		try {
 			highScoresFile = new File(this.getClass().getResource("/resources/save/highscores.txt").toURI());
+			
+			if(!highScoresFile.exists()){
+				highScoresFile.createNewFile();
+			}
 			Score.readHighScores(highScoresFile);
 		} catch (URISyntaxException e) {
 			System.err.println("Cannot open High Scores file.");
+		} catch (IOException e) {
+			System.err.println("Cannot create HighScores File.");
 		}
 		Objective.generate();
 	}
