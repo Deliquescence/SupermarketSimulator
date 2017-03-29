@@ -5,13 +5,15 @@ import com.supermarketSimulator.database.Database;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.TreeSet;
 
-public class Recipe {
+public class Recipe implements Comparable<Recipe> {
 	
 	/**
 	 * Using an Item as key, store the set of all Recipes that use that Item
 	 */
 	public static HashMap<Item, HashSet<Recipe>> recipesByItem = new HashMap<>();
+	public static TreeSet<Recipe> sortedRecipes = new TreeSet<>();
 	
 	public IngredientStack[] ingredients;
 	
@@ -50,6 +52,7 @@ public class Recipe {
 	 */
 	public static Recipe recipeFromString(String recipeString) {
 		Recipe r = new Recipe(recipeString);
+		sortedRecipes.add(r);
 		for (IngredientStack stack : r.ingredients) {
 			Item i = stack.item;
 			if (recipesByItem.containsKey(i)) {
@@ -62,6 +65,9 @@ public class Recipe {
 		return r;
 	}
 	
+	/**
+	 * Verbose debug method that prints all the recipes out item-by-item
+	 */
 	public static void debugPrintRecipes() {
 		//Warning, very verbose
 		recipesByItem.forEach((item, hashSet) -> {
@@ -84,5 +90,10 @@ public class Recipe {
 	
 	public double getScore() {
 		return scoreValue;
+	}
+	
+	@Override
+	public int compareTo(Recipe o) {
+		return this.getName().compareTo(o.getName());
 	}
 }
