@@ -1,5 +1,9 @@
 package com.supermarketSimulator.game;
 
+import com.supermarketSimulator.items.Recipe;
+
+import java.util.Map;
+
 /**
  * Hosts static methods for scoring a shopping cart.
  */
@@ -21,10 +25,18 @@ public class Score {
 		/*
 		This will be broken down later
 		 */
-		double happinessScore = scoreHappiness(cart);
-		double healthScore = scoreHealth(cart);
+		if(objectivesAreMet(cart)) {
+			double happinessScore = scoreHappiness(cart);
+			double healthScore = scoreHealth(cart);
+			double recipeScore = 0;
+			for(Map.Entry<Recipe, Integer> entry : cart.recipesMade.entrySet()) {
+				recipeScore += entry.getKey().getScore() * entry.getValue();
+			}
+			
+			return healthScore + happinessScore + recipeScore;
+		}
 		
-		return healthScore + happinessScore;
+		return 0;
 	}
 	
 	/*
@@ -66,5 +78,14 @@ public class Score {
 	 */
 	public static boolean objectiveIsMet(Objective objective, ShoppingCart cart) {
 		return cart.numberOfItemsInCategory(objective.getCategory()) >= objective.getQuantity();
+	}
+	
+	private static boolean objectivesAreMet(ShoppingCart cart) {
+		for(Objective o : Objective.objectivesList) {
+			if(!objectiveIsMet(o, cart)) {
+				return false;
+			}
+		}
+		return true;
 	}
 }

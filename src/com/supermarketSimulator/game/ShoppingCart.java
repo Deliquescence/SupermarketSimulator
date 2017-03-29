@@ -10,6 +10,7 @@ import java.util.List;
 public class ShoppingCart {
 	
 	public HashSet<Recipe> potentialRecipes = new HashSet<>();
+	public HashMap<Recipe, Integer> recipesMade = new HashMap<>();
 	private double happinessTotal = 0;
 	private double healthTotal = 0;
 	private double recipeBonusScore = 0;
@@ -130,6 +131,28 @@ public class ShoppingCart {
 	}
 	
 	/**
+	 * Fulfills a recipe from items existing in the cart.
+	 * @param r Recipe
+	 * @return
+	 */
+	public boolean fulfillRecipe(Recipe r) {
+		if(potentialRecipes.contains(r)) {
+			for(IngredientStack stack : r.ingredients) {
+				updateUnpaired(stack.item, false, stack.quantity); //Update unpaired items
+			}
+			//Track recipes that have been made
+			if(recipesMade.containsKey(r)) {
+				int quantity = recipesMade.get(r);
+				recipesMade.put(r, quantity + 1);
+			}
+			else {
+				recipesMade.put(r, 1);
+			}
+		}
+		return false; //Failed to fulfill recipe
+	}
+	
+	/**
 	 * Updates the list of unpaired items, i.e. items which aren't being used in any recipe.
 	 *
 	 * @param i        Item
@@ -145,7 +168,13 @@ public class ShoppingCart {
 				unpairedItems.put(i, x + quantity);
 			}
 		} else { //By deduction, removing
-			//TODO Logic for undoing recipes when removing items from the cart.
+			int unpaired = unpairedItems.get(i);
+			if(unpaired - quantity == 0) {
+				unpairedItems.remove(i);
+			}
+			else {
+				unpairedItems.put(i, unpaired - quantity);
+			}
 		}
 	}
 	

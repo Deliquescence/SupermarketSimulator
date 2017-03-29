@@ -39,7 +39,6 @@ public class Recipe {
 			score += 2 * (i.getBaseHappiness() + i.getBaseHealth());
 		}
 		scoreValue = score;
-		System.out.println("DEBUG this is worth: " + score);
 	}
 	
 	/**
@@ -80,5 +79,10 @@ public class Recipe {
 	
 	public String getName() {
 		return recipeName;
+	}
+	
+	
+	public double getScore() {
+		return scoreValue;
 	}
 }
