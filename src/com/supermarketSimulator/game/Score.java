@@ -13,6 +13,7 @@ public class Score {
 	
 	/**
 	 * Scores a cart
+	 *
 	 * @param cart The shopping cart to score
 	 * @return The sum of the health and happiness scores
 	 */
@@ -32,11 +33,12 @@ public class Score {
 	
 	/**
 	 * Returns only happiness score of a cart
+	 *
 	 * @param cart Shopping cart to score
 	 * @return Happiness score
 	 */
 	public static double scoreHappiness(ShoppingCart cart) {
-		if(cart.getHappinessTotal() * HAPPINESS_CONSTANT > 1) { //Avoiding massively negative answers
+		if (cart.getHappinessTotal() * HAPPINESS_CONSTANT > 1) { //Avoiding massively negative answers
 			return 100 * Math.log(HAPPINESS_CONSTANT * cart.getHappinessTotal());
 		}
 		return 0;
@@ -44,11 +46,12 @@ public class Score {
 	
 	/**
 	 * Returns only health score of a cart
+	 *
 	 * @param cart Shopping cart to score
 	 * @return Health score
 	 */
 	public static double scoreHealth(ShoppingCart cart) {
-		if(cart.getHealthTotal() * HEALTH_CONSTANT > 1) { //Avoiding massively negative answers
+		if (cart.getHealthTotal() * HEALTH_CONSTANT > 1) { //Avoiding massively negative answers
 			return 100 * Math.log(HEALTH_CONSTANT * cart.getHealthTotal());
 		}
 		return 0;
@@ -58,7 +61,7 @@ public class Score {
 	 * Determine if a given objective is met by the given cart.
 	 *
 	 * @param objective the Objective
-	 * @param cart the ShoppingCart
+	 * @param cart      the ShoppingCart
 	 * @return true if this contents of the cart fulfil the objective
 	 */
 	public static boolean objectiveIsMet(Objective objective, ShoppingCart cart) {

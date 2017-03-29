@@ -9,10 +9,10 @@ import java.util.List;
 
 public class ShoppingCart {
 	
+	public HashSet<Recipe> potentialRecipes = new HashSet<>();
 	private double happinessTotal = 0;
 	private double healthTotal = 0;
 	private double recipeBonusScore = 0;
-	public HashSet<Recipe> potentialRecipes = new HashSet<>();
 	private ArrayList<ItemStack> itemStacks = new ArrayList<>();
 	private HashMap<Item, Integer> unpairedItems = new HashMap<>();
 	
@@ -30,8 +30,8 @@ public class ShoppingCart {
 	 * Add some quantity of an item to this cart
 	 * If there already exists an ItemStack in this cart of the same item, add to its quantity.
 	 *
-	 * @param storeItem     The StoreItem to be added
-	 * @param quantity Quantity of that item to be added.
+	 * @param storeItem The StoreItem to be added
+	 * @param quantity  Quantity of that item to be added.
 	 */
 	public void add(StoreItem storeItem, int quantity) {
 		//TODO add recipe logic in
@@ -104,17 +104,18 @@ public class ShoppingCart {
 	/**
 	 * Called when items are added to cart. Updates eligible recipes, which are recipes the player has the ingredients
 	 * to make.
+	 *
 	 * @param item Item to be checked
 	 */
 	private void checkRecipes(Item item) {
 		//Surrender now or prepare to fight!
 		HashSet<Recipe> eligibleRecipes = new HashSet<>();
-		if(Recipe.recipesByItem.containsKey(item)) {
+		if (Recipe.recipesByItem.containsKey(item)) {
 			RecipeLoop:
-			for(Recipe r : Recipe.recipesByItem.get(item)) { //All recipes that can be made with this item
-				for(IngredientStack stack : r.ingredients) {
-					if(unpairedItems.containsKey(stack.item)) {
-						if(unpairedItems.get(stack.item) < stack.quantity) { //Insufficient quantity
+			for (Recipe r : Recipe.recipesByItem.get(item)) { //All recipes that can be made with this item
+				for (IngredientStack stack : r.ingredients) {
+					if (unpairedItems.containsKey(stack.item)) {
+						if (unpairedItems.get(stack.item) < stack.quantity) { //Insufficient quantity
 							break RecipeLoop;
 						}
 					} else { //Wrong item types
@@ -130,21 +131,20 @@ public class ShoppingCart {
 	
 	/**
 	 * Updates the list of unpaired items, i.e. items which aren't being used in any recipe.
-	 * @param i Item
-	 * @param adding True if adding, false if subtracting the given quantity
+	 *
+	 * @param i        Item
+	 * @param adding   True if adding, false if subtracting the given quantity
 	 * @param quantity The quantity of that item
 	 */
 	private void updateUnpaired(Item i, boolean adding, int quantity) {
-		if(adding) {
-			if(!unpairedItems.containsKey(i)){
+		if (adding) {
+			if (!unpairedItems.containsKey(i)) {
 				unpairedItems.put(i, quantity);
-			}
-			else {
+			} else {
 				int x = unpairedItems.get(i);
 				unpairedItems.put(i, x + quantity);
 			}
-		}
-		else { //By deduction, removing
+		} else { //By deduction, removing
 			//TODO Logic for undoing recipes when removing items from the cart.
 		}
 	}
@@ -184,8 +184,8 @@ public class ShoppingCart {
 	}
 	
 	public boolean containsItem(Item item) {
-		for(ItemStack is : itemStacks) {
-			if(is.getItem().equals(item)) {
+		for (ItemStack is : itemStacks) {
+			if (is.getItem().equals(item)) {
 				return true;
 			}
 		}
@@ -198,9 +198,9 @@ public class ShoppingCart {
 	 * @param category the Category
 	 * @return the number of items
 	 */
-	public int numberOfItemsInCategory(Category category){
+	public int numberOfItemsInCategory(Category category) {
 		int count = 0;
-		for (ItemStack is : this.itemStacks){
+		for (ItemStack is : this.itemStacks) {
 			if (is.getItem().getCategory() == category) {
 				count += is.getQuantity();
 			}
