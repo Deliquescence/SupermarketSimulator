@@ -2,6 +2,7 @@ package com.supermarketSimulator.game;
 
 import com.supermarketSimulator.items.Recipe;
 
+import java.io.*;
 import java.util.Map;
 
 /**
@@ -15,12 +16,62 @@ public class Score {
 	private static final double HEALTH_CONSTANT = 0.075;
 	private static final double HAPPINESS_CONSTANT = 0.075;
 	
+	public static String[] highScores = new String[5];
+	
+	
+	
+	public static void readHighScores(File file) {
+		
+		try {
+			BufferedReader br = new BufferedReader(new FileReader(file));
+			
+			String line = br.readLine();
+			int counter = 0;
+			
+			while(br != null) {
+				highScores[counter] = line;
+				counter++;
+				if (counter == highScores.length) {
+					break;
+				}
+				line = br.readLine();
+			}
+			
+		} catch(FileNotFoundException e) {
+			System.err.println("Could not find file");
+		} catch (IOException e) {
+			System.err.println("Could not read file.");
+		}
+	}
+	
+	
+	public static void saveHighScores(File file) {
+		
+		try {
+			BufferedWriter bw = new BufferedWriter(new FileWriter(file));
+			
+			for (int i = 0; i < highScores.length; i++) {
+				if(highScores[i] != null) {
+					bw.write(highScores[i]);
+					bw.newLine();
+					bw.flush();
+				}
+			}
+			
+			bw.close();
+		} catch (IOException e) {
+			System.err.println("Error printing to file.");
+		}
+	}
+	
 	/**
 	 * Scores a cart
 	 *
 	 * @param cart The shopping cart to score
 	 * @return The sum of the health and happiness scores
 	 */
+	
+	
 	public static double scoreCart(ShoppingCart cart) {
 		/*
 		This will be broken down later
@@ -62,6 +113,8 @@ public class Score {
 	 * @param cart Shopping cart to score
 	 * @return Health score
 	 */
+	
+	
 	public static double scoreHealth(ShoppingCart cart) {
 		if (cart.getHealthTotal() * HEALTH_CONSTANT > 1) { //Avoiding massively negative answers
 			return 100 * Math.log(HEALTH_CONSTANT * cart.getHealthTotal());
