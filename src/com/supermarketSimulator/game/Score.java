@@ -1,6 +1,8 @@
 package com.supermarketSimulator.game;
 
-import java.io.*;
+import com.supermarketSimulator.items.Recipe;
+
+import java.util.Map;
 
 /**
  * Hosts static methods for scoring a shopping cart.
@@ -13,56 +15,6 @@ public class Score {
 	private static final double HEALTH_CONSTANT = 0.075;
 	private static final double HAPPINESS_CONSTANT = 0.075;
 	
-	private static final String path = "/resources/save/highscores.txt";
-	private static String[] highScores = new String[5];
-	
-	
-	
-	public static void readHighScores(File file) {
-		
-		try {
-			BufferedReader br = new BufferedReader(new FileReader(file));
-			
-			String line = br.readLine();
-			int counter = 0;
-			
-			while(br != null) {
-				highScores[counter] = line;
-				counter++;
-				if (counter == highScores.length) {
-					break;
-				}
-				line = br.readLine();
-			}
-			
-		} catch(FileNotFoundException e) {
-			System.err.println("Could not find file");
-		} catch (IOException e) {
-			System.err.println("Could not read file.");
-		}
-	}
-	
-	
-	public static void saveHighScores(File file) {
-		
-		try {
-			BufferedWriter bw = new BufferedWriter(new FileWriter(file));
-			
-			for (int i = 0; i < highScores.length; i++) {
-				if(highScores[i] != null) {
-					bw.write(highScores[i]);
-					bw.newLine();
-					bw.flush();
-				}
-			}
-			
-			bw.close();
-		} catch (IOException e) {
-			System.err.println("Error printing to file.");
-		}
-	}
-	
-	
 	/**
 	 * Scores a cart
 	 *
@@ -73,10 +25,18 @@ public class Score {
 		/*
 		This will be broken down later
 		 */
-		double happinessScore = scoreHappiness(cart);
-		double healthScore = scoreHealth(cart);
+		if(objectivesAreMet(cart)) {
+			double happinessScore = scoreHappiness(cart);
+			double healthScore = scoreHealth(cart);
+			double recipeScore = 0;
+			for(Map.Entry<Recipe, Integer> entry : cart.recipesMade.entrySet()) {
+				recipeScore += entry.getKey().getScore() * entry.getValue();
+			}
+			
+			return healthScore + happinessScore + recipeScore;
+		}
 		
-		return healthScore + happinessScore;
+		return 0;
 	}
 	
 	/*
@@ -118,5 +78,14 @@ public class Score {
 	 */
 	public static boolean objectiveIsMet(Objective objective, ShoppingCart cart) {
 		return cart.numberOfItemsInCategory(objective.getCategory()) >= objective.getQuantity();
+	}
+	
+	private static boolean objectivesAreMet(ShoppingCart cart) {
+		for(Objective o : Objective.objectivesList) {
+			if(!objectiveIsMet(o, cart)) {
+				return false;
+			}
+		}
+		return true;
 	}
 }
