@@ -11,11 +11,21 @@ public class MenuGUI {
 	private JButton buttonStart;
 	private JLabel logo;
 	
+	/**
+	 * Needed to disallow starting multiple instances
+	 */
+	private boolean starting = false;
+	
 	public MenuGUI() {
 		
 		buttonStart.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				if (starting) {
+					return;
+				}
+				starting = true;
+				
 				MainGUI mainGUI = new MainGUI();
 				
 				JFrame gameFrame = new JFrame(GUILauncher.FRAME_TITLE);
