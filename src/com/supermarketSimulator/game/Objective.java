@@ -15,8 +15,8 @@ public class Objective {
 	private int quantity;
 	private Category category;
 	
-	private static final int MAX_OBJECTIVE_QUANTITY = 4;
-	private static final int MAX_OBJECTIVE_LIST_LENGTH = 4;
+	private static final int MAX_OBJECTIVE_QUANTITY = 3;
+	private static final int MAX_OBJECTIVE_LIST_LENGTH = 3;
 	
 	public static ArrayList<Objective> objectivesList;
 	
@@ -43,7 +43,7 @@ public class Objective {
 		Random rand = new Random(System.currentTimeMillis()); // rand seeding
 		
 		//generate random number of objectives
-		int numObjectives = 1 + rand.nextInt(MAX_OBJECTIVE_LIST_LENGTH - 1);
+		int numObjectives = 1 + rand.nextInt(MAX_OBJECTIVE_LIST_LENGTH);
 		
 		
 		// Generate an array of distinct integers to act as array indexes for category selection pairing

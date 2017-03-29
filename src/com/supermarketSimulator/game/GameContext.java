@@ -2,6 +2,8 @@ package com.supermarketSimulator.game;
 
 import com.supermarketSimulator.GUI.MainGUI;
 
+import java.io.File;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 
 /**
@@ -13,7 +15,6 @@ import java.util.ArrayList;
 public class GameContext {
 	
 	public static final double STARTING_FUNDS = 100;
-	
 	/**
 	 * Keep a reference to the main GUI because that might be useful
 	 */
@@ -21,11 +22,19 @@ public class GameContext {
 	
 	public ShoppingCart shoppingCart;
 	public Store store;
+	public File highScoresFile;
 	
 	private double funds;
 	
 	public GameContext() {
 		store = new Store();
+		
+		try {
+			highScoresFile = new File(this.getClass().getResource("/resources/save/highscores.txt").toURI());
+			Score.readHighScores(highScoresFile);
+		} catch (URISyntaxException e) {
+			System.err.println("Cannot open High Scores file.");
+		}
 		Objective.generate();
 	}
 	
