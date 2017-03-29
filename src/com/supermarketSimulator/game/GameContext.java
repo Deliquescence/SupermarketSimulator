@@ -29,7 +29,7 @@ public class GameContext {
 		store = new Store();
 		
 		try {
-			File highScoresFile = new File(System.getProperty("user.") + "/SuperMarketSimulator/highscores.txt");
+			File highScoresFile = new File(System.getProperty("user.home") + "/SuperMarketSimulator/highscores.txt");
 			
 			if(!highScoresFile.exists()){
 				highScoresFile.getParentFile().mkdirs();
