@@ -44,7 +44,8 @@ public class MainGUI {
 			public void actionPerformed(ActionEvent e) {
 				ImageIcon ic = new ImageIcon(this.getClass().getResource("/resources/images/list.png"));
 				String list = Objective.objectivesList.toString();
-				JOptionPane.showMessageDialog(null, list.substring(1, list.length() - 1).replaceAll(", ", ",\n"), "Objective List", JOptionPane.INFORMATION_MESSAGE, ic);
+				JOptionPane.showMessageDialog(null, list.substring(1, list.length() - 1)
+						.replaceAll(", ", ",\n"), "Objective List", JOptionPane.INFORMATION_MESSAGE, ic);
 			}
 		});
 		
@@ -54,7 +55,7 @@ public class MainGUI {
 				System.out.format("Total health: " + ("%.3f%n") + "Total happiness: " + ("%.3f%n"), gameContext.shoppingCart.getHealthTotal(), gameContext.shoppingCart.getHappinessTotal());
 				System.out.format("Your total score is: " + ("%.3f%n%n"), Score.scoreCart(gameContext.shoppingCart));
 				
-				//Score.updateHighScore(601);
+				Score.updateHighScore(1000);
 				Score.saveHighScores(gameContext.highScoresFile);
 			}
 		});

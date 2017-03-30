@@ -58,9 +58,8 @@ public class MenuGUI {
 				else {
 					Score.readHighScores(file);
 					
-					for (int i = 0; i < Score.highScores.length; i++) {
-						System.out.println("High score " + i + ": " + Score.highScores[i]);
-					}
+					JOptionPane.showMessageDialog(null, Score.highScores,
+							"High Scores", JOptionPane.PLAIN_MESSAGE);
 				}
 			}
 		});

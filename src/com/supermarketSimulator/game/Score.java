@@ -85,37 +85,43 @@ public class Score {
 	public static void updateHighScore(int newScore) {
 		String[] temp = new String[highScores.length];
 		
-		for(int i = 0; i < highScores.length; i++) {
-			String[] lines = highScores[i].split(" ");
-			int score = Integer.parseInt(lines[1].trim());
+		for (int i = 0; i < highScores.length; i++) {
+			int score = -1;
 			
-			if(newScore < score) {
-				temp[i] = highScores[i];
+			if (highScores[i] != null) {
+				String[] lines = highScores[i].split(" ");
+				score = Integer.parseInt(lines[1].trim());
 			}
 			
+			if (newScore < score) {
+				temp[i] = highScores[i];
+			}
 			else {
+				
+				ImageIcon ic = new ImageIcon(Score.class.getResource("/resources/images/thumbsup.png"));
 				String name = JOptionPane.showInputDialog(null, "Input new name: ",
-						"New High Score!", JOptionPane.PLAIN_MESSAGE);
+						"New High Score!", JOptionPane.PLAIN_MESSAGE, ic,
+						null, null).toString();
 				
 				temp[i] = name + " " + newScore;
 				
-				
-				for( int j = i; j < highScores.length; j++) {
-					 try {
-					 	temp[j+1] = highScores[j];
-					 } catch (IndexOutOfBoundsException e) {
-					 	break;
-					 }
-					 
-				
+				for (int j = i; j < highScores.length; j++) {
+					try {
+						temp[j + 1] = highScores[j];
+					} catch (IndexOutOfBoundsException e) {
+						//temp is full, exit loop
+						break;
+					}
+					
+					
 				}
 				
 				highScores = temp;
 				break;
 			}
-			
 		}
 	}
+	
 	
 	
 	
