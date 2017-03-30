@@ -2,6 +2,7 @@ package com.supermarketSimulator.game;
 
 import com.supermarketSimulator.items.Recipe;
 
+import javax.swing.*;
 import java.io.*;
 import java.util.Map;
 
@@ -19,9 +20,13 @@ public class Score {
 	public static String[] highScores = new String[5];
 	
 	
-	
+	/**
+	 * Reads values from file and store them
+	 * into the static String array highScores.
+	 *
+	 * @param file High Score file
+	 */
 	public static void readHighScores(File file) {
-		
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(file));
 			
@@ -45,12 +50,18 @@ public class Score {
 	}
 	
 	
+	/**
+	 * Writes the values of highScores[] to the text file
+	 * passed in as an argument
+	 *
+	 * @param file File attached to HighScores text file
+	 */
 	public static void saveHighScores(File file) {
 		
 		try {
 			BufferedWriter bw = new BufferedWriter(new FileWriter(file));
 			
-			for (int i = 0; i < highScores.length; i++) {
+			for (int i = 0; i < highScores.length; i++){
 				if(highScores[i] != null) {
 					bw.write(highScores[i]);
 					bw.newLine();
@@ -64,14 +75,56 @@ public class Score {
 		}
 	}
 	
+	
+	/**
+	 *  Iterate through the high score list and insert the new
+	 *  high score if high enough.
+	 *
+	 * @param newScore Score to be evaluated - this type can change to whatever we need it to
+	 */
+	public static void updateHighScore(int newScore) {
+		String[] temp = new String[highScores.length];
+		
+		for(int i = 0; i < highScores.length; i++) {
+			String[] lines = highScores[i].split(" ");
+			int score = Integer.parseInt(lines[1].trim());
+			
+			if(newScore < score) {
+				temp[i] = highScores[i];
+			}
+			
+			else {
+				String name = JOptionPane.showInputDialog(null, "Input new name: ",
+						"New High Score!", JOptionPane.PLAIN_MESSAGE);
+				
+				temp[i] = name + " " + newScore;
+				
+				
+				for( int j = i; j < highScores.length; j++) {
+					 try {
+					 	temp[j+1] = highScores[j];
+					 } catch (IndexOutOfBoundsException e) {
+					 	break;
+					 }
+					 
+				
+				}
+				
+				highScores = temp;
+				break;
+			}
+			
+		}
+	}
+	
+	
+	
 	/**
 	 * Scores a cart
 	 *
 	 * @param cart The shopping cart to score
 	 * @return The sum of the health and happiness scores
 	 */
-	
-	
 	public static double scoreCart(ShoppingCart cart) {
 		/*
 		This will be broken down later
@@ -113,8 +166,6 @@ public class Score {
 	 * @param cart Shopping cart to score
 	 * @return Health score
 	 */
-	
-	
 	public static double scoreHealth(ShoppingCart cart) {
 		if (cart.getHealthTotal() * HEALTH_CONSTANT > 1) { //Avoiding massively negative answers
 			return 100 * Math.log(HEALTH_CONSTANT * cart.getHealthTotal());

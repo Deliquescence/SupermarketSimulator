@@ -53,6 +53,8 @@ public class MainGUI {
 			public void actionPerformed(ActionEvent e) {
 				System.out.format("Total health: " + ("%.3f%n") + "Total happiness: " + ("%.3f%n"), gameContext.shoppingCart.getHealthTotal(), gameContext.shoppingCart.getHappinessTotal());
 				System.out.format("Your total score is: " + ("%.3f%n%n"), Score.scoreCart(gameContext.shoppingCart));
+				
+				//Score.updateHighScore(601);
 				Score.saveHighScores(gameContext.highScoresFile);
 			}
 		});
