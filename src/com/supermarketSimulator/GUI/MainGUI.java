@@ -25,6 +25,10 @@ public class MainGUI {
 	private JButton printScoreButton;
 	private JPanel shoppingCartPanel;
 	private JLabel labelScore;
+	private JButton recipieButton;
+	private JButton scoreCartButton;
+	private JButton clearCartButton;
+	private JLabel labelMenuLogo;
 	
 	/**
 	 * Each category tab has a JPanel in it
@@ -49,14 +53,27 @@ public class MainGUI {
 			}
 		});
 		
-		printScoreButton.addActionListener(new ActionListener() {
+		scoreCartButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.format("Total health: " + ("%.3f%n") + "Total happiness: " + ("%.3f%n"), gameContext.shoppingCart.getHealthTotal(), gameContext.shoppingCart.getHappinessTotal());
-				System.out.format("Your total score is: " + ("%.3f%n%n"), Score.scoreCart(gameContext.shoppingCart));
+				System.out.format("Total health: " + ("%.3f%n") + "Total happiness: " + ("%.3f%n"),
+						gameContext.shoppingCart.getHealthTotal(), gameContext.shoppingCart.getHappinessTotal());
 				
-				Score.updateHighScore(1000);
+				double score = Score.scoreCart(gameContext.shoppingCart);
+				System.out.format("Your total score is: " + ("%.3f%n%n"), score);
+				
+				Score.updateHighScore((int)score);
 				Score.saveHighScores(gameContext.highScoresFile);
+			}
+		});
+		
+		
+		clearCartButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				gameContext.shoppingCart.clearCart();
+				gameContext.setFunds(GameContext.STARTING_FUNDS);
+				gameContext.mainGUI.refreshCart();
 			}
 		});
 		

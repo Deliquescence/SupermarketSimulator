@@ -27,6 +27,7 @@ public class ShoppingCart {
 		add(itemStack.getStoreItem(), itemStack.getQuantity());
 	}
 	
+	
 	/**
 	 * Add some quantity of an item to this cart
 	 * If there already exists an ItemStack in this cart of the same item, add to its quantity.
@@ -52,6 +53,7 @@ public class ShoppingCart {
 		updateUnpaired(storeItem.getItem(), true, quantity);
 	}
 	
+	
 	/**
 	 * Add a single Item to this cart.
 	 * If there already exists an ItemStack in this cart of the same item, add to its quantity.
@@ -61,6 +63,7 @@ public class ShoppingCart {
 	public void add(StoreItem storeItem) {
 		add(storeItem, 1);
 	}
+	
 	
 	/**
 	 * Remove an ItemStack from this cart.
@@ -73,6 +76,18 @@ public class ShoppingCart {
 	public boolean remove(ItemStack itemStack) {
 		return remove(itemStack.getItem(), itemStack.getQuantity());
 	}
+	
+	
+	/**
+	 * Empties the cart of all item stacks and resets health and happiness totals
+	 * to 0.
+	 */
+	public void clearCart() {
+		itemStacks.clear();
+		this.happinessTotal = 0;
+		this.healthTotal = 0;
+	}
+	
 	
 	/**
 	 * Remove some quantity of an item from this cart.
@@ -102,6 +117,7 @@ public class ShoppingCart {
 		return false;
 	}
 	
+	
 	/**
 	 * Called when items are added to cart. Updates eligible recipes, which are recipes the player has the ingredients
 	 * to make.
@@ -130,6 +146,7 @@ public class ShoppingCart {
 		potentialRecipes.addAll(eligibleRecipes); //Adding everything from this local HashSet to the global one.
 	}
 	
+	
 	/**
 	 * Fulfills a recipe from items existing in the cart.
 	 * @param r Recipe
@@ -151,6 +168,7 @@ public class ShoppingCart {
 		}
 		return false; //Failed to fulfill recipe
 	}
+	
 	
 	/**
 	 * Updates the list of unpaired items, i.e. items which aren't being used in any recipe.
@@ -178,6 +196,7 @@ public class ShoppingCart {
 		}
 	}
 	
+	
 	/**
 	 * Remove a single Item from this cart.
 	 * The existing ItemStack's quantity will be subtracted by one,
@@ -190,28 +209,13 @@ public class ShoppingCart {
 		return remove(item, 1);
 	}
 	
+	
 	/**
-	 * Get a list of all the ItemStacks in this cart.
+	 * Determine whether a specific item is in the cart
 	 *
-	 * @return A list of all the ItemStacks in this cart.
+	 * @param item Item to be searched for
+	 * @return True if cart contains item, false otherwise
 	 */
-	public List<ItemStack> getItemStacks() {
-		return this.itemStacks;
-	}
-	
-	
-	public double getHappinessTotal() {
-		return happinessTotal;
-	}
-	
-	public double getHealthTotal() {
-		return healthTotal;
-	}
-	
-	public double getRecipeBonusScore() {
-		return recipeBonusScore;
-	}
-	
 	public boolean containsItem(Item item) {
 		for (ItemStack is : itemStacks) {
 			if (is.getItem().equals(item)) {
@@ -220,6 +224,7 @@ public class ShoppingCart {
 		}
 		return false;
 	}
+	
 	
 	/**
 	 * Given a Category, count how many total items in this cart are in that category.
@@ -235,5 +240,31 @@ public class ShoppingCart {
 			}
 		}
 		return count;
+	}
+	
+	
+	/**
+	 * Get a list of all the ItemStacks in this cart.
+	 *
+	 * @return A list of all the ItemStacks in this cart.
+	 */
+	
+	
+	
+	//getters
+	public List<ItemStack> getItemStacks() {
+		return this.itemStacks;
+	}
+	
+	public double getHappinessTotal() {
+		return happinessTotal;
+	}
+	
+	public double getHealthTotal() {
+		return healthTotal;
+	}
+	
+	public double getRecipeBonusScore() {
+		return recipeBonusScore;
 	}
 }
