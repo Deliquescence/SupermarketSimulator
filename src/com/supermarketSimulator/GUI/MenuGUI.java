@@ -13,6 +13,7 @@ public class MenuGUI {
 	private JButton buttonStart;
 	private JLabel logo;
 	private JButton buttonHighScores;
+	private JButton aboutButton;
 	
 	/**
 	 * Needed to disallow starting multiple instances
@@ -61,6 +62,33 @@ public class MenuGUI {
 					JOptionPane.showMessageDialog(null, Score.highScores,
 							"High Scores", JOptionPane.PLAIN_MESSAGE);
 				}
+			}
+		});
+		
+		
+		aboutButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+			
+				String[] credits = {"Thank you for playing SuperMarket Simulator 2017! \n\n",
+									"This game has been brought to you through the blood, sweat,",
+									"and tears of the following brave souls in the honor of",
+									"CSE280, Winter 2017.\n\n",
+									
+									"Josh Baird",
+									"Justin Kur",
+									"Josh Salar",
+									"Issac Springer",
+									"Cody Trombley\n\n",
+									
+									"It is through their hard work, dedication, and sacrifice",
+									"that we here today are able to enjoy this wonderful game.",
+									"God bless them, and God bless America. Thank you."
+					
+				};
+				
+				JOptionPane.showMessageDialog(null,credits, "About", JOptionPane.PLAIN_MESSAGE);
+				
 			}
 		});
 	}

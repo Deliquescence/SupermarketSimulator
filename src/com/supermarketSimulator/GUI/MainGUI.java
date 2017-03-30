@@ -7,6 +7,7 @@ import com.supermarketSimulator.items.ItemStack;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -29,6 +30,7 @@ public class MainGUI {
 	private JButton scoreCartButton;
 	private JButton clearCartButton;
 	private JLabel labelMenuLogo;
+	private JButton highScoresButton;
 	
 	/**
 	 * Each category tab has a JPanel in it
@@ -74,6 +76,25 @@ public class MainGUI {
 				gameContext.shoppingCart.clearCart();
 				gameContext.setFunds(GameContext.STARTING_FUNDS);
 				gameContext.mainGUI.refreshCart();
+			}
+		});
+		
+		
+		highScoresButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				File file = new File(System.getProperty("user.home")
+						+  "/SupermarketSimulator/highscores.txt");
+				
+				if(!file.exists()) {
+					System.err.println("No high scores found.");
+				}
+				else {
+					Score.readHighScores(file);
+					
+					JOptionPane.showMessageDialog(null, Score.highScores,
+							"High Scores", JOptionPane.PLAIN_MESSAGE);
+				}
 			}
 		});
 		
