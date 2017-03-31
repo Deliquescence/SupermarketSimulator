@@ -14,9 +14,9 @@
       <component id="69411" class="javax.swing.JLabel" binding="labelItemName">
         <constraints>
           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
-            <minimum-size width="210" height="15"/>
-            <preferred-size width="-1" height="15"/>
-            <maximum-size width="400" height="-1"/>
+            <minimum-size width="175" height="15"/>
+            <preferred-size width="175" height="15"/>
+            <maximum-size width="250" height="-1"/>
           </grid>
         </constraints>
         <properties>
