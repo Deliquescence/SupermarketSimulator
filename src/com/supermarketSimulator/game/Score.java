@@ -33,7 +33,7 @@ public class Score {
 			String line = br.readLine();
 			int counter = 0;
 			
-			while(br != null) {
+			while (br != null) {
 				highScores[counter] = line;
 				counter++;
 				if (counter == highScores.length) {
@@ -42,7 +42,7 @@ public class Score {
 				line = br.readLine();
 			}
 			
-		} catch(FileNotFoundException e) {
+		} catch (FileNotFoundException e) {
 			System.err.println("Could not find file");
 		} catch (IOException e) {
 			System.err.println("Could not read file.");
@@ -61,8 +61,8 @@ public class Score {
 		try {
 			BufferedWriter bw = new BufferedWriter(new FileWriter(file));
 			
-			for (int i = 0; i < highScores.length; i++){
-				if(highScores[i] != null) {
+			for (int i = 0; i < highScores.length; i++) {
+				if (highScores[i] != null) {
 					bw.write(highScores[i]);
 					bw.newLine();
 					bw.flush();
@@ -77,8 +77,8 @@ public class Score {
 	
 	
 	/**
-	 *  Iterate through the high score list and insert the new
-	 *  high score if high enough.
+	 * Iterate through the high score list and insert the new
+	 * high score if high enough.
 	 *
 	 * @param newScore Score to be evaluated - this type can change to whatever we need it to
 	 */
@@ -95,13 +95,10 @@ public class Score {
 			
 			if (newScore < score) {
 				temp[i] = highScores[i];
-			}
-			else {
+			} else {
 				
 				ImageIcon ic = new ImageIcon(Score.class.getResource("/resources/images/thumbsup.png"));
-				String name = JOptionPane.showInputDialog(null, "Input new name: ",
-						"New High Score!", JOptionPane.PLAIN_MESSAGE, ic,
-						null, null).toString();
+				String name = JOptionPane.showInputDialog(null, "Input new name: ", "New High Score!", JOptionPane.PLAIN_MESSAGE, ic, null, null).toString();
 				
 				temp[i] = name + " " + newScore;
 				
@@ -123,8 +120,6 @@ public class Score {
 	}
 	
 	
-	
-	
 	/**
 	 * Scores a cart
 	 *
@@ -135,11 +130,11 @@ public class Score {
 		/*
 		This will be broken down later
 		 */
-		if(objectivesAreMet(cart)) {
+		if (objectivesAreMet(cart)) {
 			double happinessScore = scoreHappiness(cart);
 			double healthScore = scoreHealth(cart);
 			double recipeScore = 0;
-			for(Map.Entry<Recipe, Integer> entry : cart.recipesMade.entrySet()) {
+			for (Map.Entry<Recipe, Integer> entry : cart.recipesMade.entrySet()) {
 				recipeScore += entry.getKey().getScore() * entry.getValue();
 			}
 			
@@ -184,15 +179,15 @@ public class Score {
 	 *
 	 * @param objective the Objective
 	 * @param cart      the ShoppingCart
-	 * @return true if this contents of the cart fulfil the objective
+	 * @return true if the contents of this cart fulfil the objective
 	 */
 	public static boolean objectiveIsMet(Objective objective, ShoppingCart cart) {
 		return cart.numberOfItemsInCategory(objective.getCategory()) >= objective.getQuantity();
 	}
 	
 	private static boolean objectivesAreMet(ShoppingCart cart) {
-		for(Objective o : Objective.objectivesList) {
-			if(!objectiveIsMet(o, cart)) {
+		for (Objective o : Objective.objectivesList) {
+			if (!objectiveIsMet(o, cart)) {
 				return false;
 			}
 		}

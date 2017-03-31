@@ -77,18 +77,6 @@ public class ShoppingCart {
 		return remove(itemStack.getItem(), itemStack.getQuantity());
 	}
 	
-	
-	/**
-	 * Empties the cart of all item stacks and resets health and happiness totals
-	 * to 0.
-	 */
-	public void clearCart() {
-		itemStacks.clear();
-		this.happinessTotal = 0;
-		this.healthTotal = 0;
-	}
-	
-	
 	/**
 	 * Remove some quantity of an item from this cart.
 	 * The existing ItemStack's quantity will be subtracted by the given amount,
@@ -117,6 +105,15 @@ public class ShoppingCart {
 		return false;
 	}
 	
+	/**
+	 * Empties the cart of all item stacks and resets health and happiness totals
+	 * to 0.
+	 */
+	public void clearCart() {
+		itemStacks.clear();
+		this.happinessTotal = 0;
+		this.healthTotal = 0;
+	}
 	
 	/**
 	 * Called when items are added to cart. Updates eligible recipes, which are recipes the player has the ingredients
@@ -149,20 +146,20 @@ public class ShoppingCart {
 	
 	/**
 	 * Fulfills a recipe from items existing in the cart.
+	 *
 	 * @param r Recipe
 	 * @return
 	 */
 	public boolean fulfillRecipe(Recipe r) {
-		if(potentialRecipes.contains(r)) {
-			for(IngredientStack stack : r.ingredients) {
+		if (potentialRecipes.contains(r)) {
+			for (IngredientStack stack : r.ingredients) {
 				updateUnpaired(stack.item, false, stack.quantity); //Update unpaired items
 			}
 			//Track recipes that have been made
-			if(recipesMade.containsKey(r)) {
+			if (recipesMade.containsKey(r)) {
 				int quantity = recipesMade.get(r);
 				recipesMade.put(r, quantity + 1);
-			}
-			else {
+			} else {
 				recipesMade.put(r, 1);
 			}
 		}
@@ -187,10 +184,9 @@ public class ShoppingCart {
 			}
 		} else { //By deduction, removing
 			int unpaired = unpairedItems.get(i);
-			if(unpaired - quantity == 0) {
+			if (unpaired - quantity == 0) {
 				unpairedItems.remove(i);
-			}
-			else {
+			} else {
 				unpairedItems.put(i, unpaired - quantity);
 			}
 		}
@@ -242,16 +238,11 @@ public class ShoppingCart {
 		return count;
 	}
 	
-	
 	/**
 	 * Get a list of all the ItemStacks in this cart.
 	 *
 	 * @return A list of all the ItemStacks in this cart.
 	 */
-	
-	
-	
-	//getters
 	public List<ItemStack> getItemStacks() {
 		return this.itemStacks;
 	}
