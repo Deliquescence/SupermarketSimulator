@@ -152,5 +152,11 @@ public class MainGUI {
 		labelFunds.setText("Remaining Funds: " + String.format("%.2f", gameContext.getFunds()));
 		
 		labelScore.setText("Score: " + String.format("%.0f", Score.scoreCart(gameContext.shoppingCart)));
+		if (Score.scoreCart(gameContext.shoppingCart) == 0) {
+			labelScore.setText(labelScore.getText() + "  (Objectives not met)");
+			labelScore.setToolTipText("Meet objectives first!");
+		} else {
+			labelScore.setToolTipText("");
+		}
 	}
 }
