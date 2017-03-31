@@ -9,6 +9,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URL;
+import java.text.DecimalFormat;
 
 public class ItemStackDisplay {
 	
@@ -23,6 +24,7 @@ public class ItemStackDisplay {
 	private JLabel labelItemName;
 	private JLabel labelItemQuantity;
 	private JButton buttonRemove;
+	private JLabel labelSubtotal;
 	
 	public ItemStackDisplay(ItemStack itemStack, GameContext gameContext) {
 		this.itemStack = itemStack;
@@ -31,6 +33,10 @@ public class ItemStackDisplay {
 		this.labelItemName.setText(itemStack.getItem().getName());
 		this.labelItemName.setIcon(itemStack.getItem().getIcon());
 		this.labelItemQuantity.setText("x" + itemStack.getQuantity());
+		
+		double subTotal = itemStack.getQuantity() * itemStack.getItem().getBaseCost();
+		DecimalFormat df = new DecimalFormat("0.00");
+		this.labelSubtotal.setText("$"+ df.format(subTotal));
 		
 		try {
 			soundClip = AudioSystem.getClip();
