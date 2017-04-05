@@ -148,7 +148,7 @@ public class ShoppingCart {
 	 * Fulfills a recipe from items existing in the cart.
 	 *
 	 * @param r Recipe
-	 * @return
+	 * @return True if successful, false if not successful
 	 */
 	public boolean fulfillRecipe(Recipe r) {
 		if (potentialRecipes.contains(r)) {
@@ -162,6 +162,7 @@ public class ShoppingCart {
 			} else {
 				recipesMade.put(r, 1);
 			}
+			return true; //Succeeded at making recipe.
 		}
 		return false; //Failed to fulfill recipe
 	}
