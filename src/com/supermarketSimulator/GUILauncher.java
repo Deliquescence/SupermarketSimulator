@@ -23,6 +23,7 @@ public class GUILauncher {
 		GUILauncher.centerFrameOnScreen(frame);
 		
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		frame.setPreferredSize(new Dimension (425, 375));
 		frame.setTitle(FRAME_TITLE);
 		frame.pack();
 		frame.setVisible(true);
