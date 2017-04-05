@@ -14,6 +14,7 @@ public class MenuGUI {
 	private JLabel logo;
 	private JButton buttonHighScores;
 	private JButton aboutButton;
+	private JButton howToPlaybutton;
 	
 	/**
 	 * Needed to disallow starting multiple instances

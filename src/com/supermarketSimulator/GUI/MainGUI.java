@@ -32,6 +32,7 @@ public class MainGUI {
 	private JLabel labelMenuLogo;
 	private JButton highScoresButton;
 	private JScrollPane cartScroll;
+	private JButton helpButton;
 	
 	/**
 	 * Each category tab has a JPanel in it
