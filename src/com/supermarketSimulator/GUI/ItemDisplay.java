@@ -15,6 +15,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.URL;
+import java.util.HashSet;
 
 public class ItemDisplay {
 	
@@ -57,11 +58,14 @@ public class ItemDisplay {
 			e.printStackTrace();
 		}
 		
-		if (Recipe.recipesByItem.get(this.getItem()) != null) {
+		HashSet<Recipe> myRecipes = Recipe.recipesByItem.get(this.getItem());
+		if (myRecipes != null) { //If the item has recipes associated with it
 			StringBuilder sb = new StringBuilder();
 			sb.append("Recipes that use this item: \n");
-			for (Recipe r : Recipe.recipesByItem.get(this.getItem())) {
-				sb.append(r.getName()).append(",");
+			for (Recipe r : myRecipes) {
+				if(gameContext.store.possibleRecipes.contains(r)) { //If it can be made from items in this store
+					sb.append(r.getName()).append(",");
+				}
 			}
 			sb.deleteCharAt(sb.length() - 1); //Remove extra comma
 			this.panel.setToolTipText(sb.toString());
