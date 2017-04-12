@@ -3,10 +3,13 @@ package com.supermarketSimulator.GUI;
 import com.supermarketSimulator.GUILauncher;
 import com.supermarketSimulator.game.Score;
 
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.net.URL;
 
 public class MenuGUI {
 	public JPanel mainPanel;
@@ -16,12 +19,22 @@ public class MenuGUI {
 	private JButton aboutButton;
 	private JButton howToPlaybutton;
 	
+	private static final URL MUSIC_RESOURCE = ItemDisplay.class.getResource("/resources/sounds/Supermarket_Sim_BGM 1.wav");
+	
 	/**
 	 * Needed to disallow starting multiple instances
 	 */
 	private boolean starting = false;
 	
 	public MenuGUI() {
+		
+		try {
+			Clip soundClip = AudioSystem.getClip();
+			soundClip.open(AudioSystem.getAudioInputStream(MUSIC_RESOURCE));
+			soundClip.loop(Integer.MAX_VALUE);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 		buttonStart.addActionListener(new ActionListener() {
 			@Override

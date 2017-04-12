@@ -2,6 +2,7 @@ package com.supermarketSimulator;
 
 import com.supermarketSimulator.GUI.MenuGUI;
 import com.supermarketSimulator.database.Database;
+import com.supermarketSimulator.items.Recipe;
 
 import javax.swing.*;
 import java.awt.*;

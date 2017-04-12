@@ -2,6 +2,7 @@ package com.supermarketSimulator.items;
 
 
 import com.supermarketSimulator.database.Database;
+import com.supermarketSimulator.game.Store;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -80,6 +81,15 @@ public class Recipe implements Comparable<Recipe> {
 				System.out.println("---------");
 			}
 		});
+	}
+	
+	public static boolean storeCheck(Store store, Recipe recipe) {
+		for(IngredientStack stack : recipe.ingredients) {
+			if(!store.containsItem(stack.item)) {
+				return true; //We want this to return true because we want to removeIf the recipe cannot be made
+			}
+		}
+		return false;
 	}
 	
 	

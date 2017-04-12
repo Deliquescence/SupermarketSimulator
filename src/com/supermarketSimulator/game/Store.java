@@ -3,11 +3,9 @@ package com.supermarketSimulator.game;
 import com.supermarketSimulator.database.Database;
 import com.supermarketSimulator.items.Category;
 import com.supermarketSimulator.items.Item;
+import com.supermarketSimulator.items.Recipe;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Random;
+import java.util.*;
 
 /**
  * Created by Justin Kur on 2/15/2017.
@@ -20,6 +18,7 @@ public class Store {
 	private final int ITEM_COUNT = 30;
 	
 	public ArrayList<StoreItem> storeItems = new ArrayList<>();
+	public TreeSet<Recipe> possibleRecipes;
 	
 	private Random rand;
 	
@@ -27,7 +26,7 @@ public class Store {
 	 * Creates a store with a random seed
 	 */
 	public Store() {
-		generateItems(-1L);
+		this(-1L);
 	}
 	
 	/**
@@ -37,8 +36,24 @@ public class Store {
 	 */
 	public Store(Long seed) {
 		generateItems(seed);
+		possibleRecipes = new TreeSet<>(Recipe.sortedRecipes);
+		possibleRecipes.removeIf(recipe -> Recipe.storeCheck(this, recipe));
 	}
 	
+	/**
+	 * Checks if the store contains the given item
+	 * @param i The item to check for
+	 * @return True if the store has the item, false if it doesn't
+	 */
+	public boolean containsItem(Item i) {
+		for(StoreItem storeItem : storeItems) {
+			if(storeItem.getItem() == i) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 	private void generateItems(Long seed) {
 		//Categories that do not have an item added to them and need to be populated
 		//Initially, all categories.
@@ -91,4 +106,6 @@ public class Store {
 		
 		return multiplier;
 	}
+		
+
 }

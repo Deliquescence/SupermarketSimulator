@@ -4,6 +4,7 @@ package com.supermarketSimulator.GUI;
 import com.supermarketSimulator.game.GameContext;
 import com.supermarketSimulator.game.StoreItem;
 import com.supermarketSimulator.items.Item;
+import com.supermarketSimulator.items.Recipe;
 
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -54,6 +55,16 @@ public class ItemDisplay {
 			soundClip.open(AudioSystem.getAudioInputStream(SOUND_RESOURCE));
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
+		
+		if (Recipe.recipesByItem.get(this.getItem()) != null) {
+			StringBuilder sb = new StringBuilder();
+			sb.append("Recipes that use this item: \n");
+			for (Recipe r : Recipe.recipesByItem.get(this.getItem())) {
+				sb.append(r.getName()).append(",");
+			}
+			sb.deleteCharAt(sb.length() - 1); //Remove extra comma
+			this.panel.setToolTipText(sb.toString());
 		}
 		
 		buttonAdd.addActionListener(new ActionListener() {
