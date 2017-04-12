@@ -2,7 +2,6 @@ package com.supermarketSimulator;
 
 import com.supermarketSimulator.GUI.MenuGUI;
 import com.supermarketSimulator.database.Database;
-import com.supermarketSimulator.items.Recipe;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,8 +13,8 @@ public class GUILauncher {
 	public static void main(String[] args) {
 		//Database
 		Database testDb = new Database("database.csv", "recipes.csv");
-		testDb.ReadItems();
-		testDb.ReadRecipes();
+		testDb.readItems();
+		testDb.readRecipes();
 		
 		//GUI
 		JFrame frame = new JFrame();

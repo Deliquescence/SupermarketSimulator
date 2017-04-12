@@ -83,6 +83,12 @@ public class Recipe implements Comparable<Recipe> {
 		});
 	}
 	
+	/**
+	 * Checks if it is impossible to make a recipe with the given items in a store
+	 * @param store Store to check
+	 * @param recipe Recipe to check
+	 * @return True if the recipe is unable to be made, false if the recipe can be made.
+	 */
 	public static boolean storeCheck(Store store, Recipe recipe) {
 		for(IngredientStack stack : recipe.ingredients) {
 			if(!store.containsItem(stack.item)) {

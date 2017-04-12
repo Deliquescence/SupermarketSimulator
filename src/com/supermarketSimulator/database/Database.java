@@ -34,7 +34,7 @@ public class Database {
 	/**
 	 * Reads in lines from a csv to populate the items in the game
 	 */
-	public void ReadItems() {
+	public void readItems() {
 		try {
 			String line;
 			FileInputStream file = new FileInputStream(itemFileString);
@@ -54,7 +54,7 @@ public class Database {
 		}
 	}
 	
-	public void ReadRecipes() {
+	public void readRecipes() {
 		try {
 			String line;
 			FileInputStream file = new FileInputStream(recipeFileString);
