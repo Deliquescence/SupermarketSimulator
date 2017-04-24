@@ -78,8 +78,7 @@ public class MainGUI {
 				recipeFrame.setLocation((int)d.getWidth() / 4, (int)d.getHeight() / 4);
 				
 				
-				
-				recipeFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+				recipeFrame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 				
 				recipeFrame.pack();
 				recipeFrame.setVisible(true);
