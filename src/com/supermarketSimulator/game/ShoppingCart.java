@@ -15,7 +15,7 @@ public class ShoppingCart {
 	private double healthTotal = 0;
 	private double recipeBonusScore = 0;
 	private ArrayList<ItemStack> itemStacks = new ArrayList<>();
-	private HashMap<Item, Integer> unpairedItems = new HashMap<>();
+	private HashMap<Item, Double> unpairedItems = new HashMap<>();
 	
 	/**
 	 * Add an ItemStack to the cart.
@@ -153,7 +153,7 @@ public class ShoppingCart {
 	public boolean fulfillRecipe(Recipe r) {
 		if (potentialRecipes.contains(r)) {
 			for (IngredientStack stack : r.ingredients) {
-				updateUnpaired(stack.item, false, (int)stack.quantity); //Update unpaired items
+				updateUnpaired(stack.item, false, stack.quantity); //Update unpaired items
 			}
 			//Track recipes that have been made
 			if (recipesMade.containsKey(r)) {
@@ -175,16 +175,16 @@ public class ShoppingCart {
 	 * @param adding   True if adding, false if subtracting the given quantity
 	 * @param quantity The quantity of that item
 	 */
-	private void updateUnpaired(Item i, boolean adding, int quantity) {
+	private void updateUnpaired(Item i, boolean adding, double quantity) {
 		if (adding) {
 			if (!unpairedItems.containsKey(i)) {
 				unpairedItems.put(i, quantity);
 			} else {
-				int x = unpairedItems.get(i);
+				double x = unpairedItems.get(i);
 				unpairedItems.put(i, x + quantity);
 			}
 		} else { //By deduction, removing
-			int unpaired = unpairedItems.get(i);
+			double unpaired = unpairedItems.get(i);
 			if (unpaired - quantity == 0) {
 				unpairedItems.remove(i);
 			} else {
