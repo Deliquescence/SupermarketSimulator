@@ -49,34 +49,37 @@ public class MainGUI {
 		
 		displayGUIItems();
 		
+		/*
+		 * Show objective list
+		 */
 		objectivesButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				ImageIcon ic = new ImageIcon(this.getClass().getResource("/resources/images/list.png"));
 				String list = Objective.objectivesList.toString();
-				JOptionPane.showMessageDialog(null, list.substring(1, list.length() - 1)
-						.replaceAll(", ", ",\n"), "Objective List", JOptionPane.INFORMATION_MESSAGE, ic);
+				JOptionPane.showMessageDialog(null, list.substring(1, list.length() - 1).replaceAll(", ", ",\n"), "Objective List", JOptionPane.INFORMATION_MESSAGE, ic);
 			}
 		});
 		
+		/*
+		 * Show recipe list
+		 */
 		recipieButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				JFrame recipeFrame = new JFrame();
 				JPanel contentPane = new JPanel(new GridLayout(2, 5, 10, 10));
-				for(Recipe r: Recipe.sortedRecipes) {
-					RecipeDisplay rd = new RecipeDisplay (r);
+				for (Recipe r : Recipe.sortedRecipes) {
+					RecipeDisplay rd = new RecipeDisplay(r);
 					
 					contentPane.add(rd.rPanel);
 				}
 				
-				
 				recipeFrame.add(contentPane);
 				recipeFrame.setTitle("Recipes");
-				recipeFrame.setPreferredSize(new Dimension (1000, 600));
+				recipeFrame.setPreferredSize(new Dimension(1000, 600));
 				Dimension d = new Dimension(Toolkit.getDefaultToolkit().getScreenSize());
-				recipeFrame.setLocation((int)d.getWidth() / 4, (int)d.getHeight() / 4);
-				
+				recipeFrame.setLocation((int) d.getWidth() / 4, (int) d.getHeight() / 4);
 				
 				recipeFrame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 				
@@ -85,25 +88,27 @@ public class MainGUI {
 				
 				Recipe.debugPrintRecipes();
 			}
-			
 		});
 		
+		/*
+		 * Score cart, show dialogue for high score
+		 */
 		scoreCartButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.format("Total health: " + ("%.3f%n") + "Total happiness: " + ("%.3f%n"),
-						gameContext.shoppingCart.getHealthTotal(), gameContext.shoppingCart.getHappinessTotal());
+				System.out.format("Total health: " + ("%.3f%n") + "Total happiness: " + ("%.3f%n"), gameContext.shoppingCart.getHealthTotal(), gameContext.shoppingCart.getHappinessTotal());
 				
 				double score = Score.scoreCart(gameContext.shoppingCart);
 				System.out.format("Your total score is: " + ("%.3f%n%n"), score);
 				
-				Score.updateHighScore((int)score);
+				Score.updateHighScore((int) score);
 				Score.saveHighScores(gameContext.highScoresFile);
 			}
 		});
 		
-		
-		
+		/*
+		 * Clear cart
+		 */
 		clearCartButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -113,21 +118,20 @@ public class MainGUI {
 			}
 		});
 		
-		
+		/*
+		 * Show high scores display
+		 */
 		highScoresButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				File file = new File(System.getProperty("user.home")
-						+  "/SupermarketSimulator/highscores.txt");
+				File file = new File(System.getProperty("user.home") + "/SupermarketSimulator/highscores.txt");
 				
-				if(!file.exists()) {
+				if (!file.exists()) {
 					System.err.println("No high scores found.");
-				}
-				else {
+				} else {
 					Score.readHighScores(file);
 					
-					JOptionPane.showMessageDialog(null, Score.highScores,
-							"High Scores", JOptionPane.PLAIN_MESSAGE);
+					JOptionPane.showMessageDialog(null, Score.highScores, "High Scores", JOptionPane.PLAIN_MESSAGE);
 				}
 			}
 		});
