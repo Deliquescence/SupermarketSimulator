@@ -4,6 +4,7 @@ package com.supermarketSimulator.items;
 import com.supermarketSimulator.database.Database;
 import com.supermarketSimulator.game.Store;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.TreeSet;
@@ -31,9 +32,10 @@ public class Recipe implements Comparable<Recipe> {
 	public Recipe(String recipeString) {
 		String[] split = recipeString.split(",");
 		this.ingredients = new IngredientStack[split.length / 2];
+		
 		recipeName = split[0];
 		for (int x = 1; x < split.length; x += 2) {
-			this.ingredients[x / 2] = new IngredientStack(Database.items[Integer.parseInt(split[x])], Integer.parseInt(split[x + 1]));
+			this.ingredients[x / 2] = new IngredientStack(Database.items[Integer.parseInt(split[x])], Double.parseDouble(split[x + 1]));
 		}
 		//Let's try this for now...
 		double score = 0;
@@ -69,6 +71,18 @@ public class Recipe implements Comparable<Recipe> {
 	/**
 	 * Verbose debug method that prints all the recipes out item-by-item
 	 */
+	public static String[] recipesToString() {
+		String[] recipes = new String[Recipe.sortedRecipes.size()];
+		Recipe[] recStrings = sortedRecipes.toArray(new Recipe[sortedRecipes.size()]);
+		for(int i = 0; i < sortedRecipes.size(); i++) {
+			recipes[i] = recStrings[i].toString();
+		
+		}
+		
+		return recipes;
+	}
+	
+	
 	public static void debugPrintRecipes() {
 		//Warning, very verbose
 		recipesByItem.forEach((item, hashSet) -> {
@@ -108,8 +122,19 @@ public class Recipe implements Comparable<Recipe> {
 		return scoreValue;
 	}
 	
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		
+		sb.append(this.recipeName + ": ");
+		for(IngredientStack it : ingredients){
+			sb.append(it.toString());
+		}
+		
+		return sb.toString();
+	}
+	
 	@Override
 	public int compareTo(Recipe o) {
-		return this.getName().compareTo(o.getName());
-	}
+		return this.getName().compareTo(o.getName());}
+	
 }

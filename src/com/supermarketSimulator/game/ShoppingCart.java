@@ -153,7 +153,7 @@ public class ShoppingCart {
 	public boolean fulfillRecipe(Recipe r) {
 		if (potentialRecipes.contains(r)) {
 			for (IngredientStack stack : r.ingredients) {
-				updateUnpaired(stack.item, false, stack.quantity); //Update unpaired items
+				updateUnpaired(stack.item, false, (int)stack.quantity); //Update unpaired items
 			}
 			//Track recipes that have been made
 			if (recipesMade.containsKey(r)) {

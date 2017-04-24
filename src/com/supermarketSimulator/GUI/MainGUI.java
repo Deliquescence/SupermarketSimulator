@@ -3,8 +3,10 @@ package com.supermarketSimulator.GUI;
 import com.supermarketSimulator.game.*;
 import com.supermarketSimulator.items.Category;
 import com.supermarketSimulator.items.ItemStack;
+import com.supermarketSimulator.items.Recipe;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -57,6 +59,32 @@ public class MainGUI {
 			}
 		});
 		
+		recipieButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JFrame recipeFrame = new JFrame();
+				JPanel contentPane = new JPanel(new GridLayout(2, 5, 10, 10));
+				for(Recipe r: Recipe.sortedRecipes) {
+					RecipeDisplay rd = new RecipeDisplay (r);
+					
+					contentPane.add(rd.rPanel);
+				}
+				
+				
+				recipeFrame.add(contentPane);
+				recipeFrame.setTitle("Recipes");
+				recipeFrame.setPreferredSize(new Dimension (800, 600));
+				recipeFrame.setLocationRelativeTo(null);
+				recipeFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+				
+				recipeFrame.pack();
+				recipeFrame.setVisible(true);
+				
+				Recipe.debugPrintRecipes();
+			}
+			
+		});
+		
 		scoreCartButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -70,6 +98,7 @@ public class MainGUI {
 				Score.saveHighScores(gameContext.highScoresFile);
 			}
 		});
+		
 		
 		
 		clearCartButton.addActionListener(new ActionListener() {
