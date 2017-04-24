@@ -106,9 +106,11 @@ public class Recipe implements Comparable<Recipe> {
 	public static boolean storeCheck(Store store, Recipe recipe) {
 		for(IngredientStack stack : recipe.ingredients) {
 			if(!store.containsItem(stack.item)) {
+				System.out.println("Bad recipe " + recipe.getName());
 				return true; //We want this to return true because we want to removeIf the recipe cannot be made
 			}
 		}
+		System.out.println("Good Recipe " + recipe.getName());
 		return false;
 	}
 	

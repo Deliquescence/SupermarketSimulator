@@ -15,7 +15,7 @@ public class Store {
 	/**
 	 * How many items each store will have.
 	 */
-	private final int ITEM_COUNT = 30;
+	private final int ITEM_COUNT = 45;
 	
 	public ArrayList<StoreItem> storeItems = new ArrayList<>();
 	public TreeSet<Recipe> possibleRecipes;
@@ -72,6 +72,28 @@ public class Store {
 			Item item = Database.items[number];
 			storeItems.add(new StoreItem(item, getMultiplier() * item.getBaseCost()));
 			neededCategories.remove(item.getCategory()); //Since the category now has at least one item
+		}
+		
+		//Find ingredient category
+		Category ingredient = null;
+		for(Category c : Database.itemsByCategory.keySet()) {
+			if(c.getName().equals("Ingredient")) {
+				ingredient = c;
+				break;
+			}
+		}
+		if(ingredient != null) {
+			for(Item item : Database.itemsByCategory.get(ingredient)) {
+				if(!this.containsItem(item)) {
+					storeItems.add(new StoreItem(item, getMultiplier() * item.getBaseCost()));
+				}
+			}
+			
+			if(neededCategories.contains(ingredient)) {
+				neededCategories.remove(ingredient);
+			}
+		} else {
+			System.out.println("ERROR: Could not find ingredient category!");
 		}
 		
 		//Check if there are any categories without an Item and add an Item if so

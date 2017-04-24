@@ -28,7 +28,7 @@ public class MainGUI {
 	private JButton printScoreButton;
 	private JPanel shoppingCartPanel;
 	private JLabel labelScore;
-	private JButton recipieButton;
+	private JButton recipeButton;
 	private JButton scoreCartButton;
 	private JButton clearCartButton;
 	private JLabel labelMenuLogo;
@@ -64,12 +64,12 @@ public class MainGUI {
 		/*
 		 * Show recipe list
 		 */
-		recipieButton.addActionListener(new ActionListener() {
+		recipeButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				JFrame recipeFrame = new JFrame();
 				JPanel contentPane = new JPanel(new GridLayout(2, 5, 10, 10));
-				for (Recipe r : Recipe.sortedRecipes) {
+				for (Recipe r : gameContext.store.possibleRecipes) {
 					RecipeDisplay rd = new RecipeDisplay(r);
 					
 					contentPane.add(rd.rPanel);
@@ -85,8 +85,7 @@ public class MainGUI {
 				
 				recipeFrame.pack();
 				recipeFrame.setVisible(true);
-				
-				Recipe.debugPrintRecipes();
+				//Recipe.debugPrintRecipes();
 			}
 		});
 		
