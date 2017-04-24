@@ -34,9 +34,6 @@ public class RecipeDisplay{
 	public RecipeDisplay(Recipe r) {
 		recipeName.setText(r.getName());
 		
-		for(IngredientStack is: r.ingredients) {
-		
-		}
 		try {
 			ing1.setText(r.ingredients[0].item.getShortName());      quan1.setText(Double.toString(r.ingredients[0].quantity));
 			ing2.setText(r.ingredients[1].item.getShortName());      quan2.setText(Double.toString(r.ingredients[1].quantity));
@@ -46,9 +43,8 @@ public class RecipeDisplay{
 			ing6.setText(r.ingredients[5].item.getShortName());      quan6.setText(Double.toString(r.ingredients[5].quantity));
 			ing7.setText(r.ingredients[6].item.getShortName());      quan7.setText(Double.toString(r.ingredients[6].quantity));
 			ing8.setText(r.ingredients[7].item.getShortName());      quan8.setText(Double.toString(r.ingredients[7].quantity));
-		} catch(Exception e) {
+		} catch(ArrayIndexOutOfBoundsException e) {
 			//catch exception and do nothing
 		}
 	}
-	
 }

@@ -12,6 +12,6 @@ public class IngredientStack {
 	}
 	
 	public String toString() {
-		return this.item.getName().split(" - ")[0] + ", " + this.quantity + "    ";
+		return this.item.getName().split(" - ")[0] + ", " + this.quantity;
 	}
 }
