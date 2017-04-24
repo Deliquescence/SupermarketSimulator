@@ -82,6 +82,7 @@ public class ItemDisplay {
 					ItemDisplay.this.gameContext.shoppingCart.add(ItemDisplay.this.getStoreItem());
 					ItemDisplay.this.gameContext.adjustFunds(-1 * ItemDisplay.this.getItem().getBaseCost());
 					ItemDisplay.this.gameContext.mainGUI.refreshCart();
+					ItemDisplay.this.gameContext.mainGUI.updateFunds();
 					if (soundClip != null && !soundClip.isActive()) {
 						soundClip.start();
 						soundClip.setFramePosition(0);

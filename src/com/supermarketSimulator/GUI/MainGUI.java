@@ -57,7 +57,8 @@ public class MainGUI {
 			public void actionPerformed(ActionEvent e) {
 				ImageIcon ic = new ImageIcon(this.getClass().getResource("/resources/images/list.png"));
 				String list = Objective.objectivesList.toString();
-				JOptionPane.showMessageDialog(null, list.substring(1, list.length() - 1).replaceAll(", ", ",\n"), "Objective List", JOptionPane.INFORMATION_MESSAGE, ic);
+				JOptionPane.showMessageDialog(null, list.substring(1, list.length() - 1)
+						.replaceAll(", ", ",\n"), "Objective List", JOptionPane.INFORMATION_MESSAGE, ic);
 			}
 		});
 		
@@ -77,7 +78,7 @@ public class MainGUI {
 				
 				recipeFrame.add(contentPane);
 				recipeFrame.setTitle("Recipes");
-				recipeFrame.setPreferredSize(new Dimension(1000, 600));
+				recipeFrame.setPreferredSize(new Dimension(1000, 400));
 				Dimension d = new Dimension(Toolkit.getDefaultToolkit().getScreenSize());
 				recipeFrame.setLocation((int) d.getWidth() / 4, (int) d.getHeight() / 4);
 				
@@ -95,6 +96,12 @@ public class MainGUI {
 		scoreCartButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				
+				leftPanel.removeAll();
+				leftPanel.repaint();
+				leftPanel.revalidate();
+				
+				
 				System.out.format("Total health: " + ("%.3f%n") + "Total happiness: " + ("%.3f%n"), gameContext.shoppingCart.getHealthTotal(), gameContext.shoppingCart.getHappinessTotal());
 				
 				double score = Score.scoreCart(gameContext.shoppingCart);
@@ -114,6 +121,7 @@ public class MainGUI {
 				gameContext.shoppingCart.clearCart();
 				gameContext.setFunds(GameContext.STARTING_FUNDS);
 				gameContext.mainGUI.refreshCart();
+				gameContext.mainGUI.updateFunds();
 			}
 		});
 		
@@ -161,7 +169,6 @@ public class MainGUI {
 			JPanel toAdd = new JPanel();
 			toAdd.setLayout(new BoxLayout(toAdd, BoxLayout.PAGE_AXIS));
 			tabbedPane2.addTab(c.getName(), toAdd);
-			
 			panelsInCategoryTabs.put(c, toAdd);
 		}
 		
@@ -184,7 +191,9 @@ public class MainGUI {
 		}
 		this.shoppingCartPanel.repaint();
 		this.shoppingCartPanel.revalidate();
-		
+	}
+	
+	public void updateFunds() {
 		labelFunds.setText("Remaining Funds: " + String.format("%.2f", gameContext.getFunds()));
 		
 		labelScore.setText("Score: " + String.format("%.0f", Score.scoreCart(gameContext.shoppingCart)));

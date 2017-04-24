@@ -51,6 +51,7 @@ public class ItemStackDisplay {
 				ItemStackDisplay.this.gameContext.shoppingCart.remove(ItemStackDisplay.this.getItemStack());
 				ItemStackDisplay.this.gameContext.adjustFunds(ItemStackDisplay.this.getItemStack().getQuantity() * ItemStackDisplay.this.getItemStack().getItem().getBaseCost());
 				ItemStackDisplay.this.gameContext.mainGUI.refreshCart();
+				ItemStackDisplay.this.gameContext.mainGUI.updateFunds();
 				if (soundClip != null && !soundClip.isActive()) {
 					soundClip.start();
 					soundClip.setFramePosition(0);

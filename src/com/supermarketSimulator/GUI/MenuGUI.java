@@ -6,6 +6,7 @@ import com.supermarketSimulator.game.Score;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -51,12 +52,13 @@ public class MenuGUI {
 				
 				GUILauncher.centerFrameOnScreen(gameFrame);
 				
+				gameFrame.setPreferredSize(new Dimension(1000, 600));
 				gameFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 				gameFrame.pack();
 				gameFrame.setVisible(true);
 				
 				SwingUtilities.windowForComponent(mainPanel).setVisible(false);
-				mainGUI.refreshCart(); //Fixes score and remaining funds labels
+				mainGUI.updateFunds(); //Fixes score and remaining funds labels
 			}
 		});
 		
