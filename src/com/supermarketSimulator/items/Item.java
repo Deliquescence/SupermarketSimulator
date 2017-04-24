@@ -11,6 +11,7 @@ public class Item {
 	private final Category category;
 	private final double baseCost;
 	private final ImageIcon icon;
+	private final String shortName;
 	
 	public Item(int id, String name, double health, double happiness, Category category, double cost, ImageIcon icon) {
 		this.ID = id;
@@ -20,6 +21,9 @@ public class Item {
 		this.category = category;
 		this.baseCost = cost;
 		this.icon = icon;
+		
+		String[] s = name.split(" - ");
+		this.shortName = s[0];
 	}
 	
 	/**
@@ -53,6 +57,8 @@ public class Item {
 	public String getName() {
 		return name;
 	}
+	
+	public String getShortName() { return shortName; }
 	
 	public double getBaseHealth() {
 		return baseHealth;

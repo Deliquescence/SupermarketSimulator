@@ -20,7 +20,15 @@ public class RecipeDisplay{
 	private JLabel ing7;
 	private JLabel ing8;
 	private JTextField recipeName;
-	
+	private JLabel quan1;
+	private JLabel quan2;
+	private JLabel quan3;
+	private JLabel quan4;
+	private JLabel quan6;
+	private JLabel quan5;
+	private JLabel quan7;
+	private JLabel quan8;
+	private JLabel quantityLabel;
 	
 	
 	public RecipeDisplay(Recipe r) {
@@ -30,16 +38,17 @@ public class RecipeDisplay{
 		
 		}
 		try {
-			ing1.setText(r.ingredients[0].toString());
-			ing2.setText(r.ingredients[1].toString());
-			ing3.setText(r.ingredients[2].toString());
-			ing4.setText(r.ingredients[3].toString());
-			ing5.setText(r.ingredients[4].toString());
-			ing6.setText(r.ingredients[5].toString());
-			ing7.setText(r.ingredients[6].toString());
-			ing8.setText(r.ingredients[7].toString());
+			ing1.setText(r.ingredients[0].item.getShortName());      quan1.setText(Double.toString(r.ingredients[0].quantity));
+			ing2.setText(r.ingredients[1].item.getShortName());      quan2.setText(Double.toString(r.ingredients[1].quantity));
+			ing3.setText(r.ingredients[2].item.getShortName());      quan3.setText(Double.toString(r.ingredients[2].quantity));
+			ing4.setText(r.ingredients[3].item.getShortName());      quan4.setText(Double.toString(r.ingredients[3].quantity));
+			ing5.setText(r.ingredients[4].item.getShortName());      quan5.setText(Double.toString(r.ingredients[4].quantity));
+			ing6.setText(r.ingredients[5].item.getShortName());      quan6.setText(Double.toString(r.ingredients[5].quantity));
+			ing7.setText(r.ingredients[6].item.getShortName());      quan7.setText(Double.toString(r.ingredients[6].quantity));
+			ing8.setText(r.ingredients[7].item.getShortName());      quan8.setText(Double.toString(r.ingredients[7].quantity));
 		} catch(Exception e) {
 			//catch exception and do nothing
 		}
 	}
+	
 }

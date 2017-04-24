@@ -73,8 +73,12 @@ public class MainGUI {
 				
 				recipeFrame.add(contentPane);
 				recipeFrame.setTitle("Recipes");
-				recipeFrame.setPreferredSize(new Dimension (800, 600));
-				recipeFrame.setLocationRelativeTo(null);
+				recipeFrame.setPreferredSize(new Dimension (1000, 600));
+				Dimension d = new Dimension(Toolkit.getDefaultToolkit().getScreenSize());
+				recipeFrame.setLocation((int)d.getWidth() / 4, (int)d.getHeight() / 4);
+				
+				
+				
 				recipeFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 				
 				recipeFrame.pack();
