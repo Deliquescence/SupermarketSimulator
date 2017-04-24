@@ -62,13 +62,17 @@ public class ItemDisplay {
 		if (myRecipes != null) { //If the item has recipes associated with it
 			StringBuilder sb = new StringBuilder();
 			sb.append("Recipes that use this item: \n");
+			boolean hasARecipe = false; //Don't want to set tooltip if it turns out none of the recipes are valid
 			for (Recipe r : myRecipes) {
-				if(gameContext.store.possibleRecipes.contains(r)) { //If it can be made from items in this store
-					sb.append(r.getName()).append(",");
+				if (gameContext.store.possibleRecipes.contains(r)) { //If it can be made from items in this store
+					sb.append(r.getName()).append(", ");
+					hasARecipe = true;
 				}
 			}
 			sb.deleteCharAt(sb.length() - 1); //Remove extra comma
-			this.panel.setToolTipText(sb.toString());
+			if (hasARecipe) {
+				this.panel.setToolTipText(sb.toString());
+			}
 		}
 		
 		buttonAdd.addActionListener(new ActionListener() {
