@@ -29,6 +29,9 @@ public class MenuGUI {
 	
 	public MenuGUI() {
 		
+		/*
+		 * Background music
+		 */
 		try {
 			Clip soundClip = AudioSystem.getClip();
 			soundClip.open(AudioSystem.getAudioInputStream(MUSIC_RESOURCE));
@@ -37,6 +40,9 @@ public class MenuGUI {
 			e.printStackTrace();
 		}
 		
+		/*
+		 * Start game, switch windows
+		 */
 		buttonStart.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -62,7 +68,9 @@ public class MenuGUI {
 			}
 		});
 		
-		
+		/*
+		 * Show high score window
+		 */
 		buttonHighScores.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -81,7 +89,9 @@ public class MenuGUI {
 			}
 		});
 		
-		
+		/*
+		 * Show credits window
+		 */
 		aboutButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -102,7 +112,6 @@ public class MenuGUI {
 				};
 				
 				JOptionPane.showMessageDialog(null,credits, "About", JOptionPane.PLAIN_MESSAGE);
-				
 			}
 		});
 	}
