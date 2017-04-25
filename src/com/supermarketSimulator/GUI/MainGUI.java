@@ -70,8 +70,8 @@ public class MainGUI {
 			public void actionPerformed(ActionEvent e) {
 				JFrame recipeFrame = new JFrame();
 				JPanel contentPane = new JPanel(new GridLayout(2, 5, 10, 10));
-				for (Recipe r : gameContext.store.possibleRecipes) {
-					RecipeDisplay rd = new RecipeDisplay(r);
+				for (Recipe r : Recipe.sortedRecipes) {
+					RecipeFrameDisplay rd = new RecipeFrameDisplay(r);
 					
 					contentPane.add(rd.rPanel);
 				}
@@ -98,9 +98,13 @@ public class MainGUI {
 			public void actionPerformed(ActionEvent e) {
 				
 				leftPanel.removeAll();
-				leftPanel.repaint();
-				leftPanel.revalidate();
 				
+				ScoreDisplay scoreDisplay = new ScoreDisplay(gameContext);
+				
+				leftPanel.add(new ScoreDisplay(gameContext).scoreDisplayPanel);
+				
+				leftPanel.revalidate();
+				leftPanel.repaint();
 				
 				System.out.format("Total health: " + ("%.3f%n") + "Total happiness: " + ("%.3f%n"), gameContext.shoppingCart.getHealthTotal(), gameContext.shoppingCart.getHappinessTotal());
 				

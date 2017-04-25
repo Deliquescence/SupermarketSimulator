@@ -9,7 +9,7 @@ import javax.swing.*;
 /**
  * Created by cjt on 4/24/2017.
  */
-public class RecipeDisplay{
+public class RecipeFrameDisplay {
 	public JPanel rPanel;
 	private JLabel ing4;
 	private JLabel ing1;
@@ -31,7 +31,7 @@ public class RecipeDisplay{
 	private JLabel quantityLabel;
 	
 	
-	public RecipeDisplay(Recipe r) {
+	public RecipeFrameDisplay(Recipe r) {
 		recipeName.setText(r.getName());
 		
 		try {
