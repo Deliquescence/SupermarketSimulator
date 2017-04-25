@@ -11,6 +11,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -213,7 +215,8 @@ public class MainGUI {
 			panelsInCategoryTabs.put(c, toAdd);
 		}
 		
-		//Add every item in the store to the tabs
+		//Add every item in the store to the tabs, after sorting
+		Collections.sort(gameContext.store.storeItems, Comparator.comparing(o -> o.getItem().getName())); //Thank IntelliJ for Comparator.comparing
 		for (StoreItem item : gameContext.store.storeItems) {
 			panelsInCategoryTabs.get(item.getCategory()).add(new ItemDisplay(item, gameContext).panel);
 		}
