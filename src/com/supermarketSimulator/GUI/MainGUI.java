@@ -9,6 +9,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
@@ -168,6 +169,18 @@ public class MainGUI {
 					
 					JOptionPane.showMessageDialog(null, Score.highScores, "High Scores", JOptionPane.PLAIN_MESSAGE);
 				}
+			}
+		});
+		
+		/*
+		 * Show help image
+		 */
+		helpButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				//TODO different image for recipe help
+				ImageIcon helpImage = new ImageIcon(this.getClass().getResource("/resources/images/help-main.png"));
+				JOptionPane.showMessageDialog(null, null, "Help", JOptionPane.INFORMATION_MESSAGE, helpImage);
 			}
 		});
 		
