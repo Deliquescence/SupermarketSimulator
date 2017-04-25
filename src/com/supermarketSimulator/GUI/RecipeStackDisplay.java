@@ -46,20 +46,24 @@ public class RecipeStackDisplay {
 		addRecipeButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				int inc = Integer.parseInt(quantityLabel.getText()) + 1;
-				quantityLabel.setText(Integer.toString(inc));
-				recipePanel.repaint();
+				if(gc.shoppingCart.fulfillRecipe(r)) {
+					int inc = Integer.parseInt(quantityLabel.getText()) + 1;
+					quantityLabel.setText(Integer.toString(inc));
+					recipePanel.repaint();
+					System.out.println("Recipe made: " + r.getName());
+				}
 			}
 		});
 		
 		removeRecipeButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				int dec = Integer.parseInt(quantityLabel.getText());
-				if(dec >= 1) { dec--; }
-				quantityLabel.setText(Integer.toString(dec));
-				recipePanel.repaint();
-				
+				if(gc.shoppingCart.unFulfillRecipe(r)) {
+					int dec = Integer.parseInt(quantityLabel.getText());
+					quantityLabel.setText(Integer.toString(dec - 1));
+					recipePanel.repaint();
+					System.out.println("Recipe unmade: " + r.getName());
+				}
 			}
 			
 		});

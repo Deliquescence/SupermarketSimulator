@@ -43,7 +43,7 @@ public class MainGUI {
 	
 	public MainGUI() {
 		this.gameContext = new GameContext();
-		this.gameContext.shoppingCart = new ShoppingCart();
+		this.gameContext.shoppingCart = new ShoppingCart(gameContext);
 		this.gameContext.setFunds(GameContext.STARTING_FUNDS);
 		this.panelsInCategoryTabs = new HashMap<>();
 		
