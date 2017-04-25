@@ -18,6 +18,11 @@ public class ShoppingCart {
 	private ArrayList<ItemStack> itemStacks = new ArrayList<>();
 	private ArrayList<ItemStackDisplay> itemStackDisplays = new ArrayList<>();
 	private HashMap<Item, Double> unpairedItems = new HashMap<>();
+	private GameContext gameContext;
+	
+	public ShoppingCart(GameContext gc) {
+		gameContext = gc;
+	}
 	
 	/**
 	 * Add an ItemStack to the cart.
@@ -132,9 +137,15 @@ public class ShoppingCart {
 				for (IngredientStack stack : r.ingredients) {
 					if (unpairedItems.containsKey(stack.item)) {
 						if (unpairedItems.get(stack.item) < stack.quantity) { //Insufficient quantity
+							if(potentialRecipes.contains(r)) {
+								potentialRecipes.remove(r);
+							}
 							break RecipeLoop;
 						}
 					} else { //Wrong item types
+						if(potentialRecipes.contains(r)) {
+							potentialRecipes.remove(r);
+						}
 						break RecipeLoop;
 					}
 				}
@@ -169,6 +180,27 @@ public class ShoppingCart {
 		return false; //Failed to fulfill recipe
 	}
 	
+	/**
+	 * Unbinds items from a recipe
+	 * @param r Recipe
+	 * @return True if the items were unbound, false if nothing was done
+	 */
+	public boolean unFulfillRecipe(Recipe r) {
+		int quantity = recipesMade.getOrDefault(r, -1);
+		if (quantity > 0) { //Should always be true, but just in case
+			for(IngredientStack stack : r.ingredients) {
+				updateUnpaired(stack.item, true, stack.quantity);
+			}
+			if(quantity - 1 > 0) {
+				recipesMade.put(r, quantity - 1);
+			} else {
+				recipesMade.remove(r);
+			}
+			return true;
+		}
+		return false;
+	}
+	
 	
 	/**
 	 * Updates the list of unpaired items, i.e. items which aren't being used in any recipe.
@@ -193,6 +225,7 @@ public class ShoppingCart {
 				unpairedItems.put(i, unpaired - quantity);
 			}
 		}
+		checkRecipes(i);
 	}
 	
 	
