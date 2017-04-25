@@ -34,7 +34,7 @@ public class ItemStackDisplay {
 		this.labelItemName.setIcon(itemStack.getItem().getIcon());
 		this.labelItemQuantity.setText("x" + itemStack.getQuantity());
 		
-		double subTotal = itemStack.getQuantity() * itemStack.getItem().getBaseCost();
+		double subTotal = itemStack.getQuantity() * itemStack.getStoreItem().getUnitCost();
 		DecimalFormat df = new DecimalFormat("0.00");
 		this.labelSubtotal.setText("$"+ df.format(subTotal));
 		
