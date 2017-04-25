@@ -34,17 +34,6 @@ public class ScoreDisplay {
 		
 		displayScoreGUI();
 	
-	
-		returnButton.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				gameContext.mainGUI.leftPanel.remove(0);
-				gameContext.mainGUI.displayGUIItems();
-				gameContext.mainGUI.leftPanel.revalidate();
-				gameContext.mainGUI.leftPanel.repaint();
-				
-			}
-		});
 		
 		submitScoreButton.addActionListener(new ActionListener() {
 			@Override
