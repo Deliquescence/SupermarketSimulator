@@ -109,7 +109,9 @@ public class MainGUI {
 				
 				if (choice != JOptionPane.YES_OPTION) {
 				
-					
+					for(ItemStackDisplay ids: gameContext.shoppingCart.getItemStackDisplays()){
+						ids.setButtonEnabled(false);
+					}
 					scoreCartButton.setVisible(false);
 					clearCartButton.setVisible(false);
 					leftPanel.removeAll();
@@ -218,7 +220,9 @@ public class MainGUI {
 		//Might be inefficient, but not on a large enough scale to warrant concern.
 		this.shoppingCartPanel.removeAll();
 		for (ItemStack is : this.gameContext.shoppingCart.getItemStacks()) {
-			this.shoppingCartPanel.add(new ItemStackDisplay(is, gameContext).panel);
+			ItemStackDisplay ids = new ItemStackDisplay(is, gameContext);
+			this.shoppingCartPanel.add(ids.panel);
+			this.gameContext.shoppingCart.getItemStackDisplays().add(ids);
 		}
 		this.shoppingCartPanel.repaint();
 		this.shoppingCartPanel.revalidate();

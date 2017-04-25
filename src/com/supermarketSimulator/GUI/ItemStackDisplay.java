@@ -63,4 +63,8 @@ public class ItemStackDisplay {
 	public ItemStack getItemStack() {
 		return itemStack;
 	}
+	
+	public void setButtonEnabled(boolean choice) {
+		buttonRemove.setEnabled(choice);
+	}
 }

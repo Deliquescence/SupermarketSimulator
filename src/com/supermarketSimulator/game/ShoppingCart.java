@@ -1,5 +1,6 @@
 package com.supermarketSimulator.game;
 
+import com.supermarketSimulator.GUI.ItemStackDisplay;
 import com.supermarketSimulator.items.*;
 
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ public class ShoppingCart {
 	private double healthTotal = 0;
 	private double recipeBonusScore = 0;
 	private ArrayList<ItemStack> itemStacks = new ArrayList<>();
+	private ArrayList<ItemStackDisplay> itemStackDisplays = new ArrayList<>();
 	private HashMap<Item, Double> unpairedItems = new HashMap<>();
 	
 	/**
@@ -259,4 +261,6 @@ public class ShoppingCart {
 	public double getRecipeBonusScore() {
 		return recipeBonusScore;
 	}
+	
+	public List<ItemStackDisplay> getItemStackDisplays() { return this.itemStackDisplays; }
 }
