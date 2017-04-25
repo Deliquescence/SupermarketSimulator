@@ -114,5 +114,36 @@ public class MenuGUI {
 				JOptionPane.showMessageDialog(null,credits, "About", JOptionPane.PLAIN_MESSAGE);
 			}
 		});
+		
+		/*
+		 * Show how to play text
+		 */
+		howToPlaybutton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				String[] howToPlay = {
+					"Click ‘Start!’ to show the main window and play the game.",
+					"\t",
+					"Your basic goal is to collect items on a shopping trip in an effort to make healthy choices on a budget.",
+					"\t",
+					"The ‘Objectives’ button displays the goals for your shopping trip. (They are randomly generated each trip.)",
+					"The ‘View Recipes’ button displays recipes containing multiple items.  Collect each item in a recipe for a bonus!",
+					"The seven tabs underneath contain the food groups.  Click on one to display the individual items in that category.",
+					"\t",
+					"Under each tab you can see the price, healthiness level, and happiness level for each of the items.",
+					"Click an item’s plus button to add the item to your cart.  It appears in your shopping cart on the right.",
+					"Click the minus button in the cart section to remove the item from your cart.  Click ‘Clear Cart’ to remove all items in the cart.",
+					"\t",
+					"Pay attention to your funds!  If they get low enough you will not be able to add any more items.",
+					"Click the ‘Score Cart’ button to end your shopping trip and start choosing the recipes you want to make.",
+					"\t",
+					"After the recipes show in the main window, use the plus and minus buttons to choose which recipes you want to make.",
+					"How much you will be able to make depends on what you bought, keep this in mind when shopping!",
+				};
+				
+				JOptionPane.showMessageDialog(null, howToPlay, "How to play", JOptionPane.PLAIN_MESSAGE);
+			}
+		});
 	}
 }
