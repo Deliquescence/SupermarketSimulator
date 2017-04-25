@@ -208,7 +208,18 @@ public class MainGUI {
 	
 	
 	public void refreshStore() {
-	
+		gameContext.store = new Store(System.currentTimeMillis());
+		
+		tabbedPane2.removeAll();
+		panelsInCategoryTabs.clear();
+		displayGUIItems();
+		
+		clearCartButton.setVisible(true);
+		scoreCartButton.setVisible(true);
+		leftPanel.removeAll();
+		leftPanel.add(tabbedPane2);
+		leftPanel.revalidate();
+		leftPanel.repaint();
 	
 	}
 	/**

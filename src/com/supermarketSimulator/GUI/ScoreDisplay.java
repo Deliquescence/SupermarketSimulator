@@ -1,6 +1,7 @@
 package com.supermarketSimulator.GUI;
 
 import com.supermarketSimulator.game.GameContext;
+import com.supermarketSimulator.game.Store;
 import com.supermarketSimulator.items.Recipe;
 
 import javax.swing.*;
@@ -41,9 +42,14 @@ public class ScoreDisplay {
 				for(RecipeStackDisplay rsd : recipeStackDisplays) {
 					System.out.println(rsd.getQuantity());
 				}
+			
 				
+				gameContext.shoppingCart.clearCart();
+				gameContext.mainGUI.refreshCart();
+				gameContext.mainGUI.refreshStore();
 			}
-		
+			
+			
 		});
 	}
 	
