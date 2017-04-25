@@ -216,7 +216,7 @@ public class MainGUI {
 		}
 		
 		//Add every item in the store to the tabs, after sorting
-		Collections.sort(gameContext.store.storeItems, Comparator.comparing(o -> o.getItem().getName())); //Thank IntelliJ for Comparator.comparing
+		gameContext.store.storeItems.sort(Comparator.comparing(o -> o.getItem().getName())); //You can thank IntelliJ for Comparator.comparing
 		for (StoreItem item : gameContext.store.storeItems) {
 			panelsInCategoryTabs.get(item.getCategory()).add(new ItemDisplay(item, gameContext).panel);
 		}
