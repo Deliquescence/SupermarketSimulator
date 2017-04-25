@@ -133,11 +133,7 @@ public class Score {
 		if (objectivesAreMet(cart)) {
 			double happinessScore = scoreHappiness(cart);
 			double healthScore = scoreHealth(cart);
-			double recipeScore = 0;
-			for (Map.Entry<Recipe, Integer> entry : cart.recipesMade.entrySet()) {
-				recipeScore += entry.getKey().getScore() * entry.getValue();
-			}
-			
+			double recipeScore = cart.getRecipeBonusScore();
 			return healthScore + happinessScore + recipeScore;
 		}
 		

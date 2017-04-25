@@ -60,6 +60,11 @@ public class ShoppingCart {
 		updateUnpaired(storeItem.getItem(), true, quantity);
 	}
 	
+	public void printPotentialRecipes() {
+		System.out.println("Recipes: ");
+		potentialRecipes.forEach(r -> System.out.println(r.getName()));
+	}
+	
 	
 	/**
 	 * Add a single Item to this cart.
@@ -175,6 +180,7 @@ public class ShoppingCart {
 			} else {
 				recipesMade.put(r, 1);
 			}
+			recipeBonusScore += r.getScore();
 			return true; //Succeeded at making recipe.
 		}
 		return false; //Failed to fulfill recipe
@@ -196,6 +202,7 @@ public class ShoppingCart {
 			} else {
 				recipesMade.remove(r);
 			}
+			recipeBonusScore -= r.getScore();
 			return true;
 		}
 		return false;
@@ -226,6 +233,7 @@ public class ShoppingCart {
 			}
 		}
 		checkRecipes(i);
+		printPotentialRecipes();
 	}
 	
 	
