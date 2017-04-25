@@ -51,7 +51,6 @@ public class ScoreDisplay {
 			public void actionPerformed(ActionEvent e) {
 				for(RecipeStackDisplay rsd : recipeStackDisplays) {
 					System.out.println(rsd.getQuantity());
-					System.out.println();
 				}
 				
 			}

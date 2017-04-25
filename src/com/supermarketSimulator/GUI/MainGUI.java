@@ -97,22 +97,44 @@ public class MainGUI {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				leftPanel.removeAll();
+				String[] options = {"Hold on...", "Score my cart!"};
 				
-				ScoreDisplay scoreDisplay = new ScoreDisplay(gameContext);
+				int choice = JOptionPane.showOptionDialog(mainPanel,
+						"Are you ready to score your cart?",
+						"Confirm",
+						JOptionPane.YES_NO_OPTION,
+						JOptionPane.QUESTION_MESSAGE,
+						null, options , null);
+						
 				
-				leftPanel.add(new ScoreDisplay(gameContext).scoreDisplayPanel);
+				if (choice != JOptionPane.YES_OPTION) {
 				
-				leftPanel.revalidate();
-				leftPanel.repaint();
+					
+					scoreCartButton.setVisible(false);
+					clearCartButton.setVisible(false);
+					leftPanel.removeAll();
+					
+					ScoreDisplay scoreDisplay = new ScoreDisplay(gameContext);
+					leftPanel.add(new ScoreDisplay(gameContext).scoreDisplayPanel);
+					leftPanel.revalidate();
+					leftPanel.repaint();
+					
+					JOptionPane.showMessageDialog(leftPanel, "Select which recipes you wish to build from your cart items", "Select Recipes", JOptionPane.INFORMATION_MESSAGE);
+				}
+				
+				/*
+				JOptionPane.showMessageDialog(leftPanel, "Select which recipes you wish to build from your cart items", "Select Recipes", JOptionPane.INFORMATION_MESSAGE);
 				
 				System.out.format("Total health: " + ("%.3f%n") + "Total happiness: " + ("%.3f%n"), gameContext.shoppingCart.getHealthTotal(), gameContext.shoppingCart.getHappinessTotal());
 				
 				double score = Score.scoreCart(gameContext.shoppingCart);
 				System.out.format("Your total score is: " + ("%.3f%n%n"), score);
 				
-				Score.updateHighScore((int) score);
-				Score.saveHighScores(gameContext.highScoresFile);
+				
+				//Remember to move this functionality later
+				//Score.updateHighScore((int) score);
+				//Score.saveHighScores(gameContext.highScoresFile);
+				*/
 			}
 		});
 		
