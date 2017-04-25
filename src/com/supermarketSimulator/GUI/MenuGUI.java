@@ -52,7 +52,7 @@ public class MenuGUI {
 				
 				GUILauncher.centerFrameOnScreen(gameFrame);
 				
-				gameFrame.setPreferredSize(new Dimension(1200, 600));
+				gameFrame.setPreferredSize(new Dimension(1250, 600));
 				gameFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 				gameFrame.pack();
 				gameFrame.setVisible(true);

@@ -21,7 +21,7 @@ public class MainGUI {
 	public JPanel mainPanel;
 	public JLabel labelFunds;
 	private JPanel rightPanel;
-	private JPanel leftPanel;
+	public JPanel leftPanel;
 	private JPanel topPanel;
 	private JTabbedPane tabbedPane2;
 	private JButton objectivesButton;
@@ -167,7 +167,7 @@ public class MainGUI {
 	/**
 	 * Populate the category tabs with item displays
 	 */
-	private void displayGUIItems() {
+	public void displayGUIItems() {
 		//For each category, make a panel. Add the panel to a new tab and to the map of panels.
 		for (Category c : Category.categories.values()) {
 			JPanel toAdd = new JPanel();
@@ -182,6 +182,11 @@ public class MainGUI {
 		}
 	}
 	
+	
+	public void refreshStore() {
+	
+	
+	}
 	/**
 	 * Update the shopping cart display in the GUI with the Items in the current {@link ShoppingCart}.
 	 * The current shopping cart is found in {@link GameContext}.

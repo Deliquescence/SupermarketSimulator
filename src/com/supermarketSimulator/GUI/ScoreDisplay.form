@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.supermarketSimulator.GUI.ScoreDisplay">
-  <grid id="27dc6" binding="scoreDisplayPanel" layout-manager="GridLayoutManager" row-count="5" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="scoreDisplayPanel" layout-manager="GridLayoutManager" row-count="6" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="207" height="190"/>
+      <xy x="20" y="20" width="401" height="190"/>
     </constraints>
     <properties/>
     <border type="none"/>
@@ -11,7 +11,9 @@
       <grid id="92a11" binding="recipePanel" custom-create="true" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
-          <grid row="2" column="0" row-span="1" col-span="3" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <grid row="3" column="0" row-span="1" col-span="3" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <preferred-size width="120" height="-1"/>
+          </grid>
         </constraints>
         <properties/>
         <border type="none"/>
@@ -19,7 +21,9 @@
       </grid>
       <component id="63b15" class="javax.swing.JButton" binding="submitScoreButton">
         <constraints>
-          <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="68" height="32"/>
+          </grid>
         </constraints>
         <properties>
           <text value="Submit"/>
@@ -27,22 +31,49 @@
       </component>
       <hspacer id="74350">
         <constraints>
-          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
       </hspacer>
-      <component id="68111" class="javax.swing.JButton" binding="returnButton">
-        <constraints>
-          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Return"/>
-        </properties>
-      </component>
       <vspacer id="9b273">
         <constraints>
-          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
         </constraints>
       </vspacer>
+      <component id="6f4b9" class="javax.swing.JSeparator" binding="jSeparator">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="3" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="150d1" class="javax.swing.JLabel" binding="recipeLabel">
+        <constraints>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="250" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <requestFocusEnabled value="true"/>
+          <text value="Recipe"/>
+        </properties>
+      </component>
+      <component id="b5732" class="javax.swing.JLabel" binding="ingredLabel">
+        <constraints>
+          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Ingredients"/>
+        </properties>
+      </component>
+      <component id="38b35" class="javax.swing.JLabel" binding="quantityLabel" custom-create="true">
+        <constraints>
+          <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="68" height="16"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value="Quantity"/>
+        </properties>
+      </component>
       <component id="cdccb" class="javax.swing.JLabel" binding="scoreLabel" custom-create="true">
         <constraints>
           <grid row="0" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
@@ -53,11 +84,17 @@
           <text value="Select which recipes you wish to build."/>
         </properties>
       </component>
-      <component id="6f4b9" class="javax.swing.JSeparator" binding="jSeparator">
+      <component id="68111" class="javax.swing.JButton" binding="returnButton">
         <constraints>
-          <grid row="1" column="0" row-span="1" col-span="3" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="35" height="-1"/>
+            <preferred-size width="75" height="-1"/>
+            <maximum-size width="75" height="-1"/>
+          </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <text value="Return"/>
+        </properties>
       </component>
     </children>
   </grid>

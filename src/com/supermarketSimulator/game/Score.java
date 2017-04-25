@@ -33,7 +33,7 @@ public class Score {
 			String line = br.readLine();
 			int counter = 0;
 			
-			while (br != null) {
+			while (true) {
 				highScores[counter] = line;
 				counter++;
 				if (counter == highScores.length) {
