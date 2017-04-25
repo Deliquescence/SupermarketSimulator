@@ -70,6 +70,7 @@ public class ItemDisplay {
 				}
 			}
 			sb.deleteCharAt(sb.length() - 1); //Remove extra comma
+			sb.deleteCharAt(sb.length() - 1); //And space
 			if (hasARecipe) {
 				this.panel.setToolTipText(sb.toString());
 			}
