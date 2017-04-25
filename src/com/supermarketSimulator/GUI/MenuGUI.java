@@ -94,13 +94,11 @@ public class MenuGUI {
 									"Josh Baird",
 									"Justin Kur",
 									"Josh Salar",
-									"Issac Springer",
+									"Isaac Springer",
 									"Cody Trombley\n\n",
 									
 									"It is through their hard work, dedication, and sacrifice",
 									"that we here today are able to enjoy this wonderful game.",
-									"God bless them, and God bless America. Thank you."
-					
 				};
 				
 				JOptionPane.showMessageDialog(null,credits, "About", JOptionPane.PLAIN_MESSAGE);
