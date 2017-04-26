@@ -125,6 +125,7 @@ public class ShoppingCart {
 		itemStacks.clear();
 		this.happinessTotal = 0;
 		this.healthTotal = 0;
+		this.gameContext.setFunds(GameContext.STARTING_FUNDS);
 	}
 	
 	/**
