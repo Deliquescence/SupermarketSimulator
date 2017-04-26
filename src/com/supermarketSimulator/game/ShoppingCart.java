@@ -234,6 +234,7 @@ public class ShoppingCart {
 		}
 		checkRecipes(i);
 		printPotentialRecipes();
+		printUnpairedItems();
 	}
 	
 	
@@ -280,6 +281,14 @@ public class ShoppingCart {
 			}
 		}
 		return count;
+	}
+	
+	/**
+	 * More verbose printing of unpaired items
+	 */
+	public void printUnpairedItems() {
+		System.out.println("Unpaired Items: ");
+		unpairedItems.forEach((i, d) -> System.out.println(i.getName() + " " + d));
 	}
 	
 	/**
