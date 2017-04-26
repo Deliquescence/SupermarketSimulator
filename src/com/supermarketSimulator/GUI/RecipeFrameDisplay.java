@@ -37,7 +37,7 @@ public class RecipeFrameDisplay {
 	
 	
 	public RecipeFrameDisplay(Recipe r, GameContext gc) {
-		recipeName.setText(r.getName());
+		recipeName.setText(r.getName() + " (~" + (int)r.getScore() + " pts)");
 		
 		try {
 			ing1.setText(r.ingredients[0].item.getShortName());      quan1.setText(Double.toString(r.ingredients[0].quantity));
