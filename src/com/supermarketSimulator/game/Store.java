@@ -53,6 +53,21 @@ public class Store {
 		}
 		return false;
 	}
+	
+	/**
+	 * Given an Item, get the StoreItem from this Store.
+	 *
+	 * @param i the Item
+	 * @return the StoreItem version, or null if this store does not have the item
+	 */
+	public StoreItem getStoreItemFromItem(Item i){
+		for(StoreItem storeItem : storeItems) {
+			if(storeItem.getItem() == i) {
+				return storeItem;
+			}
+		}
+		return null;
+	}
 
 	private void generateItems(Long seed) {
 		//Categories that do not have an item added to them and need to be populated

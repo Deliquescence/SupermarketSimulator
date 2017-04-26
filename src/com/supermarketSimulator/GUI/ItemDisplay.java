@@ -79,9 +79,9 @@ public class ItemDisplay {
 		buttonAdd.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (ItemDisplay.this.gameContext.getFunds() - ItemDisplay.this.getItem().getBaseCost() > 0) { //Funds are available
+				if (ItemDisplay.this.gameContext.getFunds() - ItemDisplay.this.getStoreItem().getUnitCost() > 0) { //Funds are available
 					ItemDisplay.this.gameContext.shoppingCart.add(ItemDisplay.this.getStoreItem());
-					ItemDisplay.this.gameContext.adjustFunds(-1 * ItemDisplay.this.getItem().getBaseCost());
+					ItemDisplay.this.gameContext.adjustFunds(-1 * ItemDisplay.this.getStoreItem().getUnitCost());
 					ItemDisplay.this.gameContext.mainGUI.refreshCart();
 					ItemDisplay.this.gameContext.mainGUI.updateFunds();
 					if (soundClip != null && !soundClip.isActive()) {
