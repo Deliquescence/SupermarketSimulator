@@ -44,7 +44,7 @@ public class MainGUI {
 	 */
 	private Map<Category, JPanel> panelsInCategoryTabs;
 	
-	public MainGUI() {
+	MainGUI() {
 		this.gameContext = new GameContext();
 		this.gameContext.shoppingCart = new ShoppingCart(gameContext);
 		this.gameContext.setFunds(GameContext.STARTING_FUNDS);
@@ -126,20 +126,6 @@ public class MainGUI {
 					
 					JOptionPane.showMessageDialog(leftPanel, "Select which recipes you wish to build from your cart items", "Select Recipes", JOptionPane.INFORMATION_MESSAGE);
 				}
-				
-				/*
-				JOptionPane.showMessageDialog(leftPanel, "Select which recipes you wish to build from your cart items", "Select Recipes", JOptionPane.INFORMATION_MESSAGE);
-				
-				System.out.format("Total health: " + ("%.3f%n") + "Total happiness: " + ("%.3f%n"), gameContext.shoppingCart.getHealthTotal(), gameContext.shoppingCart.getHappinessTotal());
-				
-				double score = Score.scoreCart(gameContext.shoppingCart);
-				System.out.format("Your total score is: " + ("%.3f%n%n"), score);
-				
-				
-				//Remember to move this functionality later
-				//Score.updateHighScore((int) score);
-				//Score.saveHighScores(gameContext.highScoresFile);
-				*/
 			}
 		});
 		
@@ -206,7 +192,7 @@ public class MainGUI {
 	/**
 	 * Populate the category tabs with item displays
 	 */
-	public void displayGUIItems() {
+	private void displayGUIItems() {
 		//For each category, make a panel. Add the panel to a new tab and to the map of panels.
 		for (Category c : Category.categories.values()) {
 			JPanel toAdd = new JPanel();
@@ -223,7 +209,12 @@ public class MainGUI {
 	}
 	
 	
-	public void refreshStore() {
+	/*
+		Create new store and load items from new store
+		into main gui. Additionally remove all items from
+		cart and refresh cart and funds.
+	 */
+	void refreshStore() {
 		gameContext.store = new Store(System.currentTimeMillis());
 		
 		tabbedPane2.removeAll();
@@ -242,7 +233,7 @@ public class MainGUI {
 	 * Update the shopping cart display in the GUI with the Items in the current {@link ShoppingCart}.
 	 * The current shopping cart is found in {@link GameContext}.
 	 */
-	public void refreshCart() {
+	void refreshCart() {
 		//Remove every ItemStackDisplay and make new ones.
 		//Might be inefficient, but not on a large enough scale to warrant concern.
 		this.shoppingCartPanel.removeAll();
@@ -255,7 +246,11 @@ public class MainGUI {
 		this.shoppingCartPanel.revalidate();
 	}
 	
-	public void updateFunds() {
+	
+	/*
+		Refresh funds displayed on mainGUI.
+	 */
+	void updateFunds() {
 		labelFunds.setText("Remaining Funds: " + String.format("%.2f", gameContext.getFunds()));
 		
 		labelScore.setText("Score: " + String.format("%.0f", Score.scoreCart(gameContext.shoppingCart)));

@@ -10,7 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * Created by cjt on 4/25/2017.
+ * Class bound
  */
 public class RecipeStackDisplay {
 	

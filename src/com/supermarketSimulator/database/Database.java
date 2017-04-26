@@ -54,6 +54,9 @@ public class Database {
 		}
 	}
 	
+	/**
+		Read recipes in from recipeFileString.
+	 */
 	public void readRecipes() {
 		try {
 			String line;
