@@ -1,6 +1,7 @@
 package com.supermarketSimulator.GUI;
 
 import com.supermarketSimulator.game.GameContext;
+import com.supermarketSimulator.game.Score;
 import com.supermarketSimulator.game.Store;
 import com.supermarketSimulator.items.Recipe;
 
@@ -42,11 +43,20 @@ public class ScoreDisplay {
 				for(RecipeStackDisplay rsd : recipeStackDisplays) {
 					System.out.println(rsd.getQuantity());
 				}
-			
+				
+				
+				double score = Score.scoreCart(gameContext.shoppingCart);
+				System.out.format("Your total score is: " + ("%.3f%n%n"), score);
+				
+				
+				
+				Score.updateHighScore((int) score);
+				Score.saveHighScores(gameContext.highScoresFile);
 				
 				gameContext.shoppingCart.clearCart();
 				gameContext.mainGUI.refreshCart();
 				gameContext.mainGUI.refreshStore();
+				gameContext.mainGUI.updateFunds();
 			}
 			
 			
