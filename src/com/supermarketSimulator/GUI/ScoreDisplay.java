@@ -2,15 +2,12 @@ package com.supermarketSimulator.GUI;
 
 import com.supermarketSimulator.game.GameContext;
 import com.supermarketSimulator.game.Score;
-import com.supermarketSimulator.game.Store;
 import com.supermarketSimulator.items.Recipe;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by cjt on 4/24/2017.
@@ -60,10 +57,7 @@ public class ScoreDisplay {
 					System.exit(0);
 				}
 				else {
-					gameContext.shoppingCart.clearCart();
-					gameContext.mainGUI.refreshCart();
-					gameContext.mainGUI.refreshStore();
-					gameContext.mainGUI.updateFunds();
+					gameContext.mainGUI.reload();
 				}
 			}
 		});

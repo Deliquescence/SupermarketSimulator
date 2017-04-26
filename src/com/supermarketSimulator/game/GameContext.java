@@ -26,8 +26,6 @@ public class GameContext {
 	private double funds;
 	
 	public GameContext() {
-		store = new Store();
-		
 		try {
 			 this.highScoresFile = new File(System.getProperty("user.home")
 					+ "/SuperMarketSimulator/highscores.txt");
@@ -44,6 +42,10 @@ public class GameContext {
 			System.err.println("Cannot create HighScores File.");
 		}
 		Objective.generate();
+		
+		this.store = new Store();
+		this.setFunds(GameContext.STARTING_FUNDS);
+		this.shoppingCart = new ShoppingCart(this); //Do last to prevent leaking this before constructed
 	}
 	
 	public double getFunds() {
