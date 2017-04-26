@@ -37,11 +37,7 @@ public class ScoreDisplay {
 		submitScoreButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				for (RecipeStackDisplay rsd : recipeStackDisplays) {
-					System.out.println(rsd.getQuantity());
-				}
-				
-				
+			
 				double score = Score.scoreCart(gameContext.shoppingCart);
 				System.out.format("Your total score is: " + ("%.3f%n%n"), score);
 				JOptionPane.showMessageDialog(scoreDisplayPanel, String.format("Your final score is %.3f!", score), "Well done!", JOptionPane.INFORMATION_MESSAGE);
@@ -64,8 +60,6 @@ public class ScoreDisplay {
 		});
 	}
 	
-	
-	
 	private void createUIComponents() {
 		recipePanel = new JPanel();
 		recipePanel.setLayout(new BoxLayout(recipePanel, BoxLayout.PAGE_AXIS));
@@ -83,6 +77,4 @@ public class ScoreDisplay {
 			recipeStackDisplays.add(rsd);
 		}
 	}
-	
-	
 }
