@@ -1,61 +1,61 @@
 62
-Grains,0,Bread - White - One Loaf,1.99,3,3
-Grains,1,Taco Shells - 1 Dozen,2.98,2.2,3.3
-Grains,2,Pasta - Spaghetti - 32oz,1.97,3.4,2.6
-Grains,3,Rice - White - 10lb,4.43,3,3
-Grains,4,Noodles - 1 Box,6.79,3.8,3.4
-Grains,5,Cereal - Cheerios - Small Box,3.98,4.6,2.1
-Grains,6,Macaroni Dinner 1 Box,1.28,2.7,4.2
+Grains,0,White Bread - 1 loaf,1.99,3,3
+Grains,1,Taco Shells - 1 doz,2.98,2.2,3.3
+Grains,2,Spaghetti Pasta - 32oz,1.97,3.4,2.6
+Grains,3,White Rice- 10lb,4.43,3,3
+Grains,4,Noodles - 1 box,6.79,3.8,3.4
+Grains,5,Cheerios Cereal- 1 box,3.98,4.6,2.1
+Grains,6,Macaroni Dinner - 1 box,1.28,2.7,4.2
 Fruits,7,Bananas - 3 lb,1.41,5.3,1.4
-Fruits,8,Apples - Gala - 3 lb bag,3.74,5.5,1.7
-Fruits,9,Oranges - Navel - 4 lb bag,3.02,5.5,2
-Fruits,10,Strawberries - 32 oz,2.28,5.3,2.1
-Fruits,11,Watermelon - Seedless,4.99,5.1,1.8
-Fruits,12,Grapes - Red Seedless - 1.5 lb bag,4.5,5.3,1.6
+Fruits,8,Gala Apples - 3 lb bag,3.74,5.5,1.7
+Fruits,9,Navel Oranges -4 lb bag,3.02,5.5,2
+Fruits,10,Strawberries - 32 oz container,2.28,5.3,2.1
+Fruits,11,Seedless Watermelon,4.99,5.1,1.8
+Fruits,12,Red Seedless Grapes- 1.5 lb bag,4.5,5.3,1.6
 Fruits,13,Blueberries -  6 oz container,3.99,5.4,1.7
-Fruits,14,Pineapple - chunks - 1 lb,3.88,5.4,1.6
-Vegetables,15,Potatoes - Russet - 5 lb,2.47,2.7,3.5
-Vegetables,16,Celery - sticks - 1 lb,2.2,5.7,0.7
-Vegetables,17,Lettuce - Iceberg - head,1.99,5.4,1.3
-Vegetables,18,Spinach - baby - 6 oz bag,2.58,5.8,0.5
-Vegetables,19,Carrots - baby cut - 16 oz,1.34,5.8,0.8
+Fruits,14,Pineapple Chunks - 1 lb,3.88,5.4,1.6
+Vegetables,15,Russet Potatoes - 5 lb,2.47,2.7,3.5
+Vegetables,16,Celery Sticks - 1 lb,2.2,5.7,0.7
+Vegetables,17,Iceberg Lettuce - head,1.99,5.4,1.3
+Vegetables,18,Baby Spinach - 6 oz bag,2.58,5.8,0.5
+Vegetables,19,Baby Cut Carrots- 16 oz bag,1.34,5.8,0.8
 Vegetables,20,Cucumber - single,1.19,5.4,0.8
-Vegetables,21,Onions - red - 1 lb,1.94,5.4,0.6
-Vegetables,22,Green Peppers - 1 lb,1.41,5.4,1.1
-Dairy,23,Milk - 2% - 1 gal,1.15,2.7,3.5
-Dairy,24,Cheese - shredded cheddar - 16 oz,3.12,2.2,4
+Vegetables,21,Red Onions - 1 lb bag,1.94,5.4,0.6
+Vegetables,22,Green Peppers - 1 lb bag,1.41,5.4,1.1
+Dairy,23,2% Milk - 1 gal,1.15,2.7,3.5
+Dairy,24,Shrd. Cheddar Cheese- 16 oz bag,3.12,2.2,4
 Dairy,25,Yogurt - 6 oz cup,0.62,1.8,1.3
 Dairy,26,Sour Cream - 8 oz tub,1.34,2.5,3.3
-Protein,27,Beef - ground -1 lb,2.99,2.4,4.1
-Protein,28,Chicken - breast - 1 lb,2.75,4.4,3.5
+Protein,27,Ground Beef -1 lb,2.99,2.4,4.1
+Protein,28,Chicken Breast - 1 lb,2.75,4.4,3.5
 Protein,29,Pork Chops - 1 lb,1.99,4.5,3.3
-Protein,30,Eggs - 1 dozen,1.75,4.2,3.6
-Protein,31,Lunch meat -ham - 9 oz,2.97,3.8,3.5
-Protein,32,Fish - Tilapia - 1 lb,3.51,4.7,2.3
-Protein,33,Bacon 16 oz,4.74,2.8,4.5
-Protein,34,Beans - Pinto - 4 lb,2.98,4.5,2.2
-Protein,35,Nuts - honey roasted - 32 oz,4.72,3.4,4.4
-Frozen,36,Pizza Rolls - Pepperoni - 40 ct,3.48,0.5,5
-Frozen,37,Taquitos - chicken - 23 ct,4.98,1.2,4.8
-Frozen,38,Frozen Dinner - Hungry Man - 16 oz,2.28,1.4,4.5
-Frozen,39,Frozen Pizza - Red Baron - pepperoni,3.5,1.1,5.3
-Frozen,40,Hot Pockets - pepperoni - 5 ct,3.99,0.8,5.2
-Frozen,41,Bagel Bites - pepperoni - 40 ct,8.99,1.1,5.3
-Frozen,42,Chicken Wings - crispy - 2 lb bag,6.99,1.9,5.1
+Protein,30,Eggs - 1 doz,1.75,4.2,3.6
+Protein,31,Lunch Meat: Ham - 9 oz,2.97,3.8,3.5
+Protein,32,Tilapia Fish- 1 lb,3.51,4.7,2.3
+Protein,33,Bacon - 16 oz,4.74,2.8,4.5
+Protein,34,Pinto Beans - 4 lb,2.98,4.5,2.2
+Protein,35,Honey Roasted Peanuts - 32 oz,4.72,3.4,4.4
+Frozen,36,Pepperoni Pizza Rolls - 40 ct,3.48,0.5,5
+Frozen,37,Chicken Taquitos - 23 ct,4.98,1.2,4.8
+Frozen,38,Hungry Man Frozen Dinner - 16 oz,2.28,1.4,4.5
+Frozen,39,Frozen Pepperoni Pizza - 1 pizza,3.5,1.1,5.3
+Frozen,40,Ham and Cheese Hot Pocket - 5 ct,3.99,0.8,5.2
+Frozen,41,Pepperoni Bagel Bites - 40 ct,8.99,1.1,5.3
+Frozen,42,Crispy Chicken Wings - 2 lb bag,6.99,1.9,5.1
 Frozen,43,Mozzarella Sticks - 24oz box,4.98,0.9,5.4
-Frozen,44,Ice Cream - vanilla - half gallon,4.45,1.7,5.5
-Snacks,45,Chips - Lays - family size,3.99,1.2,5.7
-Snacks,46,Cookies - Oreo - 19 oz,3.56,0.8,5.8
+Frozen,44,Vanilla Ice Cream - half gal,4.45,1.7,5.5
+Snacks,45,Potato Chips - family size,3.99,1.2,5.7
+Snacks,46,Oreo Cookies - 19 oz,3.56,0.8,5.8
 Snacks,47,Pretzel - 20 oz bag,1.98,2.3,4.6
-Snacks,48,Popcorn - butter - 12 ct,4.98,2,4.7
-Snacks,49,Soda -12 pack 12 oz cans,5.2,0.5,5.6
-Snacks,50,Granola Bars - chocolate chip - 24 ct,3.98,1.6,5.3
+Snacks,48,Butter Popcorn - 12 ct,4.98,2,4.7
+Snacks,49,Soda - 12 oz cans,5.2,0.5,5.6
+Snacks,50,Granola Bars - 24 ct,3.98,1.6,5.3
 Snacks,51,Tortilla Chips - party size bag,3.98,1.8,4.7
 Snacks,52,Donuts - 1/2 dozen,2.99,0.5,5.7
-Snacks,53,Toster Pastries - strawberry - 16 ct,3.68,0.5,5.8
-Snacks,54,Crackers - Cheez It - 12.4 oz,2.88,1.7,4.6
+Snacks,53,Toster Pastries- 16 ct,3.68,0.5,5.8
+Snacks,54,Cheez It Crackers - 12.4 oz,2.88,1.7,4.6
 Snacks,55,Orange Juice - 1/2 gal,2.99,4.6,3.1
-Snacks,56,Salsa - medium - 1 jar,3.99,2.8,4.2
+Snacks,56,Medium Salsa - 1 jar,3.99,2.8,4.2
 Ingredient,57,Flour - 1/2 lb,1.99,0.5,0.5
 Ingredient,58,Sugar - 1/2 lb,0.99,0.5,2
 Vegetables,59,Tomatoes - 1 lb,2.99,4.2,3.2
