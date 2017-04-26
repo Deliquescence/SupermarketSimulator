@@ -18,6 +18,10 @@ public class Store {
 	private final int ITEM_COUNT = 45;
 	
 	public ArrayList<StoreItem> storeItems = new ArrayList<>();
+	
+	/**
+	 * Recipes that can possibly be created using the available items in the store.
+	 */
 	public TreeSet<Recipe> possibleRecipes;
 	
 	private Random rand;
