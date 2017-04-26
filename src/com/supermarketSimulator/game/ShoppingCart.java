@@ -182,8 +182,8 @@ public class ShoppingCart {
 				recipesMade.put(r, 1);
 			}
 			double percentage = Math.max(0.50, Math.pow(0.90, recipesMade.get(r) - 1));
-			System.out.println(percentage);
 			recipeBonusScore += (r.getScore() * percentage);
+			gameContext.mainGUI.updateFunds();
 			return true; //Succeeded at making recipe.
 		}
 		return false; //Failed to fulfill recipe
@@ -206,8 +206,8 @@ public class ShoppingCart {
 				recipesMade.remove(r);
 			}
 			double percentage = Math.max(0.50, Math.pow(0.90, recipesMade.getOrDefault(r, 0)));
-			System.out.println(percentage);
 			recipeBonusScore -= (r.getScore() * percentage);
+			gameContext.mainGUI.updateFunds();
 			return true;
 		}
 		return false;

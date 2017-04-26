@@ -38,9 +38,11 @@ public class Recipe implements Comparable<Recipe> {
 		}
 		//Setting the base score for the recipe
 		double score = 0;
+		int counter = 0;
 		for (IngredientStack stack : ingredients) {
 			Item i = stack.item;
-			score += 2 * stack.quantity * (i.getBaseHappiness() + i.getBaseHealth());
+			score += 1.5 * stack.quantity * (i.getBaseHappiness() + i.getBaseHealth()) + 0.5 * counter;
+			counter++;
 		}
 		scoreValue = score;
 	}
