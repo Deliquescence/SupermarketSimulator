@@ -46,8 +46,6 @@ public class MainGUI {
 	
 	public MainGUI() {
 		this.gameContext = new GameContext();
-		this.gameContext.shoppingCart = new ShoppingCart(gameContext);
-		this.gameContext.setFunds(GameContext.STARTING_FUNDS);
 		this.panelsInCategoryTabs = new HashMap<>();
 		
 		displayGUIItems();
@@ -208,9 +206,12 @@ public class MainGUI {
 		}
 	}
 	
-	
-	public void refreshStore() {
-		gameContext.store = new Store(System.currentTimeMillis());
+	/**
+	 * Reload the GUI, making a new store, and starting a new game.
+	 */
+	public void reload() {
+		this.gameContext = new GameContext();
+		this.gameContext.mainGUI = this;
 		
 		tabbedPane2.removeAll();
 		panelsInCategoryTabs.clear();
@@ -222,8 +223,11 @@ public class MainGUI {
 		leftPanel.add(tabbedPane2);
 		leftPanel.revalidate();
 		leftPanel.repaint();
-	
+		
+		refreshCart();
+		updateFunds();
 	}
+	
 	/**
 	 * Update the shopping cart display in the GUI with the Items in the current {@link ShoppingCart}.
 	 * The current shopping cart is found in {@link GameContext}.
@@ -241,10 +245,13 @@ public class MainGUI {
 		this.shoppingCartPanel.revalidate();
 	}
 	
+	/**
+	 * Visually update the funds and score display.
+	 */
 	public void updateFunds() {
 		labelFunds.setText("Remaining Funds: " + String.format("%.2f", gameContext.getFunds()));
-		
 		labelScore.setText("Score: " + String.format("%.0f", Score.scoreCart(gameContext.shoppingCart)));
+		
 		if (Score.scoreCart(gameContext.shoppingCart) == 0) {
 			labelScore.setText(labelScore.getText() + "  (Objectives not met)");
 			labelScore.setToolTipText("Meet objectives first!");
