@@ -4,7 +4,6 @@ import com.supermarketSimulator.items.Recipe;
 
 import javax.swing.*;
 import java.io.*;
-import java.util.Map;
 
 /**
  * Hosts static methods for scoring a shopping cart.

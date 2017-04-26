@@ -234,8 +234,6 @@ public class ShoppingCart {
 			}
 		}
 		checkRecipes(i);
-		printPotentialRecipes();
-		printUnpairedItems();
 	}
 	
 	

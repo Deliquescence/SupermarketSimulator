@@ -75,7 +75,7 @@ public class ScoreDisplay {
 	
 	private void displayScoreGUI() {
 		
-		for(Recipe r: Recipe.sortedRecipes) {
+		for(Recipe r: gameContext.store.possibleRecipes) {
 			RecipeStackDisplay rsd = new RecipeStackDisplay(r, gameContext);
 			
 			recipePanel.add(rsd.recipePanel);

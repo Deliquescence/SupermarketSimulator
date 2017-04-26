@@ -71,9 +71,8 @@ public class MainGUI {
 			public void actionPerformed(ActionEvent e) {
 				JFrame recipeFrame = new JFrame();
 				JPanel contentPane = new JPanel(new GridLayout(2, 5, 10, 10));
-				for (Recipe r : Recipe.sortedRecipes) {
+				for (Recipe r : gameContext.store.possibleRecipes) {
 					RecipeFrameDisplay rd = new RecipeFrameDisplay(r, gameContext);
-					
 					contentPane.add(rd.rPanel);
 				}
 				
