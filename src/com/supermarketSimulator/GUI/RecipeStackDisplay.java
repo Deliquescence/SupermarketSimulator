@@ -16,9 +16,6 @@ public class RecipeStackDisplay {
 	
 	private final Recipe recipe;
 	private final GameContext gameContext;
-	
-	
-	
 	public JPanel recipePanel;
 	private JButton addRecipeButton;
 	private JLabel recipeNameLabel;
@@ -50,7 +47,6 @@ public class RecipeStackDisplay {
 					int inc = Integer.parseInt(quantityLabel.getText()) + 1;
 					quantityLabel.setText(Integer.toString(inc));
 					recipePanel.repaint();
-					System.out.println("Recipe made: " + r.getName());
 					updateColor();
 				}
 			}
@@ -63,7 +59,6 @@ public class RecipeStackDisplay {
 					int dec = Integer.parseInt(quantityLabel.getText());
 					quantityLabel.setText(Integer.toString(dec - 1));
 					recipePanel.repaint();
-					System.out.println("Recipe unmade: " + r.getName());
 					updateColor();
 				}
 			}

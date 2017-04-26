@@ -41,7 +41,6 @@ public class Database {
 			InputStreamReader reader = new InputStreamReader(file, Charset.forName("UTF-8"));
 			BufferedReader br = new BufferedReader(reader);
 			items = new Item[Integer.parseInt(br.readLine())];
-			System.out.println("Length of the array is " + items.length);
 			while ((line = br.readLine()) != null) {
 				Item i = Item.itemFromString(line);
 				items[i.getID()] = i;
