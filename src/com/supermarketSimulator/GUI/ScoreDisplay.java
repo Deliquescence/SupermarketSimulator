@@ -40,7 +40,7 @@ public class ScoreDisplay {
 		submitScoreButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				for(RecipeStackDisplay rsd : recipeStackDisplays) {
+				for (RecipeStackDisplay rsd : recipeStackDisplays) {
 					System.out.println(rsd.getQuantity());
 				}
 				
@@ -49,17 +49,23 @@ public class ScoreDisplay {
 				System.out.format("Your total score is: " + ("%.3f%n%n"), score);
 				
 				
-				
 				Score.updateHighScore((int) score);
 				Score.saveHighScores(gameContext.highScoresFile);
 				
-				gameContext.shoppingCart.clearCart();
-				gameContext.mainGUI.refreshCart();
-				gameContext.mainGUI.refreshStore();
-				gameContext.mainGUI.updateFunds();
+				
+				String[] options = {"Get me outta here", "Hot dog yeah!"};
+				int choice = JOptionPane.showOptionDialog(scoreDisplayPanel, "Would you like to play again?", "Play again?", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, null);
+				
+				if(choice != JOptionPane.NO_OPTION) {
+					System.exit(0);
+				}
+				else {
+					gameContext.shoppingCart.clearCart();
+					gameContext.mainGUI.refreshCart();
+					gameContext.mainGUI.refreshStore();
+					gameContext.mainGUI.updateFunds();
+				}
 			}
-			
-			
 		});
 	}
 	
