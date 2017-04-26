@@ -94,7 +94,7 @@ public class MainGUI {
 		});
 		
 		/*
-		 * Score cart, show dialogue for high score
+		 * Score cart, show recipe assignment
 		 */
 		scoreCartButton.addActionListener(new ActionListener() {
 			@Override
@@ -126,20 +126,6 @@ public class MainGUI {
 					
 					JOptionPane.showMessageDialog(leftPanel, "Select which recipes you wish to build from your cart items", "Select Recipes", JOptionPane.INFORMATION_MESSAGE);
 				}
-				
-				/*
-				JOptionPane.showMessageDialog(leftPanel, "Select which recipes you wish to build from your cart items", "Select Recipes", JOptionPane.INFORMATION_MESSAGE);
-				
-				System.out.format("Total health: " + ("%.3f%n") + "Total happiness: " + ("%.3f%n"), gameContext.shoppingCart.getHealthTotal(), gameContext.shoppingCart.getHappinessTotal());
-				
-				double score = Score.scoreCart(gameContext.shoppingCart);
-				System.out.format("Your total score is: " + ("%.3f%n%n"), score);
-				
-				
-				//Remember to move this functionality later
-				//Score.updateHighScore((int) score);
-				//Score.saveHighScores(gameContext.highScoresFile);
-				*/
 			}
 		});
 		
