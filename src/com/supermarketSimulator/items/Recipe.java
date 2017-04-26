@@ -36,7 +36,7 @@ public class Recipe implements Comparable<Recipe> {
 		for (int x = 1; x < split.length; x += 2) {
 			this.ingredients[x / 2] = new IngredientStack(Database.items[Integer.parseInt(split[x])], Double.parseDouble(split[x + 1]));
 		}
-		//Let's try this for now...
+		//Setting the base score for the recipe
 		double score = 0;
 		for (IngredientStack stack : ingredients) {
 			Item i = stack.item;
@@ -81,7 +81,9 @@ public class Recipe implements Comparable<Recipe> {
 		return recipes;
 	}
 	
-	
+	/**
+	 * Verbose method for debugging: prints all recipes and all the components that comprise them
+	 */
 	public static void debugPrintRecipes() {
 		//Warning, very verbose
 		recipesByItem.forEach((item, hashSet) -> {

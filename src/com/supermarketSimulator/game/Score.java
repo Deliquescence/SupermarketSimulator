@@ -99,7 +99,8 @@ public class Score {
 				ImageIcon ic = new ImageIcon(Score.class.getResource("/resources/images/thumbsup.png"));
 				String name;
 				try {
-					name = JOptionPane.showInputDialog(null, "Input new name (no spaces plz): ", "New High Score!", JOptionPane.PLAIN_MESSAGE, ic, null, null).toString();
+					name = JOptionPane.showInputDialog(null, "Input new name (no spaces pls): ",
+							"New High Score!", JOptionPane.PLAIN_MESSAGE, ic, null, null).toString();
 				} catch (NullPointerException e) {
 					name = "GaryOak";
 				}

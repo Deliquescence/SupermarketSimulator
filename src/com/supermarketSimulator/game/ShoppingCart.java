@@ -181,7 +181,9 @@ public class ShoppingCart {
 			} else {
 				recipesMade.put(r, 1);
 			}
-			recipeBonusScore += r.getScore();
+			double percentage = Math.max(0.50, Math.pow(0.90, recipesMade.get(r) - 1));
+			System.out.println(percentage);
+			recipeBonusScore += (r.getScore() * percentage);
 			return true; //Succeeded at making recipe.
 		}
 		return false; //Failed to fulfill recipe
@@ -203,7 +205,9 @@ public class ShoppingCart {
 			} else {
 				recipesMade.remove(r);
 			}
-			recipeBonusScore -= r.getScore();
+			double percentage = Math.max(0.50, Math.pow(0.90, recipesMade.getOrDefault(r, 0)));
+			System.out.println(percentage);
+			recipeBonusScore -= (r.getScore() * percentage);
 			return true;
 		}
 		return false;
