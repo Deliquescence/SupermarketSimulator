@@ -1,10 +1,14 @@
 package com.supermarketSimulator.GUI;
 
+import com.supermarketSimulator.game.GameContext;
+import com.supermarketSimulator.game.StoreItem;
 import com.supermarketSimulator.items.IngredientStack;
 import com.supermarketSimulator.items.ItemStack;
 import com.supermarketSimulator.items.Recipe;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * Created by cjt on 4/24/2017.
@@ -29,9 +33,10 @@ public class RecipeFrameDisplay {
 	private JLabel quan7;
 	private JLabel quan8;
 	private JLabel quantityLabel;
+	private JButton addAllButton;
 	
 	
-	public RecipeFrameDisplay(Recipe r) {
+	public RecipeFrameDisplay(Recipe r, GameContext gc) {
 		recipeName.setText(r.getName());
 		
 		try {
@@ -46,5 +51,40 @@ public class RecipeFrameDisplay {
 		} catch(ArrayIndexOutOfBoundsException e) {
 			//catch exception and do nothing
 		}
+		
+		/*
+		 * Try and add the items of this recipe to the cart. Make an error message box if not possible.
+		 */
+		addAllButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				double wouldCost = 0;
+				
+				for (IngredientStack is : r.ingredients) {
+					StoreItem storeItem = gc.store.getStoreItemFromItem(is.item);
+					//Make sure the store has the item
+					if (storeItem == null) {
+						JOptionPane.showMessageDialog(null, "Sorry, the store doesn't have " + is.item.getShortName() + " in stock!", "Can't add those items", JOptionPane.ERROR_MESSAGE);
+						return;
+					}
+					
+					//Add this item's cost to the counter so we can check if the recipe is too expensive
+					wouldCost += storeItem.getUnitCost();
+				}
+				
+				if (wouldCost <= gc.getFunds()) { //Can afford
+					for (IngredientStack is : r.ingredients) { //Actually add each item, individually
+						int quantity = (int) Math.ceil(is.quantity); //Round up
+						gc.shoppingCart.add(gc.store.getStoreItemFromItem(is.item), quantity);
+						gc.adjustFunds(-1 * quantity * gc.store.getStoreItemFromItem(is.item).getUnitCost());
+						gc.mainGUI.refreshCart();
+						gc.mainGUI.updateFunds();
+					}
+				} else {
+					JOptionPane.showMessageDialog(null, "Not enough funds for everything!", "Can't add those items", JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+			}
+		});
 	}
 }
