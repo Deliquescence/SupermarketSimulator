@@ -44,6 +44,7 @@ public class ScoreDisplay {
 				
 				double score = Score.scoreCart(gameContext.shoppingCart);
 				System.out.format("Your total score is: " + ("%.3f%n%n"), score);
+				JOptionPane.showMessageDialog(scoreDisplayPanel, String.format("Your final score is %.3f!", score), "Well done!", JOptionPane.INFORMATION_MESSAGE);
 				
 				
 				Score.updateHighScore((int) score);
